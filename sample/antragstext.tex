@@ -1,0 +1,1316 @@
+\documentclass[10pt]{article}
+\usepackage{a4wide}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{url}
+
+%\usepackage{times} % okay (KURZ)
+%\usepackage{charter} % okay (MITTEL)
+\usepackage{palatino} % okay (LANG)
+
+\parindent0em
+\parskip1ex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MACROS FOR TABLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nobox}{\setlength{\unitlength}{.8mm}%
+                      \begin{picture}(10,2)
+                      \end{picture}}
+\newcommand{\boxone}{\setlength{\unitlength}{.8mm}%
+                     \begin{picture}(10,2)
+                       \put(0,0){\rule{8mm}{1.6mm}}
+                     \end{picture}}
+\newcommand{\boxtwo}{\setlength{\unitlength}{.8mm}%
+                     \begin{picture}(10,2)
+                       \put(0,0){\line(1,0){60}}
+                       \put(0,0){\line(0,1){2}}
+                       \put(0,2){\line(1,0){60}}
+                       \put(3,0){\line(0,1){2}}
+                       \multiput(0,0)(4,0){15}{\line(2,1){4}}
+                     \end{picture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITELSEITE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace*{20ex}
+\begin{center}
+\large
+{\bf Antrag an die Deutsche Forschungsgemeinschaft}\\
+Kennedyallee 40, 53175 Bonn\\[5ex]
+auf Gewährung einer Sachbeihilfe\\[10ex]
+{\bf Engineering von komprimierten Text-Indexstrukturen}\\[5ex]
+im Rahmen des Schwerpunktprogramms\\[5ex]
+{\bf Algorithm Engineering (SPP 1307)}\\[10ex]
+Prof.\ Dr.\ Jens Stoye\\
+Arbeitsgruppe Genominformatik\\[2ex]
+Technische Fakultät der Universität Bielefeld\\[2ex]
+und\\[2ex]
+Institut für Bioinformatik\\
+Centrum für Biotechnologie der Universität Bielefeld
+\end{center}
+\newpage
+\thispagestyle{empty}~
+\newpage
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ALLGEMEINE ANGABEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Allgemeine Angaben}
+Antrag auf Gewährung einer Sachbeihilfe (Neuantrag)
+
+\subsection{Antragsteller}
+\setlength{\tabcolsep}{0em}
+\begin{tabular}{l@{~~~~~~}l}
+Name:           & Prof.\ Dr.\ Jens Stoye\\
+Dienststellung: & Universitätsprofessor (C4)\\
+Geburtsdatum:   & 17.\ 03.\ 1970\\
+Nationalität:   & deutsch\\
+Institution:    & Technische Fakultät und Institut für Bioinformatik\\
+                & der Universität Bielefeld\\
+Dienstadresse:  & Universität Bielefeld\\
+                & Technische Fakultät\\
+                & AG Genominformatik\\
+                & 33594 Bielefeld\\
+Telefon:        & 0521 - 106 - 3852\\
+Telefax:        & 0521 - 106 - 6495\\
+E-Mail:         & stoye@techfak.uni-bielefeld.de\\
+Privatadresse:  & Kesselstraße 3\\
+                & 33602 Bielefeld\\
+                & 0521 -- 9675479
+\end{tabular}
+
+Siehe Anlage~1 für tabellarischen Lebenslauf.
+
+
+\subsection{Thema}
+
+Engineering von Methoden zur Konstruktion und Anwendung
+komprimierter Text-Indexstrukturen
+
+
+\subsection{Fach- und Arbeitsrichtung}
+
+Fachrichtung: Informatik, Algorithm Engineering\\
+Arbeitsrichtung: Sequenzanalyse, Indexstrukturen
+
+
+\subsection{Voraussichtliche Gesamtdauer}
+
+24 Monate
+
+
+\subsection{Antragszeitraum}
+
+24 Monate\\
+gewünschter Beginn der Förderung: 1.\ Oktober 2007
+
+
+\subsection{Zusammenfassung}
+
+Mit der unvermindert fortschreitenden Digitalisierung von Information
+steigen auch die Anforderungen an die langfristige Speicherung dieser
+Daten und den effizienten Zugriff auf diese bzw. Teile davon. Eine
+wichtige Basisanforderung ist dabei die Suche nach den Vorkommen eines
+(i.d.\ Regel kurzen) \emph{Musters} in einer großen Datenmenge
+(dem \emph{Text}). Ein
+übliches Vorgehen ist dabei die vorherige Indizierung des Textes, d.h.\
+die Erstellung einer Datenstruktur, die eine Beschleunigung der späteren
+Suche erlaubt. Bisherige Implementierungen zeichnen sich allerdings
+entweder durch unangemessen hohen Speicherbedarf oder langsame
+Laufzeiten in der Praxis aus.
+
+Ziel des hier beantragten Projekts soll es sein, diese Lücke durch die
+Entwicklung eines Volltext-Indexes zu schließen, der sowohl einen
+geringen Speicherplatzbedarf aufweist, als auch effiziente Laufzeiten in
+der Praxis bietet. Dafür sollen bekannte Indexstrukturen wie
+komprimierte Suffixarrays und Wavelet-Bäume zu einer Datenstruktur
+weiterentwickelt werden, die zwar unter Umständen nicht die bestmöglichen
+theoretischen Schranken einhält, dafür in der Praxis aber für typische
+reale Probleminstanzen hohe Performanz zeigt. Weiterhin sollen einige
+Anwendungen des Indexes implementiert und das Resultat in eine
+Softwarebibliothek für die Sequenzanalyse integriert werden.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% STAND DER FORSCHUNG, EIGENE VORARBEITEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Stand der Forschung, eigene Vorarbeiten}
+
+\subsection{Stand der Forschung}
+
+Die Menge an digital verfügbarer Information steigt seit vielen Jahren
+exponentiell an und eine Trendänderung ist nicht absehbar.
+Ein großer Teil dieser Information liegt in Form von \emph{Texten} vor,
+d.h.\ Sequenzen von Symbolen, die nicht nur natürliche
+Sprache repräsentieren, sondern auch Musik, Programmcode, Signalketten,
+Multimedia-Dateien, biologische Sequenzen, Zeitreihen, usw.
+Allein die als Text (meist in HTML codiert) im Internet online
+verfügbaren Dateien wurden bereits 2002 auf nahezu 100 Petabyte geschätzt%
+\footnote{\url{http://www2.sims.berkeley.edu/research/projects/how-much-info-2003/internet.htm}}.
+
+Während jede Anwendung von Text eigene Anforderungen an die Art der
+Bereitstellung der Basisdaten und deren Abfragemöglichkeiten stellt,
+gibt es eine grundlegende Aufgabe, 
+die allen diesen Anwendungen gemein ist: die \emph{Textsuche}.
+Bei der Textsuche geht es darum,
+Vorkommen einer kurzen Sequenz (genannt \emph{Muster})
+in einer üblicherweise deutlich längeren Sequenz (genannt \emph{Text})
+aufzufinden.
+Nahezu jede Anwendung im Bereich der Sequenzverarbeitung verwendet die
+Textsuche als Basisfunktionalität,
+oft um damit kompliziertere anwendungsspezifische
+Funktionen zu implementieren,
+wie z.B.\ das 
+Auffinden von häufigen Teilworten
+oder Sequenzähnlichkeiten (z.B.\ in bioinformatischen Awendungen).
+Signifikante Weiterentwicklungen bei der Textsuche haben große Auswirkungen
+auf die meisten Anwendungen, weshalb wir uns in unserer Argumentation
+weitgehend hierauf konzentrieren wollen.
+
+Textsuche kann auf zwei Weisen durchgeführt werden.
+Die \emph{sequenzielle} (oder \textit{online}) Textsuche
+benötigt keine Vorverarbeitung des Textes, sondern durchsucht ihn
+sequenziell von vorne nach hinten, um auf diese Weise alle Vorkommen
+des Musters im Text aufzufinden.
+Demgegenüber wird bei der \emph{indizierten} (oder \textit{offline}) Textsuche
+zunächst eine Datenstruktur (der \emph{Index}) erstellt,
+die es erlaubt, alle Vorkommen des Musters im Text zu lokalisieren,
+ohne den Text komplett durchsuchen zu müssen.
+Die Vorteile der Indizierung kommen immer dann besonders gut zur Geltung,
+wenn folgende drei Kriterien erfüllt sind:
+\begin{enumerate}
+\item Der Text ist so groß, dass eine sequenzielle Suche sehr aufwändig ist.
+\item Die Anzahl der Suchanfragen ist deutlich höher als die der
+  Textänderungen, so dass sich der Aufwand für das Erstellen des Indexes lohnt.
+\item Es ist genügend Speicherplatz vorhanden, um den Index vorzuhalten und
+  schnellen Zugriff auf ihn zu garantieren.
+\end{enumerate}
+
+Während sich die ersten beiden Kriterien auf die Vorteile der indizierten
+gegenüber der sequenziellen Textsuche beziehen,
+ist das dritte Kriterium eine \emph{notwendige} Bedingung für einen Erfolg des
+Ansatzes der Indizierung.
+Auf den ersten Blick mag Speichereffizienz bei den heutigen Preisen
+für Festplatten und Hauptspeicher nicht mehr die Relevanz haben wie
+noch vor wenigen Jahren.
+Das eigentliche Problem liegt aber darin, effizient auf diesen Speicher
+zugreifen zu können.
+Selbst wenn der zu indizierende Text noch genügend Platz im Hauptspeicher
+findet, benötigen die klassi\-schen Indizes für die Textsuche 4- bis 20-mal
+so viel Speicher wie der Text selber, so dass diese oft auf die Festplatte
+ausgelagert werden müssen.
+Nur wenige Indexstrukturen für die Textsuche wurden bisher explizit
+für den Einsatz im Sekundärspeicher entwickelt, und keine von diesen
+hat sich als besonders effizient in der Praxis erwiesen.
+Aus diesem Grund allein ist die \emph{Kompression von Indizes} eine sehr
+interessante Fragestellung.
+
+Darüber hinaus sind heutige Rechnerarchitekturen mit ihren mehrschichtigen
+Cache-Speichern besonders effizient, wenn Algorithmen optimal mit Strategien
+des \textit{Pre-fetching} von Daten zusammenspielen.
+Konkret bedeutet dies, dass ein Index im Hauptspeicher, oder gar auf der
+Festplatte, nur optimal genutzt wird, wenn auf ihn sequenziell
+zugegriffen wird, und nicht gemäß eines zufälligen Musters.
+Solche Gedanken spielen bei theoretischen Überlegungen zu
+asymptotisch optimalen Verfahren häufig eine geringere Rolle,
+im praktischen Einsatz kann dies aber sehr wohl über den Erfolg oder
+Misserfolg einer Methode entscheiden.
+Es bleibt also festzuhalten, dass viele der existierenden Indizes nur sinnvoll
+einsetzbar sind, wenn der zu indizierende Text klein genug ist,
+dass auch der häufig deutlich größere Index im Hauptspeicher Platz
+findet, was wiederum im Widerspruch zu dem ersten der oben genannten
+Kriterien steht: In solchen Texten ist häufig auch die sequenzielle
+Suche in vertretbarer Zeit möglich.
+
+Aus diesem Grund hat es in den vergangenen Jahren einige Bestrebungen
+gegeben, neben reinen Sequenzdaten (der klassischen Kompression)
+auch Indexstrukturen zu komprimieren.
+In Anlehnung an \cite{NAV-MAK-2006} verwenden wir hier die
+folgende Terminologie:
+Ein Index heißt \textit{succinct}, wenn er schnelle Suchmöglichkeiten
+erlaubt und sein Speicherplatzbedarf proportional zur Größe
+des Textes selber ist.
+Er heißt \textit{komprimiert}, wenn sein Platzbedarf proportional zur
+Größe des komprimierten Textes ist.
+Schließlich heißt ein komprimierter Index \textit{Selbst-Index}, wenn er
+neben der Möglichkeit effizienter Suche auch die Rekonstruktion des
+Textes erlaubt, und somit der Text selber gar nicht mehr gespeichert
+werden muss.
+
+Klassische Indizes für die Textsuche
+wie Suffixbäume und Suffixarrays sind nicht succinct,
+da sie zur Indizierung eines Textes der Länge $n$ über einem Alphabet
+der Größe $\sigma$, der somit mit $n \log \sigma$ Bit gespeichert
+werden kann, $\Theta(n \log n)$ Bit benötigen.
+Ein erster \textit{succinct} Index mit Speicherbedarf $O(n \log \sigma)$
+wurde 1996 von Kärkkäinen und Ukkonen \cite{KAR-UKK-1996} entwickelt,
+der erste Selbst-Index im Jahre 2000 von Ferragina und Manzini
+\cite{FER-MAN-2000,FER-MAN-2005}.
+Weitere Methoden stammen von
+Mäkinen \cite{MAK-2000,MAK-2003},
+Grossi und Vitter \cite{GRO-VIT-2000,GRO-VIT-2006}
+und Sadakane \cite{SAD-2000}.
+Bei der näheren Betrachtung der verschiedenen Ansätze wird deutlich,
+dass einige
+grundlegenden Techniken immer wieder eingesetzt werden, da sie für diese
+Art von Anwendung effiziente Eigenschaften besitzen:
+
+\begin{description}
+
+\item[Burrows-Wheeler-Transformation.]
+Die Burrows-Wheeler-Tansformation (BWT) ist eine reversible Transformation
+eines Textes, deren Ziel es ursprünglich war,
+den Text so zu rearrangieren, dass er besser komprimierbar ist
+\cite{BUR-WHE-1994}.
+Dies hat zu den Kompressionsprogrammen der \textit{bzip}-Familie
+geführt, die heutzutage zu den besten existierenden Komprimierern
+für natürlichsprachige Texte zählen.
+Die Berechnung der BWT ist eng mit der Konstruktion des
+Suffixarrays des Textes verwandt und lässt sich wie diese in linearer Zeit
+durchführen.
+
+\item[Rückwärtssuche.]
+Diese Suchstrategie wurde erstmalig von
+Ferragina und Manzini~\cite{FER-MAN-2000}
+bei der Mustersuche in Burrows-Wheeler-komprimierten Texten eingesetzt.
+Das Muster wird rück\-wärts gesucht, d.h.\ vom letzten zum ersten Zeichen,
+durch iterierte Einschränkung des Intervalls der Vorkommen des
+entsprechenden Suffixes des Musters.
+Die Rückwärtssuche zeichnet sich durch Effizienz und Flexibilität im Einsatz
+auf komprimierten Texten aus.
+
+\item[Wavelet-Baum.]
+Der Wavelet-Baum ist eine von Grossi \textit{et al.}~\cite{GRO-GUP-VIT-2003}
+erstmalig für die Textsuche auf komprimierten Indexstrukturen
+vorgestellte Datenstruktur.
+Er erlaubt durch hierarchische Codierung eines Textes eine
+effiziente Implementierung der für die Rückwärtssuche
+wichtigen \textit{occurrence}-Funktion
+bei gleichzeitiger Reduktion des Platzbedarfs von
+$\sigma n$ auf $n \log\sigma + o(n \log\sigma)$ Bits,
+wobei wie oben $\sigma$ die Alphabetgröße und $n$ die Textlänge ist.
+
+\item[Psi-Tabelle.]
+Während die oben beschriebenen Verfahren mittels der BWT
+zunächst den Text umordnen,
+um dann bessere Kompressionseigenschaften zu erhalten,
+ist ein anderer Ansatz, eine solche Umordnung erst auf dem
+Suffixarray durchzuführen.
+Hierfür wird eine häufig als $\Psi$-Funktion bezeichnete Transformation
+eingesetzt, die, auf das Suffixarray angewandt, ein neues Array
+erzeugt mit besseren Kompressionseigenschaften als das ursprüngliche
+Suffixarray.
+
+\end{description}
+
+Auf weitere Details und eine Zuordnung der einzelnen Techniken zu den
+verschiedenen publizierten Methoden soll an dieser Stelle verzichtet werden.
+Eine exzellente Zusammenfassung über den Stand der Technik,
+insbesondere was die theoretischen Entwicklungen betrifft,
+findet sich in \cite{NAV-MAK-2006}.
+Experimentelle Studien zur praktischen Einsetzbarkeit der
+beschriebenen Methoden liegen dagegen kaum vor,
+erste Ansätze finden sich in \cite{MAK-NAV-2005}
+und auf der Webseite \textit{PizzaChili}%
+\footnote{\url{http://pizzachili.dcc.uchile.cl}},
+siehe hierzu auch Abschnitt~3.1.
+%Weiterhin hat K.\ Sadakane eine Bibliothek mit Basisfunktionen zu
+%komprimierten Suffixarrays unter
+%\url{http://tcslab.csce.kyushu-u.ac.jp/~sada/lectures/algoeng2004.html}
+%bereitgestellt.
+
+
+\subsection{Eigene Vorarbeiten}
+
+Motiviert durch Fragestellungen aus der Bioinformatik
+hat der Antragsteller in verschiedenen Bereichen des Engineering
+von Algorithmen zur Konstruktion und Anwendung von
+Text-Index\-struk\-tu\-ren gearbeitet.
+
+Die zeit- und speicherplatzeffiziente Konstruktion von Suffixbäumen
+und -arrays ist eines der ältesten Probleme bei der Volltextindizierung.
+Während sich frühe Arbeiten \cite{FAR-1997,MCC-1976,UKK-1995,WEI-1973}
+in diesem Bereich häufig auf die asymptotisch optimale Konstruktion
+der Datenstrukturen konzentrierten und die tatsächliche Effizienz nur
+am Rande betrachtet wurde, ist mit dem praktischen Einsatz
+in zahlreichen Bioinformatik-Anwendungen in den letzten zehn Jahren
+\cite{BEC-HOM-GIE-KUR-2006,DEL-KAS-FLE-PET-WHI-SAL-1999,KUR-CHO-OHL-SCH-STO-GIE-2001,KUR-PHI-DEL-SMO-SHU-ANT-SAL-2004}
+die Entwicklung von Verfahren mit gutem Realzeitverhalten
+immer relevanter geworden.
+
+Für \textbf{Suffixbäume} hat sich beispielsweise gezeigt,
+dass alle asymptotisch optimalen Algorithmen durch den Einsatz sogenannter
+\textit{Suffix-links} und damit verbundener nicht-lokaler Speicherzugriffe
+in der Praxis häufig ein ungünstiges Laufzeitverhalten zeigen.
+Einfache Alternativen, deren theoretische Laufzeitkomplexität möglicherweise
+suboptimal ist, können auf realen Daten häufig weit besser arbeiten,
+wie wir anhand des Verfahrens \textit{Write-Only Top-Down} (WOTD)
+\cite{GIE-KUR-STO-2003} zeigen konnten.
+Das Verfahren ist denkbar einfach (der Suffixbaum wird hierarchisch
+von der Wurzel zu den Blättern durch rekursive Gruppierung der Suffixe
+mit gleichen Präfixen konstruiert) und benötigt im \textit{worst case}
+$O(n^2)$ Zeit, im \textit{average case} allerdings nur $O(n \log n)$.
+In der Praxis zeigt sich jedoch auch bei sehr großen Texten
+ein nahezu lineares Verhalten, noch dazu mit sehr kleinen konstanten Faktoren.
+Darüber hinaus lässt sich mit diesem Verfahren eine sehr elegante
+\textit{lazy}-Konstruktion durchführen, bei der nur die
+Teile des Baums erstellt werden, die bei der Suche auch tatsächlich durchsucht
+werden. Details und Laufzeitvergleiche, die die weitgehende
+Überlegenheit gegenüber den derzeit besten
+Verfahren zur Suffixbaumkonstruktion in linearer Zeit demonstrieren,
+finden sich in \cite{GIE-KUR-STO-2003}.
+
+Aufgrund des günstigeren Speicherplatzbedarfs
+und der mittlerweile bestehenden Möglich\-kei\-ten, nahezu alle Anwendungen
+von Suffixbäumen auf diesen zu simulieren \cite{ABO-KUR-OHL-2004},
+hat sich die Forschung in den letzten Jahren zunehmend auf
+\textbf{Suffixarrays}
+als primäre Datenstruktur für die Volltextindizierung konzentriert.
+Aber auch hier hat sich gezeigt, dass asymptotisch optimale
+Konstruktionsverfahren nicht notwendigerweise optimale
+Laufzeiten in der Praxis garantieren.
+Aus diesem Grund wurden einige spezielle,
+auf die Praxis hin optimierte Verfahren entwickelt,
+beispielsweise die Algorithmen
+\textit{deep-shallow} von Manzini und Ferragina \cite{MAN-FER-2004},
+\textit{odd-even} von Kim \textit{et al.}\ \cite{KIM-JO-PAR-2004}
+oder der von uns entwickelte Algorithmus
+\textit{bucket-pointer refinement} \cite{SCH-STO}.
+Letzterer hat die Laufzeit $O(n^2)$ im \textit{worst case},
+was suboptimal ist gegenüber existieren Linearzeitverfahren
+\cite{HON-SAD-SUN-2003,KIM-SIM-PAR-PAR-2005,KO-ALU-2005,KAR-SAN}.
+Dennoch konnten wir wiederum zeigen,
+dass die Kombination verschiedener sehr einfacher Basistechniken
+bei gleichzeitiger Berücksichtigung optimaler Speicherzugriffsmuster
+zu exzellentem praktischen Laufzeitverhalten bei moderatem Speicherplatzbedarf
+führen kann.
+
+Eine weitere Indexstruktur, mit der wir gute Erfahrungen gemacht haben,
+ist der \textbf{\boldmath$q$-gram Index\-},
+der bisweilen auch als \emph{$q$-Wort Hash} oder \emph{occurrence list}
+bezeichnet wird.
+Bei diesem Index wird für jedes Teilwort des Textes der Länge $q$
+eine sortierte Liste aller Vorkommen dieses Wortes im Text angelegt.
+In der Praxis lassen sich mit diesem Index sehr effiziente
+Suchverfahren durchführen, die derzeit zu den
+schnellsten Methoden der nicht-heuristischen approximativen
+Textsuche zäh\-len \cite{RAS-STO-MYE-2006}.
+
+Wie oben bereits angedeutet, hängt die praktische Entwicklung
+im Bereich der \textbf{komprimierten Text-Indexstrukturen} derzeit
+hinter den theoretischen Entwicklungen her.
+Prototypische Implementierungen sind dem Antragsteller
+nur wenige bekannt, von denen die meisten auf dem bereits erwähnten
+Server \textit{PizzaChili} abgelegt sind.
+Darunter befindet sich auch das \textit{Succint Suffix Array}
+von Mäkinen und González,
+die Implementierung eines FM-Index, basierend auf einem
+\emph{Huffman-shaped} Wavelet-Baum \cite{MAK-NAV-2005}.
+%dessen Größe durch $n(H_0(t)+1)(1 + o(1))$ Bit beschränkt ist, wobei
+%$H_0(t)$ die Entropie nullter Ordnung des zu indizierenden Textes $t$ ist.
+Eine dynamische Variante dieser Methode,
+bei der also zur Laufzeit Texte zum Index hinzugefügt und entfernt
+werden können,
+wird derzeit im Rahmen der Diplomarbeit von Wolfgang Gerlach,
+eines Studenten der Naturwissenschaftlichen Informatik in Bielefeld,
+in gemeinsamer Betreuung mit Dr.\ Veli Mäkinen (Helsinki)
+und dem Antragsteller erstellt.
+Zu diesem Zweck wurde die sogenannte \emph{Four-Russians}-Technik
+des \textit{Succinct Suffix Array}
+durch einen Rot-Schwarz-Baum ersetzt, was zu geringen Einbußen
+bei der Laufzeit führt, dafür aber die dynamische Einsetzbarkeit
+des Indexes erlaubt.
+Bei dieser Implementierung handelt es sich ebenfalls um einen
+Prototypen, da der Rot-Schwarz-Baum und andere zugrundeliegende
+Datenstrukturen zwar asymptotisch optimal umgesetzt,
+für die praktische Anwendung aber keineswegs optimiert wurden.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ZIELE UND ARBEITSPROGRAMM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ziele und Arbeitsprogramm}
+
+\subsection{Ziele}
+
+Wie im vorherigen Abschnitt anhand verschiedener Beispiele dargelegt,
+war bei der Entwicklung von Text-Indexstrukturen in der Vergangenheit
+immer wieder das folgendes Schema zu beobachten:
+
+\begin{enumerate}
+\item
+Zunächst wird eine Datenstruktur vorgeschlagen,
+üblicherweise gemeinsam mit einem ersten Algorithmus zu dessen Konstruktion.
+\item
+Als zweiter Schritt, bisweilen bereits gemeinsam mit der Formulierung
+des ersten Algorithmus, häufig aber auch erst später, werden erste
+prototypische Implementierungen der Algorithmen entwickelt,
+in der Regel als eine Art \textit{Proof of Concept}.
+Die entstehenden Programme sind für die praktische Anwendung meist
+nur bedingt tauglich.
+\item
+Erst einige Zeit später folgen Implementierungen, in die tiefergehende
+Überlegungen hinsichtlich der praktischen Einsetzbarkeit fließen.
+\end{enumerate}
+
+An den drei wichtigsten Datenstrukturen für die Textindizierung
+ist dies noch einmal in der folgenden Tabelle zusammengefasst,
+wobei insbesondere bei den Prototypen kein Anspruch auf Vollständigkeit
+gestellt werden kann, da diese häufig nicht auf den üblichen Wegen
+publiziert werden.
+
+\bigskip
+\centerline{
+\begin{small}
+\addtolength{\tabcolsep}{5pt}
+\begin{tabular}{p{.14\hsize}p{.26\hsize}p{.26\hsize}p{.28\hsize}}
+Datenstruktur & Theorie & Prototypen & Effiziente Implementierungen \\
+\hline
+\rule{0em}{4ex}%
+Suffixbaum &
+  Weiner (1973)\newline
+  McCreight(1976)\newline
+  Ukkonen (1995)\newline
+  Farach (1997) &
+  Kurtz (1993)\newline
+  Gusfield (1996) &
+  Kurtz (1999)\newline
+  Giegerich/Kurtz/Stoye\newline\rule{1em}{0ex}(2003) \\
+\rule{0em}{4ex}%
+Suffixarray &
+  Manber/Myers (1993)\newline
+  Kärkkäinen/Sanders (2003)\newline
+  Kim \textit{et al.}\ (2003)\newline
+  Ko/Aluru (2003)\newline
+  Hon \textit{et al.} (2003)\newline
+  Burkhardt/Kärkkäinen\newline\rule{1em}{0ex}(2003) &
+  Myers (1993)\newline
+  Kärkkäinen/Sanders (2003) &
+  Larsson/Sadakane (1999)\newline
+  Burkhardt/Kärkkäinen (2003)\newline
+  Manzini/Ferragina (2004)\newline
+  Kim/Jo/Park (2004)\newline
+  Schürmann/Stoye (2006) \\
+\rule{0em}{4ex}%
+Komprimierter\newline Index &
+  Grossi/Vitter (2000)\newline
+  Sadakane (2000)\newline
+  Ferragina/Manzini (2000)\newline
+  Mäkinen (2000) &
+  Ferragina/Manzini (2001)\newline
+  Sadakane (2003)\newline
+  Navarro (2003)\newline
+  Mäkinen/González (2006)\newline
+  Gerlach (2007) &
+\\
+\hline
+\end{tabular}
+\end{small}
+}
+\bigskip
+
+Das Ziel des in diesem Antrag vorgeschlagenen Projekts ist es nun,
+die in dieser Tabelle unten rechts noch bestehende Lücke zu schließen.
+
+Dabei sollen drei Teilziele verfolgt werden:
+\begin{itemize}
+\item[(A)] die Entwicklung eines für den praktischen Einsatz optimierten
+\textit{succinct} Index zur Volltextindizierung
+sowie dessen Implementierung,
+\item[(B)] die Entwicklung und Implementierung einiger typischer Anwendungen
+dieses Indexes
+und
+\item[(C)] die Integration der Methoden aus den Teilzielen (A) und (B) in eine
+Softwarebibliothek für die Sequenzanalyse.
+\end{itemize}
+
+Die Entwicklung einer eigenen Testumgebung und Bereitstellung
+geeigneter Probleminstanzen ist
+in diesem Projekt nicht nötig, da mit der bereits erwähnten,
+von Navarro und Ferragina eingerichteten Webseite \textit{PizzaChili}
+bereits eine optimal geeignete solche Umgebung existiert.
+Dort sind verschiedene Textkorpora abgelegt, sowie eine standardisierte
+Umgebung bereitgestellt, in der eigene Programme automatisch
+mit den aktuell sieben verschiedenen auf dem Webserver vorhandenen
+Implementierungen von \textit{succinct} und komprimierten Indizes
+verglichen werden können.
+
+%\begin{description}
+%\item[Suffix Array.]
+%Implementierung eines Suffixarrays mit $\lceil\log n\rceil$ Bit pro Zeichen,
+%nach \cite{MAN-MYE-1993,MAN-FER-2004}.
+%Autoren: Mäkinen, González. 
+%
+%\item[Succinct Suffix Array.]
+%Statischer \textit{Huffman-shaped} Wavelet-Baum,
+%benötigt $n(H_0(T)+1)(1+o(1))$ Bit Speicherplatz,
+%nach \cite{MAK-NAV-2005B}.
+%Autoren: Mäkinen, González.
+%
+%\item[Alphabet-Friendly FM-index.]
+%Kombination eines Wavelet-Baums mit Compression Boosting,
+%benötigt $nH_k(T)+O(n \log\log n)/ \log_{\vert\Sigma\vert} n)$ Bit Speicherplatz,
+%nach \cite{FER-MAN-MAK-NAV-2004}.
+%Autor: González.
+%
+%\item[Compressed Compact Suffix Array.]
+%Einfacher Selbst-Index,
+%benötigt $n(H_k(T)(1+\log n)+2+1/\epsilon)+O(n \log\log n)/ \log_{\vert\Sigma\vert} n)$ Bit Speicherplatz,
+%nach \cite{MAK-NAV-2004}.
+%Autoren: Mäkinen, Gon\-zález.
+%
+%\item[Run-Length FM-Index.]
+%Verbesserung des Wavelet-Baums durch Kompression von Folgen gleicher Buchstaben,
+%benötigt $O(nH_k \log \sigma)$ Bit Seicherplatz,
+%nach \cite{MAK-NAV-2005}.
+%Autoren: Mäkinen, Gon\-zález.
+%
+%\item[FM-Index.]
+%Version 2 des FM-Index,
+%benötigt $O(nH_k)$ Bit Speicherplatz,
+%nach \cite{FER-MAN-2005},
+%Autoren: Ferragina, Venturini.
+%
+%\item[LZ-Index.]
+%Komprimierter Index, basierend auf der LZ78-Kompression,
+%benötigt $4 n H_k(T) + o(n \log s)$ Bit Speicherplatz,
+%nach \cite{NAV-2004}.
+%Autoren: Navarro, Arroyuelo.
+%\end{description}
+
+
+\subsection{Arbeitsprogramm}
+
+Bei der Bearbeitung der Teilziele (A) und (B) soll die Linie
+``Entwurf, Analyse, Implementierung, Experimente'' verfolgt werden,
+d.h.\ in raschen Entwicklungszyklen werden Datenstrukturen und
+Algorithmen entworfen und analysiert, dann sofort implementiert
+und evaluiert.
+Die Zyklen sollen mehrere Male durchlaufen werden,
+um so zu einem bestmöglichen Endprodukt zu gelangen.
+
+Teilziel (C) soll in Form regelmäßiger Absprachen und Treffen
+mit den Autoren der eingesetzten Softwarebibliothek durchgeführt werden.
+Details finden sich in den folgenden Abschnitten
+und dem abschließenden Zeitplan.
+
+
+\subsubsection*{(A) Konstruktion von komprimierten Text-Indizes}
+
+Zunächst soll eine Datenstruktur zur Volltextindizierung
+entwickelt werden, deren Speicherbedarf $n \log\sigma$ Bit,
+d.h.\ in der Praxis $n$ Byte im \textit{worst case}
+nicht überschreiten soll.
+Damit soll gewährleistet sein,
+dass der Index \textit{succinct}
+und somit auch asymptotisch nicht schlechter ist
+als existierende Indizes.
+Gleichzeitig soll der Index größtmögliche praktische Laufzeiteffizienz
+bei der Konstruktion und der exakten Textsuche aufweisen.
+Die asymptotische Laufzeit im \textit{worst case} ist dagegen eher
+sekundär, solange auf realen Texten gute Werte erzielt werden.
+
+Natürlich wäre ein komprimierter Index oder ein komprimierter Selbst-Index
+noch interessanter,
+ob ein solcher aber mit dem weiteren Ziel der sehr schnellen
+Konstruktions- und Zugriffszeit in der Praxis kompatibel ist,
+kann zum jetzigen Zeitpunkt nicht vorhergesagt werden.
+Dagegen soll das Konzept eines dynamischen Wörterbuchs von Anfang an
+berücksichtigt (wenn auch nicht zwingend umgesetzt) werden,
+in dem während der Laufzeit neue Einträge hinzugefügt und alte
+Einträge gelöscht werden können.
+
+Parallel zur Entwicklung der neuen Datenstruktur soll
+für diese ein Minimalsatz an Basisfunktionalitäten implementiert werden,
+anhand der die praktische Effizienz unmittelbar während des
+Entwicklungsprozesses evaluiert werden kann.
+In Anlehnung an die Testumgebung \textit{PizzaChili} gehören hierzu:
+\begin{itemize}
+\item Funktionen \textbf{build\_index}, \textbf{save\_index},
+ \textbf{load\_index}, \textbf{free\_index} und \textbf{index\_size}
+ zum Erstellen des Indexes und verwandte Aufgaben,
+\item Funktionen \textbf{count} und \textbf{locate}
+  zum Zählen und Auflisten aller Vorkommen eines Musters
+  im indizierten Text, und
+\item Funktionen \textbf{extract}, \textbf{display} und \textbf{length}
+  zur Extraktion des Textes oder von Teilen davon aus dem Index
+  (im Falle eines Selbst-Indexes).
+\end{itemize}
+Anhand dieser Basisfunktionen kann ein frühzeitiger Vergleich
+mit anderen existierenden Implementierungen durchgeführt werden,
+und es lassen sich die Vor- und Nachteile jeder neuen Variante
+unmittelbar erkennen.
+
+Auch wenn sich die letztendlich erfolgbringenden Techniken
+erst während des Entwicklungsprozesses herausstellen werden,
+sollen hier einige Ansatzpunkte genannt werden,
+die zur Umsetzung der formulierten Ziele erfolgversprechend
+sein können:
+
+\begin{itemize}
+\item
+Die oben beschriebene Rückwärtssuche zeichnet sich durch Effizienz und
+Flexibilität im Einsatz in komprimierten Datenstrukturen aus,
+da sie sich auf eine einfache \textit{occurrence}-Operation
+reduzieren lässt, bei der in einem Text die Anzahl Vorkommen eines Zeichens $c$
+vor einer gegebenen Position $i$ gesucht ist.
+Alternativ lässt sich auch für jedes Zeichen $c$ des Alphabets ein
+charakteristischer Bitstring $B^c$ erstellen,
+so dass sich die Suche auf bitweise \textit{rank}-Operationen auf den
+$B^c$ reduziert.
+An dieser Stelle soll untersucht werden,
+ob anstelle eines asymptotisch effizienten Wavelet-Baums nicht
+besser effiziente maschinennahe Bit-Operationen eingesetzt werden können,
+eventuell unter Berücksichtigung des Grafik-Befehlssatzes
+der meisten heutigen Prozessoren.
+
+\item
+Auch an anderen Stellen wird es möglich sein, asymptotisch optimale
+Datenstrukturen durch in der Praxis performantere zu ersetzen.
+Beispielsweise benötigt die im \textit{Succinct Suffix Array}
+eingesetzte \textit{Four-Russians}-Technik wegen zahlreicher
+Tabellierungen in der Praxis ungerechtfertigt hohen Speicherplatz,
+was sich in der Praxis durch wiederholtes Berechnen der benötigten
+Einträge oder \textit{Sampling} von nur einem Teil der Einträge
+deutlich einsparen lässt, auch wenn dann die asymptotischen
+Schranken nicht mehr eingehalten werden können.
+
+\item
+Wie vorläufige Untersuchungen gezeigt haben, sind viele der
+existierenden Indizes zwar sehr effizient bei der Frage,
+ob ein Muster in einem Text auftritt, oder wie viele solche
+Vorkommen existieren (abgefragt durch die \textbf{count}-Funktion),
+wogegen das Auflisten der Positionen dieser Vorkommen (\textbf{locate})
+deutlich länger benötigt, da diese Positionen nicht explizit
+gespeichert sind, sondern erst aufwändig aus der komprimierten
+Datenstruktur extrahiert werden müssen.
+Hier kann es möglicherweise sinnvoll sein, durch explizites Abspeichern
+einzelner Positionen in der Praxis deutlich bessere Laufzeiten auch
+beim Auflisten der Vorkommen zu erreichen.
+
+\item
+Bei der Behandlung eines dynamischen Indexes, wo insbesondere
+das Löschen von Einträgen unter Umständen zu großen Veränderungen
+in der Datenstruktur führt, kann es von Vorteil sein, gelöschte
+Einträge zunächst zu maskieren, anstatt sie gleich zu löschen
+und aus dem Index zu entfernen.
+Maskierte Einträge bleiben zunächst im Index bestehen, Treffer in ihnen
+werden aber bei der Ausgabe herausgefiltert.
+Erst nach einer gewissen Anzahl von Löschungen wird der Index aktualisiert
+oder neu berechnet.
+
+\item
+Durch Parallelisierung einzelner Schritte kann auf heutigen
+Rechnern mit mehreren Prozessorkernen eventuell eine reale Beschleunigung
+ohne zusätzlichen Hard\-ware-Auf\-wand erreicht werden.
+Auch wenn Parallelisierung nicht im Hauptfokus dieses Projekts stehen wird,
+sollen erfolgversprechende Ansätze, die sich leicht umsetzen lassen,
+nicht außer Acht gelassen werden.
+
+\end{itemize}
+
+Generell sollen alle Ansatzpunkte unmittelbar erprobt und ihre
+praktische Effizienz anhand von Experimenten wie oben beschrieben
+evaluiert werden.
+Damit dies möglich ist, muss allerdings zunächst eine Basisimplementierung
+existieren, in die sich dann die verschiedenen Varianten einbetten
+lassen.
+Hierfür soll die in den Vorarbeiten beschriebene, derzeit von
+Wolfgang Gerlach im Rahmen seiner Diplomarbeit
+entwickelte Implementierung des auf dem
+\textit{Huffman-shaped} Wavelet-Baum basierenden dynamischen Indexes
+dienen.
+Die Implementierungsarbeiten hieran sind bereits erfolgreich abgeschlossen,
+so dass zu Projektbeginn ohne große Vorlaufzeiten
+unmittelbar mit den Arbeiten für Teilziel (A) begonnen werden kann.
+
+
+\subsubsection*{(B) Anwendung von komprimierten Text-Indizes}
+
+Als zweites Teilziel sollen einige prototypische Anwendungen für den
+Index implementiert werden.
+Je nach den Anforderungen der ausgewählten Softwarebibliothek
+(siehe Teilziel (C))
+kann es neben den in Teilziel (A) genannten Basisfunktionalitäten
+notwendig sein, noch weitere grundlegende Operationen anzubieten,
+beispielsweise Iteratoren, die die Simulation einer Traversierung
+des Suffixbaums oder Suffixarrays des Textes erlauben.
+Diese Anforderungen sollen im Rahmen früher Arbeiten an Teilziel (C)
+geklärt, aber noch nicht im Rahmen von Teilziel (A)
+umgesetzt werden, da sie den geplanten schnellen
+Entwicklungszyklus in der frühen Phase des Projekts bremsen würden.
+Daher sollen solche Schnittstellen erst im Rahmen von Teilziel (B) entwickelt
+werden, wenn das grundlegende Konzept für den neuen Index bereits
+festgelegt ist.
+
+Schließlich sollen auch noch ein oder zwei nicht-triviale Anwendungen
+entwickelt werden, beispielsweise das Auffinden wiederholt auftretender
+Teilworte im Text oder eine approximative Variante der Textsuche.
+Für diese Anwendungen gibt es bereits effiziente Algorithmen
+auf Suffixbäumen und -arrays,
+weshalb davon ausgegangen werden kann, dass sich auch
+auf dem komprimierten Index effiziente Implementierungen
+entwickeln lassen.
+
+Bei der praktischen Umsetzung dieses Teilziels wird nicht an
+jeder Stelle eine kanonische Implementierung existieren,
+so dass auch hier der Zyklus "`Entwurf, Analyse, Implementierung,
+Experimente"' verfolgt werden soll.
+Dennoch ist zu erwarten, dass nach der Festlegung auf die grundlegende
+Datenstruktur in Teilziel (A) und den Erfahrungen im Rahmen der
+Implementierung der Basisfunktionalitäten
+viele in den Anwendungen zu treffende Design-Entscheidungen einfacher
+zu treffen sind
+oder zumindest geringeren Einfluss auf die Gesamtlaufzeit haben.
+
+
+\subsubsection*{(C) Integration in eine Softwarebibliothek}
+
+Die in den Teilzielen (A) und (B) entwickelten Methoden sollen in ein
+Softwareprodukt münden, das zwar etwas langsamer als
+Suffixbaum- oder Suffixarraybasierte Verfahren sein darf,
+dafür aber deutlich weniger Speicherplatz benötigt.
+Um die praktische Effizienz sicherzustellen
+soll, wie bereits erwähnt, schon während der Entwicklung der Vergleich
+mit anderen existierenden Methoden anhand der Sammlung \textit{PizzaChili}
+durchgeführt werden.
+Stabile Versionen der entwicklelten Software sollen dort auch abgelegt werden.
+
+Dennoch ist es zur weiteren Verbreitung und Sicherung der Nachhaltigkeit
+der Ergebnisse des Projekts sinnvoll,
+die Software auch in eine größere Biliothek für die
+Sequenzanalyse zu integrieren.
+Der Vorteil eines solchen Vorgehens ist, dass durch die Bereitstellung
+weniger Basisfunktionalitäten zahlreiche, in der Bibliothek implementierte
+Anwendungen den Index nutzen können,
+ohne dass jede Anwendung direkt mit dem Index kommunizieren muss.
+
+Als Beispiel für eine solche Softwarebibliothek soll hier
+die in der Arbeitgruppe Algorithmische Bioinformatik an der FU Berlin
+in der Entwicklung befindliche
+\textit{C++ Library for Sequence Analysis} (\textit{SeqAn})
+genannt werden, deren Ziel die Verknüpfung möglichst vieler
+Algorithmen zur Sequenzanalyse mit verschiedenen zugrundeliegenden
+Datenstrukturen zur Repräsentation von Texten ist.
+Es wäre ein großer Erfolg für das hier beantragte Projekt,
+wenn zum Ende der Laufzeit der entwickelte komprimierte Index
+eine prominente Stellung unter den in \textit{SeqAn}
+integrierten Datenstrukturen einnehmen würde.
+
+
+
+\subsubsection*{Zeitplan}
+
+In der folgenden Tabelle ist die Aufteilung der Arbeitszeiten
+auf die einzelnen Teilziele dargestellt.
+
+\begin{center}
+\setlength{\tabcolsep}{0cm}
+\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{4.8cm}|p{4.8cm}|}
+\hline
+\multicolumn{2}{|c|}{Teilziel}
+  & \multicolumn{1}{|l|}{~1. Jahr}
+    & \multicolumn{1}{|l|}{~2. Jahr}\\
+\hline
+\hline
+(A) & Konstruktion
+  & \boxone\boxone\boxone\boxone\boxone\boxone
+    & \boxone\boxone\\[1ex]
+(B) & Anwendungen
+  & 
+    & \nobox\boxone\boxone\boxone\boxone\boxone \\[1ex]
+(C) & Integration
+  & \boxone
+    & \boxone\boxone\nobox\nobox\boxone\boxone \\
+\hline
+\end{tabular}
+\end{center}
+
+Im wesentlichen soll zunächst an Teilziel~(A) and dann an Teilziel~(B)
+gearbeitet werden.
+Parallel dazu wird zu verschiedenen Zeitpunkten an der Integration
+der entwickelten Werkzeuge in eine Softwarebibliothek gearbeitet:
+Zu Beginn des Projekts sollen die bestehenden Möglichkeiten
+evaluiert und eine geeignete Bibliothek ausgewählt werden,
+um schon von Anfang an die Anforderungen an geeignete Schnittstellen
+berücksichtigen zu können.
+Jeweils gegen Ende der Arbeitsphasen an Teilzielen (A) und (B) sollen
+die entwickelten Methoden dann in die ausgewählte Softwarebibliothek
+eingearbeitet werden.
+
+
+\subsection{Untersuchungen am Menschen oder an vom Menschen entnommenem Material}
+
+Keine.
+\enlargethispage{2ex}
+
+
+\subsection{Tierversuche}
+
+Keine.
+
+
+\subsection{Gentechnologische Experimente}
+
+Keine.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEANTRAGTE MITTEL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Beantragte Mittel}
+
+Im folgenden sind die beantragten Mittel für den Antragszeitraum
+von zwei Jahren aufgeführt.
+
+\subsection{Personalkosten}
+
+An Personalmitteln wird jeweils für 2 Jahre beantragt:
+\begin{itemize}
+\item 1 wiss.\ Mitarbeiter BAT Ib (Postdoktorand) bzw.\ TV-L-Äquivalent
+\item 1 stud.\ Hilfskraft, 19 h/Woche
+\end{itemize}
+
+Zur Durchführung des Projekts wird die Stelle für einen wissenschaftlichen
+Mitarbeiter (Postdoktorand) beantragt.
+Hierbei handelt es sich im Idealfall um einen promovierten Informatiker
+mit einschlägigen Vorarbeiten
+im Bereich des Algorithm Engineering und der Sequenzanalyse.
+Unterstützt werden soll er durch eine studentische Hilfskraft,
+insbesondere bei Routineaufgaben im Bereich der Implementierung und Evaluation.
+
+Für die Postdoktoranden-Stelle steht mit Klaus-Bernd Schürmann
+ein hochqualifizierter Kandidat zur Verfügung,
+der voraussichtlich im Sommer 2007 seine Dissertation
+mit dem Thema ``Suffix Arrays in Theory and Practice''
+an der Technischen Fakultät der Universität Bielefeld abschließen wird.
+Aus den Bielefelder Studiengängen
+\textit{Naturwissenschaftliche Informatik} (Bachelor/Master, Diplom)
+und \textit{Bioinformatik und Genomforschung} (Bachelor/Master)
+stehen genügend gut qualifizierte Studierende als
+studentische Hilfskräfte zur Verfügung.
+
+\bigskip
+\setlength{\tabcolsep}{5mm}
+\textbf{Zusammenfassung:}\hfill\begin{tabular}[t]{lrl}
+1. Jahr & 12 Monate & wiss.\ MA BAT Ib \\
+        & 12 Monate & stud.\ HK, 19 h/Woche\\
+2. Jahr & 12 Monate & wiss.\ MA BAT Ib \\
+        & 12 Monate & stud.\ HK, 19 h/Woche
+\end{tabular}
+
+
+\subsection{Wissenschaftliche Geräte}
+
+Durch die vorhandene gute Rechnerausstattung der AG Genominformatik
+sowie die Sicherstellung der Wartung dieser Ausstattung
+durch die Bioinformatics Resource Facility des Centrums für Biotechnologie
+(CeBiTec)
+werden keine Mittel für die Ausstattung von Computerarbeitsplätzen beantragt.
+Da die vorhandene Rechnerarchitektur allerdings sehr homogen auf Basis
+von Produkten der Firma SUN aufgebaut ist,
+die entwickelten Methoden aber auch auf alternativen
+Plattformen, insbesondere handelsüblichen PCs,
+getestet und optimiert werden sollen,
+sollen im Laufe des ersten Projektjahres
+drei solche Rechner mit aktueller Ausstattung
+angeschafft werden, vermutlich je ein Produkt der Hersteller
+AMD, Intel, Apple/Macintosh.
+Hierfür werden je 2.500,00 Euro, insgesamt also 7.500,00 Euro beantragt.
+
+\bigskip
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung:}\hfill\begin{tabular}[t]{lr}
+1. Jahr & 7.500,00 EUR \\
+2. Jahr &     0,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Summe 4.2}} & \textbf{7.500,00 EUR}
+\end{tabular}
+
+
+\subsection{Verbrauchsmaterial}
+
+Es werden \textbf{keine Mittel} für Verbrauchsmaterialen beantragt.
+Die in diesem Projekt benötigten Materialien (i.W.\ Büroausstattung)
+werden aus dem Etat der AG Genominformatik bezahlt.
+
+%\bigskip
+%Tabellarische Zusammenstellung:
+%\setlength{\tabcolsep}{2mm}
+%\hfill\begin{tabular}[t]{llr}
+%\multicolumn{2}{l}{\textbf{Summe 4.3}} & \textbf{0,00 EUR}
+%\end{tabular}
+
+
+\subsection{Reisen}
+
+Möglichst frühzeitig im ersten Jahr des Projekts
+ist ein Kooperationstreffen in Helsinki geplant,
+um mit Dr.\ Veli Mäkinen und anderen dortigen
+Experten auf dem Gebiet der Text-Indizierung
+(z.B.\ Juha Kärkkäinen, Esko Ukkonen)
+Ideen auszutauschen und Forschungsrichtungen abzustimmen.
+Für diese Reise werden pro Person 1.000 Euro beantragt,
+eine Bestätigung der Kooperationsbereitschaft
+von Dr.\ Mäkinen ist dem Antrag beigefügt.
+Ferner sollen im Laufe des Projekts vier Kooperationstreffen mit Entwicklern
+einer Softwarebibliothek für Sequenzanalyse stattfinden.
+Zwei dieser Treffen sollen in Bielefeld stattfinden,
+für die anderen beiden Treffen (z.B.\ in Berlin) werden Reisemittel für den
+Antragsteller, den wissenschaftlichen Mitarbeiter und die studentische
+Hilfskraft in Höhe von 250 Euro pro Person und Reise beantragt.
+Darüber hinaus sind im ersten Jahr eine, im zweiten Jahr zwei Konferenzbesuche
+des wissenschaftlichen Mitarbeiters geplant.
+Details finden sich in der folgenden Tabelle:
+
+\begin{center}
+\setlength{\tabcolsep}{2mm}
+\begin{tabular}{lllr}
+\hline
+Antragsteller & 1. Jahr & Kooperationstreffen in Helsinki      & 1.000 EUR \\
+              &         & Kooperationstreffen im Inland        &   250 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+\hline
+wiss.\ MA     & 1. Jahr & Kooperationstreffen in Helsinki      & 1.000 EUR \\
+              &         & Kooperationstreffen im Inland        &   250 EUR \\
+              &         & Konferenz im europ.\ Ausland (z.B.\ ALGO/ESA, WEA)
+                                                               & 1.500 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+              &         & Konferenz im Inland (z.B.\ ALGO/ESA) &   600 EUR \\
+              &         & Konferenz in Übersee (z.B.\ ALENEX)  & 2.200 EUR \\
+\hline
+stud.\ HK     & 1. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+\hline
+\end{tabular}
+\end{center}
+Erläuterung der Konferenzbezeichnungen:\\
+\hspace*{1em}ALGO/ESA: \textit{European Symposium on Algorithms}
+  (2007 in Eilat/Israel, 2008 in Karlsruhe)\\
+\hspace*{1em}WEA: \textit{Workshop on Experimental Algorithms}
+  (2007 in Rom/Italien)\\
+\hspace*{1em}ALENEX: \textit{Workshop on Algorithm Engineering and Experiments}
+  (2007 in New Orleans/USA)
+
+\bigskip
+%Tabellarische Zusammenstellung:
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung:}\hfill\begin{tabular}[t]{lr}
+1. Jahr & 4.250,00 EUR \\
+2. Jahr & 3.550,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Summe 4.4}} & \textbf{7.800,00 EUR}
+\end{tabular}
+
+
+\subsection{Publikationskosten}
+
+Es ist das erklärte Ziel des Antragstellers, sich bei der Auswahl seiner
+Publikationsmedien zunehmend auf \textit{open access} zu konzentrieren,
+was häufig allerdings mit der Erhebung von Publikationskosten einhergeht.
+Dennoch werden für dieses Projekt \textbf{keine Mittel} für Publikationskosten
+beantragt, da die Universitätsbibliothek Bielefeld dieses Vorgehen
+unterstützt, u.a.\ durch korporative Mitgliedschaften bei
+\textit{open-access}-Verlagen wie BioMed Central.
+
+%\bigskip
+%Tabellarische Zusammenstellung:
+%\setlength{\tabcolsep}{2mm}
+%\hfill\begin{tabular}[t]{llr}
+%\multicolumn{2}{l}{\textbf{Summe 4.5}} & \textbf{0,00 EUR}
+%\end{tabular}
+
+
+
+\subsection{Sonstige Kosten}
+
+Keine.
+
+%\bigskip
+%Tabellarische Zusammenstellung:
+%\setlength{\tabcolsep}{2mm}
+%\hfill\begin{tabular}[t]{llr}
+%\multicolumn{2}{l}{\textbf{Summe 4.5}} & \textbf{0,00 EUR}
+%\end{tabular}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% VORAUSSETZUNGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Voraussetzungen für die Durchführung des Vorhabens}
+
+\subsection{Zusammensetzung der Arbeitsgruppe}
+
+Die C4-Arbeitsgruppe des Antragstellers wurde im März 2002 aus Mitteln der
+DFG-Initiative Bioinformatik an der Technischen Fakultät der Universität
+Bielefeld eingerichtet.
+Sie umfasst neben dem Antragsteller und einer
+Sekretärin zurzeit drei wissenschaftliche Mitarbeiter,
+sechs Doktoranden als Stipendiaten verschiedener Förderer
+(GK Bioinformatik,
+International NRW Graduate School in Bioinformatics and Genome Research)
+sowie die Nachwuchsgruppe
+\textit{Algorithmen und Statistik für Systembiologie}
+unter der Leitung von Dr.\ Sven Rahmann und die seit Dezember 2004
+aus dem Sofja-Kovalevskaja-Preis der Alexander-von-Humboldt-Siftung
+geförderte 
+Nachwuchsgruppe \textit{Combinatorial Search Algorithms in Bioinformatics}
+unter der Leitung von Dr.\ Ferdinando Cicalese 
+mit insgesamt acht weiteren
+wissenschaftlichen Mitarbeitern und Doktoranden.
+
+Bis Juni 2006 war in der Arbeitsgruppe auch die im Rahmen 
+des Aktionsplans Informatik von der DFG geförderte Nachwuchsgruppe
+\textit{Informatikmethoden in der Massenspektrometrie}
+angesiedelt, deren Leiter, Dr.\ Sebastian Böcker, mittlerweile
+auf eine W3-Professur für Bioinformatik an die Universität Jena
+berufen wurde.
+
+
+%Die folgende Tabelle listet die einzelnen Mitarbeiter auf:
+%
+%\subsubsection*{1. Aus Mitteln der Universität Bielefeld finanziert
+%  (bis Ende 2005 DFG-Initiative Bioinformatik):}
+%
+%\setlength{\tabcolsep}{.2cm}
+%\begin{tabular}{p{6cm}p{4cm}}
+%\hline
+%Name & Dienststellung \\
+%\hline
+%\hline
+%Prof.\ Dr.\ Jens Stoye & C4 \\
+%Constantin Bannert & IIa\\
+%Klaus-Bernd Schürmann & IIa\\
+%Sven Rahmann & IIa\\
+%zz.\ 6 studentische Hilfskräfte & \\
+%\hline
+%\end{tabular}
+%
+%\subsubsection*{2. Aus Mitteln dritter finanzierte Mitarbeiter:}
+%
+%\begin{tabular}{p{6cm}p{3cm}p{6cm}}
+%\hline
+%Name & Dienststellung & Drittmittelquelle\\
+%\hline
+%\hline
+%Thomas Schmidt & Stipendiat & Land NRW (Graduate School)\\
+%Gregor Obernosterer & Stipendiat & Land NRW (Graduate School)\\
+%Kim Roland Rasmussen & Stipendiat & Land NRW (Graduate School)\\
+%Sergio Carvalho & Stipendiat & GK Bioinformatik\\
+%Rileen Sinha & Stipendiat & NEC Inc.\\
+%Michael Sammeth & Stipendiat & Schering-Stiftung\\
+%\hline
+%\end{tabular}
+%
+%\subsubsection*{Nachwuchsgruppe
+%                "`Informatikmenthoden in der Massenspektrometrie"'}
+%
+%Diese Nachwuchsgruppe wird seit März 2003 im Rahmen des Aktionsplans Informatik
+%von der DFG gefördert.
+%
+%\begin{tabular}{p{6cm}p{3cm}p{6cm}}
+%\hline
+%Name & Dienststellung & Drittmittelquelle\\
+%\hline
+%\hline
+%Dr.\ Sebastian Böcker & Ia & DFG (Aktionsplan Informatik)\\
+%Zsuzsanna Lipták & IIa & DFG (Aktionsplan Informatik)\\
+%NN & IIa & DFG (Aktionsplan Informatik)\\
+%Hans-Michael Kaltenbach & Stipendiat & Land NRW (Graduate School)\\
+%zz.\ 3 studentische Hilfskräfte\\
+%\hline
+%\end{tabular}
+
+
+
+
+\subsection{Zusammenarbeit mit anderen Wissenschaftlerinnen und Wissenschaftlern}
+\enlargethispage{3ex}
+
+\vspace*{-1ex}
+In direktem Zusammenhang mit dem hier beantragten Vorhaben stehen folgende
+existierende Zusammenarbeiten mit anderen Wissenschaftlern:
+
+Dr.\ Veli Mäkinen, Universität Helsinki:
+Gemeinsame Betreuung zweier
+Diplomarbeiten mit den Themen
+\textit{Kompressionsverstärkung für Textdaten unter Benutzung der
+Burrows-Wheeler-Transformation} (Peter Husemann; abgeschlossen im Sommer 2006)
+und
+\textit{Dynamic FM-Index with application to space-efficient construction of
+Compressed Suffix Arrays}
+(Wolfgang Gerlach; Fertigstellung voraussichtlich im März 2007).
+Diese Kooperation begann im akademischen Jahr 2004/2005,
+als Dr.\ Mäkinen als Postdoktorand in der Arbeitsgruppe Genominformatik
+in Bielefeld beschäftigt war
+und soll im Rahmen dieses Projekts weiter ausgebaut werden.
+Eine Bestätigung der Kooperationsbereitschaft von Dr.\ Mäkinen ist dem
+Antrag in der Anlage beigefügt.
+
+Prof.\ Stefan Kurtz, Universität Hamburg und
+Prof.\ Robert Giegerich, Universität Bielefeld:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur effizienten
+Konstruktion von Suffixbäumen
+und (mit Prof.\ Kurtz) gemeinsame Betreuung einer Diplomarbeit mit dem Thema
+\textit{Flexible Mustersuche unter Einsatz der Burrows-Wheeler-Transformation}
+(Andrea Papst; abgeschlossen im Oktober 2005).
+
+Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur indexbasierten,
+nicht-heuristischen approximativen Textsuche.
+
+Über diese durch gemeinsame Publikationen bzw.\ gemeinsam betreute
+Abschlussarbeiten
+belegten Kooperationen hinaus hat der Antragsteller Gespräche mit
+Prof.\ Knut Reinert, FU Berlin, geführt zur Auslotung von
+Möglichkeiten der Einbindung von in Bielefeld entwickelten
+Implementierungen von Indexstrukturen zur Textsuche in die
+in der Arbeitsgruppe von Prof.\ Reinert entwickelte
+Softwarebibliothek \textit{SeqAn} für die Sequenzanalyse.
+Diese Gespräche sind sehr erfolgreich verlaufen und im Erfolgsfall
+des vorliegenden Antrags soll die Zusammenarbeit konkretisiert werden,
+da die Expertisen und Vorarbeiten beider Arbeitsgruppen sich in idealer
+Weise ergänzen.
+
+Weitere aktive Kooperationen des Antragstellers, die nicht mit dem vorliegenden
+Antrag in Beziehung stehen, existieren mit
+Prof.\ Anne Bergeron (Université du Québec à Montréal),
+Dr.\ Benno Schwikowski (Institut Pasteur, Paris),
+Dr.\ Gilles Didier (Les Universités à Marseille),
+Prof. Steffen Heber (North Carolina State University),
+Dr.\ Michael Sammeth (Institut Municipal d'Investigació Mèdica, Barcelona)
+und Dr.\ Dekel Tsur (Ben Gurion University, Israel).
+
+
+\subsection{Arbeiten im Ausland und Kooperation mit Partnern im Ausland}
+
+Abgesehen von dem in Abschnitt~4.4 beschriebenen Kooperationstreffen
+in Helsinki sind keine weiteren Arbeiten im Ausland geplant.
+
+
+\subsection{Apparative Ausstattung}
+
+Im Rahmen der Erstausstattung der AG Genominformatik wurden im Frühjahr 2003
+leistungs\-fähige Server und Workstations der Firma SUN angeschafft.
+Diese wurden in die von der "`Bioinformatics Resource Facility"' (BRF)
+des CeBiTec betreute Infrastruktur integriert, wo sie allen Mitgliedern
+des CeBiTec zur Verfügung stehen. Im Gegenzug partizipiert die Arbeitsgruppe
+des Antragstellers an der von anderen Arbeitsgruppen zur Verfügung gestellten
+Infrastruktur, insbesondere einem verteilten Cluster mit 472 CPUs,
+einem leistungsfähigen 10 Gigabit Ethernet-Netzwerk
+und einem 44 Terabyte Backup
+sowie diversen Compute-Servern mit bis zu 96 GByte Hauptspeicher.
+Nach Aussage des Leiters der BRF wird die vorhandene Kapazität
+für die von dem hier beantragten Projekt benötigten
+Rechenleistungen ausreichen.
+Arbeitsplatzrechner für die wissenschaftlichen Mitarbeiter und studentischen
+Hilfskräfte stehen ebenfalls
+noch aus der Erstausstattung der Arbeitsgruppe zur Verfügung.
+
+
+\subsection{Laufende Mittel für Sachausgaben}
+
+Die AG Genominformatik ist 
+mit der notwendigen Infrastruktur einer wissenschaftlichen
+Arbeitsgruppe (Sekretariat, Verbrauchsmaterialien, Reisekosten der Mitarbeiter)
+hinreichend gut ausgestattet.
+Dem Projekt werden damit
+Sachmittel (in Form von Verbrauchsmaterialien, Reisekosten des
+Antragstellers, etc.) in Höhe von (grob geschätzt) 1.000 EUR jährlich
+zur Verfügung gestellt.
+
+
+
+\subsection{Interessenkonflikte bei wirtschaftlichen Aktivitäten}
+\enlargethispage{4.5ex}
+
+Keine.
+
+
+
+\subsection{Sonstige Voraussetzungen}
+
+Keine.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ERKLÄRUNGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Erklärungen}
+
+Ein Antrag auf Finanzierung dieses Vorhabens wurde bei keiner anderen
+Stelle eingereicht. Wenn ich einen solchen Antrag stelle, werde ich
+die Deutsche Forschungsgemeinschaft unverzüglich benachrichtigen.
+
+Der Vertrauensdozent der Universität Bielefeld, Herr Prof.\ Hurrelmann,
+wurde von dieser Antragstellung unterrichtet.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UNTERSCHRIFT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unterschrift}
+\thispagestyle{empty}
+
+\vspace{2ex}Bielefeld, 10. Januar 2007
+
+\vspace{2ex}\hspace{17em}(Prof.\ Jens Stoye)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ANLAGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Verzeichnis der Anlagen (in je dreifacher Ausfertigung)}
+\begin{enumerate}
+\item Lebenslauf des Antragstellers (DFG-Vordruck 10.04)
+\item Vollständiges Publikationsverzeichnis des Antragstellers
+\item Kopien der 4 in Anhang A mit ($\ast$) gekennzeichneten Veröffentlichungen
+\item Kooperationsschreiben von Dr.\ Veli Mäkinen, Helsinki
+\item CD-ROM mit elektronischen Fassungen aller Antragsdokumente
+\end{enumerate}
+
+Alle Anlagen zum Verbleib.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LITERATUR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Literatur zum Antrag}
+
+Im linken Rand mit ($\ast$) gekennzeichnete Veröffentlichungen sind diesem
+Antrag in Kopie beigefügt.
+%KUR-CHO-OHL-SCH-STO-GIE-2001
+%GIE-KUR-STO-2003
+%RAS-STO-MYE-2006
+%SCH-STO
+
+\newcommand{\marginstar}{\marginpar{\hspace*{-1.07\textwidth}($\ast$)}}
+
+\renewcommand{\refname}{\vspace*{-6ex}}
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+
+\end{document}

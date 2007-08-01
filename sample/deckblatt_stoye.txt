@@ -1,0 +1,48 @@
+----------------------------------------------------------------
+Antragsteller: Professor Dr. Jens  S t o y e , Bielefeld
+Technische Fakultät und Institut für Bioinformatik der Universität Bielefeld
+
+Forschungsvorhaben: Engineering von komprimierten Text-Indexstrukturen
+
+Dauer: 2 Jahre; ab 1. Oktober 2007
+hier: 1. und 2. Jahr
+
+Antrag: Gewährung einer Sachbeihilfe in Höhe von 15.300 Euro plus Personal,
+und zwar für:
+
+Personal:
+1 wiss. Mitarbeiter BAT Ib
+für 24 Monate
+1 stud. Hilfskraft, 19 h/Woche,
+für 24 Monate
+
+Kleingeräte: 7.500 EUR
+
+Reisekosten: 7.800 EUR
+
+
+Zusammenfassung des Forschungsvorhabens:
+
+Mit der unvermindert fortschreitenden Digitalisierung von Information
+steigen auch die Anforderungen an die langfristige Speicherung dieser
+Daten und den effizienten Zugriff auf diese bzw. Teile davon. Eine
+wichtige Basisanforderung ist dabei die Suche nach den Vorkommen eines
+(i.d. Regel kurzen) Musters in einer großen Datenmenge (dem Text). Ein
+übliches Vorgehen ist dabei die vorherige Indizierung des Textes, d.h.
+die Erstellung einer Datenstruktur, die eine Beschleunigung der späteren
+Suche erlaubt. Bisherige Implementierungen zeichnen sich allerdings
+entweder durch unangemessen hohen Speicherbedarf oder langsame
+Laufzeiten in der Praxis aus.
+
+Ziel des hier beantragten Projektes soll es sein, diese Lücke durch die
+Entwicklung eines Volltext-Indexes zu schließen, der sowohl einen
+geringen Speicherplatzbedarf aufweist, als auch effiziente Laufzeiten in
+der Praxis bietet. Dafür sollen bekannte Indexstrukturen wie
+komprimierte Suffixarrays und Wavelet-Bäume zu einer Datenstruktur
+weiterentwickelt werden, die zwar unter Umständen nicht die bestmöglichen
+theoretischen Schranken einhält, dafür in der Praxis aber für typische
+reale Probleminstanzen hohe Performanz zeigt. Weiterhin sollen einige
+Anwendungen des Indexes implementiert und das Resultat in eine
+Softwarebibliothek für die Sequenzanalyse integriert werden.
+------------------------------------------------------------------
+

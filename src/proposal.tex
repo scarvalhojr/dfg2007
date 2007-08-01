@@ -1,0 +1,967 @@
+\documentclass[10pt]{article}
+\usepackage{a4wide}
+\usepackage[german,english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{url}
+\usepackage[super]{nth}
+
+%\usepackage{times} % okay (KURZ)
+%\usepackage{charter} % okay (MITTEL)
+\usepackage{palatino} % okay (LANG)
+
+\parindent0em
+\parskip1ex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MACROS AND DEFINITIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nobox}{\setlength{\unitlength}{.8mm}%
+                      \begin{picture}(10,2)
+                      \end{picture}}
+\newcommand{\boxone}{\setlength{\unitlength}{.8mm}%
+                     \begin{picture}(10,2)
+                       \put(0,0){\rule{8mm}{1.6mm}}
+                     \end{picture}}
+\newcommand{\boxtwo}{\setlength{\unitlength}{.8mm}%
+                     \begin{picture}(10,2)
+                       \put(0,0){\line(1,0){60}}
+                       \put(0,0){\line(0,1){2}}
+                       \put(0,2){\line(1,0){60}}
+                       \put(3,0){\line(0,1){2}}
+                       \multiput(0,0)(4,0){15}{\line(2,1){4}}
+                     \end{picture}}
+
+\newcommand{\ignore}[1]{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITELSEITE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace*{20ex}
+\begin{center}
+\large
+{\bf Antrag an die Deutsche Forschungsgemeinschaft}\\
+Kennedyallee 40, 53175 Bonn\\[5ex]
+auf Gewährung einer Sachbeihilfe\\[10ex]
+{\bf Dual Sparse De-Bruijn Subgraphs (DSDS)}\\[5ex]
+Prof.\ Dr.\ Jens Stoye\\
+Arbeitsgruppe Genominformatik\\[2ex]
+Technische Fakultät der Universität Bielefeld\\[2ex]
+und\\[2ex]
+Institut für Bioinformatik\\
+Centrum für Biotechnologie der Universität Bielefeld
+\end{center}
+\newpage
+\thispagestyle{empty}~
+\newpage
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ALLGEMEINE ANGABEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{General information (Allgemeine Angaben)}
+
+Proposal for a research grant (new application).
+
+\subsection{Applicant (Antragsteller)}
+
+\setlength{\tabcolsep}{0em}
+
+\begin{tabular}{l@{~~~~~~}l}
+Name:              & Prof.\ Dr.\ Jens Stoye\\
+Employment status: & Universitätsprofessor (C4)\\
+Date of birth:     & 17.\ 03.\ 1970\\
+Nationality:       & german\\
+Institution:       & Technische Fakultät und Institut für Bioinformatik\\
+                   & der Universität Bielefeld\\
+Office address:    & Universität Bielefeld\\
+                   & Technische Fakultät\\
+                   & AG Genominformatik\\
+                   & 33594 Bielefeld\\
+Telephon:          & 0521 - 106 - 3852\\
+Telefax:           & 0521 - 106 - 6495\\
+E-Mail:            & stoye@techfak.uni-bielefeld.de\\
+Private address:   & Kesselstraße 3\\
+                   & 33602 Bielefeld\\
+                   & 0521 -- 9675479
+\end{tabular}
+
+See attached documents for a tabular CV.
+
+\subsection{Topic (Thema)}
+
+Watson-Crick complement invariant version of sparse De-Bruijn subgraphs for
+analysis and assembly of high-throughput sequencing data.
+
+{\bf TODO Jens: German version}
+
+%% 106 characters
+%% Max allowed: 104 characters
+
+\subsection{Scientific discipline and field of work (Fachgebiet und
+Arbeitsrichtung)}
+
+Scientific discipline: Computer Science, algorithms engineering\\
+Field of work: Sequence analysis
+
+\subsection{Scheduled total duration (Voraussichtliche Gesamtdauer)}
+
+Duration: 30 months
+
+\subsection{Application period (Antragszeitraum)}
+
+First proposal: Yes\\
+Time period: \nth{1} January 2008 -- \nth{30} June 2010\\
+Funding commence: \nth{1} January 2008
+
+\subsection{Summary (Zusammenfassung)}
+
+High-throughput DNA sequencing methods in use today are able to produce
+staggering amounts of data on a daily basis that demand extensive computing
+resources to assemble, finish and process genomic information. The Center for
+Biotechnology (CeBiTec) at Bielefeld University will soon have its own
+high-throughput sequencing machine, a patented technology developed by 454 Life
+Sciences, which is capable of producing millions of raw DNA bases per hour.
+However, what makes sequencing a challenge today is the subsequent computational
+problem of correctly assembling the reads into the original sequence is .
+
+This project aims to develop a novel approach to genome assembly based on Dual
+Sparse De-Bruijn Subgraphs (DSDS). De-Brujin subgraphs are already being studied
+by members of our research group. The new approach consists of a version of our
+current model that exploits the Watson-Crick complementarity nature of the DNA.
+The project consists of two parts. First, we will study and develop the new
+graph, and design the necessary data structures for efficient implementation. In
+the second part of the project, will apply our new approach in practice to
+genomic assembly of DNA data sequenced at the CeBiTec institute in Bielefeld.
+
+{\bf TODO Jens: German version}
+
+%% 14 lines, 1047 characters
+%% Max allowed: 15 lines, 1600 characters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% STAND DER FORSCHUNG, EIGENE VORARBEITEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{State of the art, preliminary work (Stand der Forschung, eigene
+Vorarbeiten)}
+
+\subsection{State of the art (Stand der Forschung)}
+
+De Bruijn graphs were first studied in the end of the \nth{19} century,
+although in an implicit form, and were formally defined in 1946 by N.~G.~de~
+Bruijn~\cite[Chapter 3]{moreno}. They are directed graphs with a simple and
+clear definition that are easy to build, and that have interesting properties:
+they are regular, have small diameter, and are both Hamiltonian and Eulerian. As
+a result, de Bruijn graphs have been used in diverse applications such as
+network models, pseudo-random number generation, and DNA analysis~\cite{moreno}.
+Similar graphs have also been used for the identification of repeat
+families~\cite{raphael04}, but the first use in Bioinformatics was probably the
+Eulerian path approach to sequence assembly proposed by Idury and
+Waterman~\cite{idury95} and extended by Pevzner, Tang and
+Waterman~\cite{pevzner01a}.
+
+Despite the success achieved by the sequence assembler developed by Pevzner and
+co-workers for bacterial genomes, de Bruijn graphs have not been further
+explored in computational biology. In some works they appear slightly modified,
+and are more often used as a multiple alignment displayer than a basic
+tool~\cite{pevzner04,raphael04}. As Myers~\cite{myers05} points out, the main
+problem with de Bruijn graphs is that, in the original definition, they are
+space inefficient.
+
+A $d$-dimensional de Bruijn Graph $G=(V,A)$ on an alphabet $\Sigma$ is a
+directed graph defined as follows:
+\begin{eqnarray*}
+   V &=& \Sigma^d \\ 
+   A &=& \lbrace (u,v)\ |\ u,v \in V \mbox{ and }
+   u_{i+1} = v_i, \mbox{ for all } 1 \leq i < d \rbrace,
+\end{eqnarray*}
+%%
+where $u_i$ is the $i$-th character of the string represented by $u$. Strings of
+length at least $d$ over the same alphabet describe walks on the $d$-dimensional
+de Bruijn graph. Given a set of strings, we define the associated
+$d$-dimensional \emph{de Bruijn subgraph} as the subgraph of the $d$-dimensional
+de Bruijn graph that contains all the walks described by these strings but no
+extra vertex or arc.
+
+Sequence-associated de Bruijn subgraphs have a nice asymptotic behavior: The
+maximum number of nodes increases linearly with the size of the input and
+decreases with the dimension $d$ of the graph. The main problem is that,
+although these graphs scale well with the string set size, graphs corresponding
+to even relatively small genomes (such as of bacteria) are already prohibitively
+large for an average computer. This could probably explain why de Bruijn graphs
+have not been further used in Bioinformatics.
+
+Another disadvantage of simple de Bruijn graphs for genome assembly is that they
+require cutting the sequence reads into small pieces to finally build the graph.
+Myers~\cite{myers05} have suggested that this step might not be necessary. In
+fact, we have successfully constructed a hybrid structure based on de Bruijn
+subgraphs without explicitly using sequence comparisons, with the added
+advantage of allowing the representation of a whole genome of a higher-order
+organism in the memory of a typical personal computer.
+
+In a typical sequence-associated de Bruijn subgraph, the graph branches are more
+important than the nodes in non-branching paths, and most of the nodes in such a
+graph are exactly in non-branching paths. Hence, the first step to reduce its
+size is to contract non-branching paths into single nodes containing sequences
+of unlimited length, similarly to what Idury and Waterman~\cite{idury95} have
+done in their assembly algorithm.
+
+In order to avoid constructing the large non-contracted graph, we define an
+indexed structure, called \emph{sequence graph}, formed by a relaxed definition
+of a de Bruijn graph and a mapping from $d$-tuples to the nodes that represent
+them. In the relaxed de Bruijn graph, the length of a sequence in a node is
+unbounded. This allows us to create a compact representation of sparse de Bruijn
+subgraphs without non-branching paths, while the access to a particular
+$d$-tuple is still possible via the index. Our initial experiments show that the
+sequence graph is able to store the same information as a de Bruijn subgraph
+using roughly $25\%$ of the memory. We also notice a proportional reduction of
+the time spent in constructing the graph.
+
+We believe that the sequence graph can be further improved by exploiting a
+peculiarity of genomic data, namely, the reverse-complementarity nature of DNA.
+A DNA molecule is formed by two complementary strands that bind according to
+pairing rules in the double-helix structure discovered by Watson and Crick,
+namely guanine (G) pairs with cytosine (C), and adenine (A) pairs with thymine
+(T). Current sequencing methods are not able to distinguish from which strand a
+given sequence comes and, as a result, each sequence read is represented twice
+in sequence graph. Our aim is to avoid this duplication by adding the concept of
+complementarity both in the index and in the relaxed de Bruijn graph. The
+structure we propose is called Dual Sparse De-Bruijn Subgraph. In case such a
+structure can be efficiently built and updated, we will be able to double the
+efficiency of the structure we already have both in terms of memory requirements
+and construction time.
+
+\subsection{Preliminary work, progress report (Eigene Vorarbeiten,
+Arbeitsbericht)}
+
+Our research group activities focus on the development of algorithms
+and data structures for the analysis and functional interpretation of
+genome data. At the moment, the group works on the following areas:
+
+\begin{enumerate}
+\item Index structures for large amounts of genomic sequence data.
+\item Genome evolution modeling.
+\item Computer science methods for mass-spectrometry.
+\item Algorithms and statistics for systems biology. 
+\end{enumerate}
+
+{\bf TODO Z\'e:}
+
+Data structure (as described) has several applications in Bioinformatics:
+\begin{enumerate}
+\item Sequence searching (as below)
+\item Genome evolution (shorten to 1 paragraph; say we have expertise and we
+      need data)
+\item Primer design / microarray design (shorten to 1 paragraph; highlight
+      analysis of regulatory network of Corynebacterium)
+\item Repeat analysis, other than primer design (write 1 paragraph, cite
+      Reputer paper)
+\item Genome assembly (cite other people's work)
+\end{enumerate}
+
+\paragraph{Indexed structures for large amount of genomic sequence data.}
+The group worked in close collaboration with the Research Group for
+Practical Computer Sciences on indexing methods for large amounts of
+genomic data. Among them are the \emph{suffix
+  trees}~\cite{GIE-KUR-STO-2003}, which are at moment very popular in
+the field of Bioinformatics.  Suffix trees can be used in many
+different applications~\cite{GUS-1997}. The identification of repeated
+sequences~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001,STO-GUS-2002,GUS-STO-2004}
+is one of them.
+
+An \emph{affix tree}~\cite{STO-2000} is a generalization of suffix
+trees for applications related to the search for a given pattern in a
+text. They represent a connection between suffix trees and their
+coresponding complementary reverse \emph{prefix trees}.  Each
+substring of a text is therefore represented twice (as if we read it
+from both left to right and right to left). This gives support to
+flexible search strategies. The linear memory requirement of affix
+trees is known since its development in Bielefeld in 1995.  An
+efficient algorithm for constructing them was presented later by
+Maa\ss~\cite{MAS-2003}. At the moment we are exploring an application
+to the search of special non-homogeneous patterns, where the use of
+affix trees can improve considerably the search efficiency.
+
+While suffix trees, and specially affix trees, theoretically allow the
+implementation of both time and space efficient algorithms, the amount
+of memory required by such structures in praxis are not negligible. An
+efficient alternative is the use of \emph{suffix arrays}.  They can be
+used in almost all scenarios where suffix trees can be applied, and
+their representation requires much less memory in
+praxis~\cite{ABO-KUR-OHL-2004}. An algorithm for the construction of
+suffix arrays from genomic data was developed in the Research Group
+Genome Informatics~\cite{SCH-STO-2005}. The algorithm may be used in
+many different applications, and has a running-time comparable to the
+existent algorithms, being even faster in many cases.
+
+An even less memory consuming index for database searches is the so
+called {\em $q$-gram hash}, where the positions of every $q$-grams
+(substrings of length $q$) are stored in a table. Based on this index,
+we were able to design a filter algorithm in collaboration with Gene
+Myers (Janelia Farms Research Campus of the Howard Hughes Medical
+Institute). Besides the filter algorithm, the database search software
+tool SWIFT~\cite{RAS-STO-MYE-2006} was also a result of this
+collaboration. SWIFT not only requires much less memory than similar
+software tools, but is also 25 times faster than the most popular of
+them, BLAST, without any lost of sensibility.
+
+\paragraph{Genome evolution modeling.} The genome research has experienced a
+rapid progress in the last years, thanks to the discovery of many
+entire genome sequences. Many of them -- specially the prokaryote ones
+-- are already well annotated: the gene positions are already known,
+as well as parts of the regulatory and metabolic networks in some
+cases.  Comparative genomics is an area that makes use of these kinds
+of information.  One of its goals is to identify groups of ortholog
+genes hoping for the discovery of more information about the involved
+genes and their correlated proteins.  Studies like this are based on
+the simple, but biological verified, assumption that integrated
+proteins are oft codified by genes that are located near each other in
+the genome of different species.
+
+From a combinatoric-algorithmic point of view, genomes may be
+represented by permutation of a finite set (of genes). Gene clusters
+are then sets of genes that appear close to each other in different,
+not so closely related, genomes.
+In~\cite{HEB-STO-2001,HEB-STO-2001B,SCH-STO-2004} we find many
+different algorithms able to efficiently identify gene clusters in
+several genomes. At the moment, this work is being extended and
+applied to real data. The results are also being combined to data from
+other sources, like gene expression studies.
+
+Information about the evolution of genomes may also be obtained from
+the global structure of the gene arragements in the genome. In this
+case, the corresponding maximum parsimony assumption, namely the
+minimum number of transformations (inversions, translocations,
+transpositions, fusions, and fissions of genome pieces), is used to
+transform a genome into another one. The related mathematical theory
+was studied by Hannenhalli and
+Pevzner~\cite{HAN-PEV-1995B,HAN-PEV-1995C,HAN-1996} during the 1990's.
+The highly technical content of their work was at that time a big
+barrier to the area. Together with Anne Bergeron (Montreal), we could
+make important steps to the simplification of this
+theory~\cite{BER-HEB-STO-2002,BER-MIX-STO-2004,BER-MIX-STO-2005,BER-STO-2003B}.
+Errors in the original works could also be identified and corrected
+during the simplification process~\cite{BER-MIX-STO-2005B}.
+
+%% Begin ignore block
+\ignore{
+\paragraph{Computer science methods for mass-spectrometry.} 
+
+After the human genome sequencing project, the biotechnology focus
+moves from sequencing a species to sequencing of single exemplars, and
+from the genome analysis to the analysis of the metabolome and
+proteome of organisms. Mass-spectrometry, the most used analysis in
+these cases, may be applied in the re-sequencing, SNP identification,
+and forensic medicine. Methods for the mass spectrometer calibration,
+statistical based methods for protein identification,
+DNA-mass-spectrometry, as well as mass-spectrometry related
+combinatorial problems were developed at Mr. B{\" o}cker's junior
+research group.
+
+To be more precise, in the group we develop methods, which allow the
+comparison between two mass-spectra. Specially alignments between real
+and theorethi\-cally-predicted ones. This makes an efficient and
+robust protein identification possible. One of the methods developed
+by the group allows the calculation of one of these alignments
+significance ($p$-value). In addition, the group works in methods for
+the analyses of mass-spectrometry rough-data (peak detection): these
+data contain many kinds of noise, and statistic methods may improve
+also this step of the analysis.
+
+The analysis of DNA with the help of base-specific cleavage and
+mass-spectro\-metry is a new method for the study of individual
+genomes.  The biochemistry behind the method is being optimized at the
+moment, and the first results are promising. This area contains lots
+of computer science problems, which can be investigate with
+success~\cite{BOE-2003,BOE-2004}, also in common subjects of the
+DNA/MS-analysis, like the search for SNPs~\cite{BOE-2003B,
+  HAR-STO-BOE-ROD-HIL-JUR-BOO-2003,
+  STA-ZAB-MEE-REM-GAN-STO-HAR-RON-ROD-BOE-BOO-2004, EHR-BOE-BOO-2005,
+  BOE-2006} or pathogen
+identification~\cite{LEF-HON-BOE-STO-WIN-SCH-MOT-BOO-2004}.
+
+The computer science basis of every mass-spectrometric biomolecular
+experiment are weighted strings: a biomolecule is a sequence of amino
+acids or nucleotides, and can therefore be represented as strings.
+Each of these building-blocks has a known weight, and the weight of
+the entire molecule is the sum of the weights of each single
+building-block. If a molecule of mass $m$ is observed in
+mass-spectrometry experiment, many related questions arise
+automatically, like: Is there any string with mass $m$? Which strings
+have mass $m$? A statistical analysis of mass-spectrometry data is
+only possible after these questions are answered. And we approached
+these and related questions in our
+group~\cite{CIE-ERL-LIP-STO-WEL-2001, BOE-ZSU-2005, BOE-ZSU-2005B}.
+}
+%% End ignore block
+
+\paragraph{Primer design / microarray design.} 
+Systems biology explores biological systems and their interactions
+both mathematically and algorithmically. Heterogeneous data from
+different sources, like DNA-microarrays, protein mass-spectrometry,
+protein interaction, and transcription factor biding ideally give a
+consistent overview, from which it is possible to determine the
+architecture (e.g. the network topology) and other necessary system
+parameters.
+
+We aim at the development of methods for the improvement of data
+quality, which ideally could be applied just after or even during the
+data collection, as well as methods for the integration of data from
+different experiments. In collaboration with the chair of Genetics, we
+analyze the regulatory network of {\it Corynebacterium glutamicum}.
+The experience shows that it is difficult to infer a regulatory
+network from large scale expression data. This is partially due to the
+not negligible noise factor in microarray results.  Therefore we focus
+on an early step of the data production pipeline, and optimize the
+microarray design through a careful choice and positioning of the
+millions of probes in the chip~\cite{RAH-2003,RAH-2003B,RAH-GRA-2004}.
+The suffix arrays mentioned at the beginning of this text find also
+here an application.
+
+In some of the applications, it is impossible to avoid that several
+different target genes hybridise with the same olignucleotide probe.
+Alternative splicing analysis and microorganism detection are examples
+of such experiments. During the design of these DNA-chips we may need
+the help of combinatorial optimization methods, like integer linear
+programming~\cite{KLA-RAH-SCH-2004}. In order to decode the performed
+experiments, we use methods from the statistical group
+testing~\cite{SCH-TOR-RAH-2003}.
+
+Although expression data provide valuable information, this data alone
+is not enough to infer the complete network. However, it is always
+possible to use hints provided by other sources of data, like DNA
+binding domain signals in proteins and transcription factor binding
+sites at the gene regulated upstream region. Because upstream
+regulatory regions provide only weak signals, the analysis of these
+regions require a precise statistical
+analysis~\cite{DIE-RAH-VIN-2004,RAH-MUE-VIN-2003}.
+
+In later steps we use stochastic methods, like simulated annealing, in
+order to choose the most plausible between many concurrent models for
+a regulatory network.
+
+\paragraph{Repeat analysis, other than primer design.}
+
+\paragraph{Genome assembly.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ZIELE UND ARBEITSPROGRAMM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Goals and work schedule (Ziele und Arbeitsprogramm)}
+
+{\bf TODO Z\'e:}
+
+Among applications listed, we don't have asembly yet.... (add figures,
+e.g. advantages/disadvantages of previous method).
+
+\subsection{Goals (Ziele)}
+
+{\bf TODO S\'ergio:}
+
+Milestones: A) understanding the graph; B) Applications.
+
+\subsection{Work schedule (Arbeitsprogramm)}
+
+\subsubsection*{Work schedule}
+
+\begin{center}
+\setlength{\tabcolsep}{0cm}
+\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{4.8cm}|p{4.8cm}|}
+\hline
+\multicolumn{2}{|c|}{Teilziel}
+  & \multicolumn{1}{|l|}{~1. Jahr}
+    & \multicolumn{1}{|l|}{~2. Jahr}\\
+\hline
+\hline
+(A) & Konstruktion
+  & \boxone\boxone\boxone\boxone\boxone\boxone
+    & \boxone\boxone\\[1ex]
+(B) & Anwendungen
+  & 
+    & \nobox\boxone\boxone\boxone\boxone\boxone \\[1ex]
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Experiments involving humans or humans materials (Untersuchungen am
+Menschen oder an vom Menschen entnommenem Material)}
+
+Not applicable.
+
+\enlargethispage{2ex}
+
+\subsection{Experiments with animals (Tierversuche)}
+
+Not applicable.
+
+\subsection{Experiments with recombinant DNA (Gentechnologische Experimente)}
+
+Not applicable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEANTRAGTE MITTEL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Funds requested (Beantragte Mittel)}
+
+The following are the funds requested for this project for the period of 30
+months.
+
+Im folgenden sind die beantragten Mittel für den Antragszeitraum von 30 Monaten
+aufgeführt.
+
+\subsection{Staff (Personalkosten)}
+
+An Personalmitteln wird jeweils für 2 Jahre beantragt:
+\begin{itemize}
+\item 1 wiss.\ Mitarbeiter BAT Ib (Postdoktorand) bzw.\ TV-L-Äquivalent
+\item 1 stud.\ Hilfskraft, 19 h/Woche
+\end{itemize}
+
+Zur Durchführung des Projekts wird die Stelle für einen wissenschaftlichen
+Mitarbeiter (Postdoktorand) beantragt.
+Hierbei handelt es sich im Idealfall um einen promovierten Informatiker
+mit einschlägigen Vorarbeiten
+im Bereich des Algorithm Engineering und der Sequenzanalyse.
+Unterstützt werden soll er durch eine studentische Hilfskraft,
+insbesondere bei Routineaufgaben im Bereich der Implementierung und Evaluation.
+
+Für die Postdoktoranden-Stelle steht mit Klaus-Bernd Schürmann
+ein hochqualifizierter Kandidat zur Verfügung,
+der voraussichtlich im Sommer 2007 seine Dissertation
+mit dem Thema ``Suffix Arrays in Theory and Practice''
+an der Technischen Fakultät der Universität Bielefeld abschließen wird.
+Aus den Bielefelder Studiengängen
+\textit{Naturwissenschaftliche Informatik} (Bachelor/Master, Diplom)
+und \textit{Bioinformatik und Genomforschung} (Bachelor/Master)
+stehen genügend gut qualifizierte Studierende als
+studentische Hilfskräfte zur Verfügung.
+
+\bigskip
+\setlength{\tabcolsep}{5mm}
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lrl}
+\nth{1} Year (1. Jahr) & 12 Months (Monate) & wiss.\ MA BAT Ib \\
+                       & 12 Monate (Monate) & stud.\ HK, 19 h/Woche\\
+\nth{2} Year (2. Jahr) & 12 Monate (Monate) & wiss.\ MA BAT Ib \\
+                       & 12 Monate (Monate) & stud.\ HK, 19 h/Woche
+\end{tabular}
+
+\subsection{Scientific instrumentation (Wissenschaftliche Geräte)}
+
+Durch die vorhandene gute Rechnerausstattung der AG Genominformatik
+sowie die Sicherstellung der Wartung dieser Ausstattung
+durch die Bioinformatics Resource Facility des Centrums für Biotechnologie
+(CeBiTec)
+werden keine Mittel für die Ausstattung von Computerarbeitsplätzen beantragt.
+Da die vorhandene Rechnerarchitektur allerdings sehr homogen auf Basis
+von Produkten der Firma SUN aufgebaut ist,
+die entwickelten Methoden aber auch auf alternativen
+Plattformen, insbesondere handelsüblichen PCs,
+getestet und optimiert werden sollen,
+sollen im Laufe des ersten Projektjahres
+drei solche Rechner mit aktueller Ausstattung
+angeschafft werden, vermutlich je ein Produkt der Hersteller
+AMD, Intel, Apple/Macintosh.
+Hierfür werden je 2.500,00 Euro, insgesamt also 7.500,00 Euro beantragt.
+
+\bigskip
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\nth{1} Year (1. Jahr) & 7.500,00 EUR \\
+\nth{2} Year (2. Jahr) &     0,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.2}} & \textbf{7.500,00 EUR}
+\end{tabular}
+
+\subsection{Consumables (Verbrauchsmaterial)}
+
+Es werden \textbf{keine Mittel} für Verbrauchsmaterialen beantragt.
+Die in diesem Projekt benötigten Materialien (i.W.\ Büroausstattung)
+werden aus dem Etat der AG Genominformatik bezahlt.
+
+\bigskip
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\nth{1} Year (1. Jahr) & 0,00 EUR \\
+\nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.3}} & \textbf{0,00 EUR}
+\end{tabular}
+
+\subsection{Travel (Reisen)}
+
+Möglichst frühzeitig im ersten Jahr des Projekts
+ist ein Kooperationstreffen in Helsinki geplant,
+um mit Dr.\ Veli Mäkinen und anderen dortigen
+Experten auf dem Gebiet der Text-Indizierung
+(z.B.\ Juha Kärkkäinen, Esko Ukkonen)
+Ideen auszutauschen und Forschungsrichtungen abzustimmen.
+Für diese Reise werden pro Person 1.000 Euro beantragt,
+eine Bestätigung der Kooperationsbereitschaft
+von Dr.\ Mäkinen ist dem Antrag beigefügt.
+Ferner sollen im Laufe des Projekts vier Kooperationstreffen mit Entwicklern
+einer Softwarebibliothek für Sequenzanalyse stattfinden.
+Zwei dieser Treffen sollen in Bielefeld stattfinden,
+für die anderen beiden Treffen (z.B.\ in Berlin) werden Reisemittel für den
+Antragsteller, den wissenschaftlichen Mitarbeiter und die studentische
+Hilfskraft in Höhe von 250 Euro pro Person und Reise beantragt.
+Darüber hinaus sind im ersten Jahr eine, im zweiten Jahr zwei Konferenzbesuche
+des wissenschaftlichen Mitarbeiters geplant.
+Details finden sich in der folgenden Tabelle:
+
+\begin{center}
+\setlength{\tabcolsep}{2mm}
+\begin{tabular}{lllr}
+\hline
+Antragsteller & 1. Jahr & Kooperationstreffen in Helsinki      & 1.000 EUR \\
+              &         & Kooperationstreffen im Inland        &   250 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+\hline
+wiss.\ MA     & 1. Jahr & Kooperationstreffen in Helsinki      & 1.000 EUR \\
+              &         & Kooperationstreffen im Inland        &   250 EUR \\
+              &         & Konferenz im europ.\ Ausland (z.B.\ ALGO/ESA, WEA)
+                                                               & 1.500 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+              &         & Konferenz im Inland (z.B.\ ALGO/ESA) &   600 EUR \\
+              &         & Konferenz in Übersee (z.B.\ ALENEX)  & 2.200 EUR \\
+\hline
+stud.\ HK     & 1. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+              & 2. Jahr & Kooperationstreffen im Inland        &   250 EUR \\
+\hline
+\end{tabular}
+\end{center}
+Erläuterung der Konferenzbezeichnungen:\\
+\hspace*{1em}ALGO/ESA: \textit{European Symposium on Algorithms}
+  (2007 in Eilat/Israel, 2008 in Karlsruhe)\\
+\hspace*{1em}WEA: \textit{Workshop on Experimental Algorithms}
+  (2007 in Rom/Italien)\\
+\hspace*{1em}ALENEX: \textit{Workshop on Algorithm Engineering and Experiments}
+  (2007 in New Orleans/USA)
+
+\bigskip
+%Tabellarische Zusammenstellung:
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung:}\hfill\begin{tabular}[t]{lr}
+1. Jahr & 4.250,00 EUR \\
+2. Jahr & 3.550,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Summe 4.4}} & \textbf{7.800,00 EUR}
+\end{tabular}
+
+\subsection{Publication expenses (Publikationskosten)}
+
+Es ist das erklärte Ziel des Antragstellers, sich bei der Auswahl seiner
+Publikationsmedien zunehmend auf \textit{open access} zu konzentrieren,
+was häufig allerdings mit der Erhebung von Publikationskosten einhergeht.
+Dennoch werden für dieses Projekt \textbf{keine Mittel} für Publikationskosten
+beantragt, da die Universitätsbibliothek Bielefeld dieses Vorgehen
+unterstützt, u.a.\ durch korporative Mitgliedschaften bei
+\textit{open-access}-Verlagen wie BioMed Central.
+
+\bigskip
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\nth{1} Year (1. Jahr) & 0,00 EUR \\
+\nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.3}} & \textbf{0,00 EUR}
+\end{tabular}
+
+\subsection{Other costs (Sonstige Kosten)}
+
+None.
+
+\bigskip
+\setlength{\tabcolsep}{2mm}
+\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\nth{1} Year (1. Jahr) & 0,00 EUR \\
+\nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
+\hline
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.3}} & \textbf{0,00 EUR}
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% VORAUSSETZUNGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Prerequisites for carrying out the project (Voraussetzungen für die
+Durchführung des Vorhabens)}
+
+\subsection{Your team (Zusammensetzung der Arbeitsgruppe)}
+
+{\bf TODO Sergio: translate}
+
+{\bf TODO Jens: update}
+
+The Research Group Genome Informatics was founded in March 2002, with financial
+support from the DFG-Initiative ``Bioinformatics'', being today one of the
+central groups of the Bielefeld Institute for Bioinformatics. Two junior
+research groups are part of the group: \emph{Computation Methods for Emerging
+Technologies} (Dr. Sven Rahmann; granted by the Bielefeld University), and
+\emph{Combinatorial Search Algorithms in Bioinformatics} (Dr. Ferdinando
+Cicalese; granted by the Sofja-Kovalevskaja-Prize from the
+Alexander-von-Humboldt Foundation). A former junior research group, \emph{
+Computer-Science Methods for Mass Spectrometry} (Prof. Dr. Sebastian B\"{o}cker;
+granted by the DFG-Action Plan Infor\-matic/Emmy-Noether-Program), was dissolved
+as the group leader was promoted to professor at the University of Jena. The
+students of this group joined the other groups to continue their works.
+
+Die C4-Arbeitsgruppe des Antragstellers wurde im März 2002 aus Mitteln der
+DFG-Initiative Bioinformatik an der Technischen Fakultät der Universität
+Bielefeld eingerichtet.
+Sie umfasst neben dem Antragsteller und einer
+Sekretärin zurzeit drei wissenschaftliche Mitarbeiter,
+sechs Doktoranden als Stipendiaten verschiedener Förderer
+(GK Bioinformatik,
+International NRW Graduate School in Bioinformatics and Genome Research)
+sowie die Nachwuchsgruppe
+\textit{Algorithmen und Statistik für Systembiologie}
+unter der Leitung von Dr.\ Sven Rahmann und die seit Dezember 2004
+aus dem Sofja-Kovalevskaja-Preis der Alexander-von-Humboldt-Siftung
+geförderte 
+Nachwuchsgruppe \textit{Combinatorial Search Algorithms in Bioinformatics}
+unter der Leitung von Dr.\ Ferdinando Cicalese 
+mit insgesamt acht weiteren
+wissenschaftlichen Mitarbeitern und Doktoranden.
+
+Bis Juni 2006 war in der Arbeitsgruppe auch die im Rahmen 
+des Aktionsplans Informatik von der DFG geförderte Nachwuchsgruppe
+\textit{Informatikmethoden in der Massenspektrometrie}
+angesiedelt, deren Leiter, Dr.\ Sebastian Böcker, mittlerweile
+auf eine W3-Professur für Bioinformatik an die Universität Jena
+berufen wurde.
+
+%Die folgende Tabelle listet die einzelnen Mitarbeiter auf:
+%
+%\subsubsection*{1. Aus Mitteln der Universität Bielefeld finanziert
+%  (bis Ende 2005 DFG-Initiative Bioinformatik):}
+%
+%\setlength{\tabcolsep}{.2cm}
+%\begin{tabular}{p{6cm}p{4cm}}
+%\hline
+%Name & Dienststellung \\
+%\hline
+%\hline
+%Prof.\ Dr.\ Jens Stoye & C4 \\
+%Constantin Bannert & IIa\\
+%Klaus-Bernd Schürmann & IIa\\
+%Sven Rahmann & IIa\\
+%zz.\ 6 studentische Hilfskräfte & \\
+%\hline
+%\end{tabular}
+%
+%\subsubsection*{2. Aus Mitteln dritter finanzierte Mitarbeiter:}
+%
+%\begin{tabular}{p{6cm}p{3cm}p{6cm}}
+%\hline
+%Name & Dienststellung & Drittmittelquelle\\
+%\hline
+%\hline
+%Thomas Schmidt & Stipendiat & Land NRW (Graduate School)\\
+%Gregor Obernosterer & Stipendiat & Land NRW (Graduate School)\\
+%Kim Roland Rasmussen & Stipendiat & Land NRW (Graduate School)\\
+%Sergio Carvalho & Stipendiat & GK Bioinformatik\\
+%Rileen Sinha & Stipendiat & NEC Inc.\\
+%Michael Sammeth & Stipendiat & Schering-Stiftung\\
+%\hline
+%\end{tabular}
+%
+%\subsubsection*{Nachwuchsgruppe
+%                "`Informatikmenthoden in der Massenspektrometrie"'}
+%
+%Diese Nachwuchsgruppe wird seit März 2003 im Rahmen des Aktionsplans Informatik
+%von der DFG gefördert.
+%
+%\begin{tabular}{p{6cm}p{3cm}p{6cm}}
+%\hline
+%Name & Dienststellung & Drittmittelquelle\\
+%\hline
+%\hline
+%Dr.\ Sebastian Böcker & Ia & DFG (Aktionsplan Informatik)\\
+%Zsuzsanna Lipták & IIa & DFG (Aktionsplan Informatik)\\
+%NN & IIa & DFG (Aktionsplan Informatik)\\
+%Hans-Michael Kaltenbach & Stipendiat & Land NRW (Graduate School)\\
+%zz.\ 3 studentische Hilfskräfte\\
+%\hline
+%\end{tabular}
+
+\subsection{Cooperation with other scientists (Zusammenarbeit mit anderen
+Wissenschaftlerinnen und Wissenschaftlern)}
+\enlargethispage{3ex}
+
+{\bf TODO Sergio}
+
+Applicant has existing cooperations on index-based sequence analysis with
+StefanKurtz, Giegerich, Myers (CS coops). Bio coops: Weißhar.
+
+It is planned to cooperate with Felipe Rodrigues da Silva (ask to provide
+letter).
+
+\vspace*{-1ex}
+In direktem Zusammenhang mit dem hier beantragten Vorhaben stehen folgende
+existierende Zusammenarbeiten mit anderen Wissenschaftlern:
+
+Prof.\ Stefan Kurtz, Universität Hamburg und
+Prof.\ Robert Giegerich, Universität Bielefeld:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur effizienten
+Konstruktion von Suffixbäumen
+und (mit Prof.\ Kurtz) gemeinsame Betreuung einer Diplomarbeit mit dem Thema
+\textit{Flexible Mustersuche unter Einsatz der Burrows-Wheeler-Transformation}
+(Andrea Papst; abgeschlossen im Oktober 2005).
+
+Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur indexbasierten,
+nicht-heuristischen approximativen Textsuche.
+
+%% Begin ignore block
+\ignore{
+Dr.\ Veli Mäkinen, Universität Helsinki:
+Gemeinsame Betreuung zweier
+Diplomarbeiten mit den Themen
+\textit{Kompressionsverstärkung für Textdaten unter Benutzung der
+Burrows-Wheeler-Transformation} (Peter Husemann; abgeschlossen im Sommer 2006)
+und
+\textit{Dynamic FM-Index with application to space-efficient construction of
+Compressed Suffix Arrays}
+(Wolfgang Gerlach; Fertigstellung voraussichtlich im März 2007).
+Diese Kooperation begann im akademischen Jahr 2004/2005,
+als Dr.\ Mäkinen als Postdoktorand in der Arbeitsgruppe Genominformatik
+in Bielefeld beschäftigt war
+und soll im Rahmen dieses Projekts weiter ausgebaut werden.
+Eine Bestätigung der Kooperationsbereitschaft von Dr.\ Mäkinen ist dem
+Antrag in der Anlage beigefügt.
+
+Über diese durch gemeinsame Publikationen bzw.\ gemeinsam betreute
+Abschlussarbeiten
+belegten Kooperationen hinaus hat der Antragsteller Gespräche mit
+Prof.\ Knut Reinert, FU Berlin, geführt zur Auslotung von
+Möglichkeiten der Einbindung von in Bielefeld entwickelten
+Implementierungen von Indexstrukturen zur Textsuche in die
+in der Arbeitsgruppe von Prof.\ Reinert entwickelte
+Softwarebibliothek \textit{SeqAn} für die Sequenzanalyse.
+Diese Gespräche sind sehr erfolgreich verlaufen und im Erfolgsfall
+des vorliegenden Antrags soll die Zusammenarbeit konkretisiert werden,
+da die Expertisen und Vorarbeiten beider Arbeitsgruppen sich in idealer
+Weise ergänzen.
+
+Weitere aktive Kooperationen des Antragstellers, die nicht mit dem vorliegenden
+Antrag in Beziehung stehen, existieren mit
+Prof.\ Anne Bergeron (Université du Québec à Montréal),
+Dr.\ Benno Schwikowski (Institut Pasteur, Paris),
+Dr.\ Gilles Didier (Les Universités à Marseille),
+Prof. Steffen Heber (North Carolina State University),
+Dr.\ Michael Sammeth (Institut Municipal d'Investigació Mèdica, Barcelona)
+und Dr.\ Dekel Tsur (Ben Gurion University, Israel).
+}
+%% End ignore block
+
+\subsection{Foreign contacts and collaborations (Arbeiten im Ausland und
+Kooperation mit Partnern im Ausland)}
+
+Abgesehen von dem in Abschnitt~4.4 beschriebenen Kooperationstreffen
+in Helsinki sind keine weiteren Arbeiten im Ausland geplant.
+
+\subsection{Scientific equipment available (Apparative Ausstattung)}
+
+Im Rahmen der Erstausstattung der AG Genominformatik wurden im Frühjahr 2003
+leistungs\-fähige Server und Workstations der Firma SUN angeschafft.
+Diese wurden in die von der "`Bioinformatics Resource Facility"' (BRF)
+des CeBiTec betreute Infrastruktur integriert, wo sie allen Mitgliedern
+des CeBiTec zur Verfügung stehen. Im Gegenzug partizipiert die Arbeitsgruppe
+des Antragstellers an der von anderen Arbeitsgruppen zur Verfügung gestellten
+Infrastruktur, insbesondere einem verteilten Cluster mit 472 CPUs,
+einem leistungsfähigen 10 Gigabit Ethernet-Netzwerk
+und einem 44 Terabyte Backup
+sowie diversen Compute-Servern mit bis zu 96 GByte Hauptspeicher.
+Nach Aussage des Leiters der BRF wird die vorhandene Kapazität
+für die von dem hier beantragten Projekt benötigten
+Rechenleistungen ausreichen.
+Arbeitsplatzrechner für die wissenschaftlichen Mitarbeiter und studentischen
+Hilfskräfte stehen ebenfalls
+noch aus der Erstausstattung der Arbeitsgruppe zur Verfügung.
+
+\subsection{Your institution's general contribution (Laufende Mittel für
+Sachausgaben)}
+
+Die AG Genominformatik ist 
+mit der notwendigen Infrastruktur einer wissenschaftlichen
+Arbeitsgruppe (Sekretariat, Verbrauchsmaterialien, Reisekosten der Mitarbeiter)
+hinreichend gut ausgestattet.
+Dem Projekt werden damit
+Sachmittel (in Form von Verbrauchsmaterialien, Reisekosten des
+Antragstellers, etc.) in Höhe von (grob geschätzt) 1.000 EUR jährlich
+zur Verfügung gestellt.
+
+\subsection{Conflicts of interest with economic activities (Interessenkonflikte
+bei wirtschaftlichen Aktivitäten)}
+
+\enlargethispage{4.5ex}
+
+None.
+
+\subsection{Other requirements (Sonstige Voraussetzungen)}
+
+None.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ERKLÄRUNGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Declaration (Erklärungen)}
+
+A request for funding this project has not been submitted to any other
+addressee. In the event that I submit such request, I will inform the Deutsche
+Forschungsgemeinschaft immediately.
+
+The DFG liaison officer of the Bielefeld University, Herr Prof.\ Egelhaaf,
+was informed about this application.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UNTERSCHRIFT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Signature (Unterschrift)}
+\thispagestyle{empty}
+
+\vspace{2ex}Bielefeld, 19. August 2008
+
+\vspace{2ex}\hspace{17em}(Prof.\ Jens Stoye)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ANLAGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{List of attachments (Verzeichnis der Anlagen)}
+
+\begin{enumerate}
+\item Lebenslauf des Antragstellers (DFG-Vordruck 10.04)
+\item Vollständiges Publikationsverzeichnis des Antragstellers
+\item Kooperationsschreiben von Dr.\ Felipe Rodrigues da Silva, Brazil
+\item CD-ROM mit elektronischen Fassungen aller Antragsdokumente
+\end{enumerate}
+
+Alle Anlagen zum Verbleib.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LITERATUR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{References (Literatur zum Antrag)}
+
+\renewcommand{\refname}{\vspace*{-4ex}}
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\end{document}

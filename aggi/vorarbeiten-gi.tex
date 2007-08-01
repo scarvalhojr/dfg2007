@@ -1,0 +1,252 @@
+\documentclass[11pt]{article}
+\usepackage{a4wide}
+\usepackage{url}
+\usepackage[ngerman]{babel}
+\usepackage[latin1]{inputenc}
+
+\parindent0em
+\parskip2ex
+
+\begin{document}
+
+{\bfseries Vorarbeiten an der AG Genominformatik\\
+ (Prof.\ Dr.\ J.\ Stoye)}
+
+Die AG Genominformatik wurde im März 2002 im Rahmen der Förderung 
+durch die DFG-Initiative Bioinformatik eingerichtet.
+In sie integriert sind die drei Nachwuchsgruppen
+für Informatikmethoden in der Massenspektrometrie (Dr.\ Sebastian Böcker;
+Förderung durch DFG-Aktionsplan Informatik/Emmy-Noether-Programm),
+Algorithmen und Statistik für die Systembiologie (Dr.\ Sven Rahmann;
+Förderung durch Universität Bielefeld)
+und Suchstrategien in der Bioinformatik (Dr.\ Ferdinando Cicalese;
+Förderung durch Sofja-Kovalevskaja-Preis der Alexander-von-Humboldt-Stiftung).
+Die Forschungsaktivitäten der Arbeitsgruppe
+siedeln sich im Bereich der Entwicklung
+von Algorithmen und Datenstrukturen zur Analyse und funktionellen
+Interpretation genomischer Daten sowie zur Unterstützung von in der
+Genomforschung eingesetzten Hochdurchsatz-Technologien an.
+Konkret wird zur Zeit in folgenden Bereichen gearbeitet:
+\begin{enumerate} \parskip-0.5pt
+\item Indexstrukturen für große genomische Sequenzdatenmengen
+\item Modellierung von Genomevolution
+\item Informatikmethoden in der Massenspektrometrie
+\item Algorithmen und Statistik für die Systembiologie
+\end{enumerate}
+
+
+\paragraph{Indexstrukturen für große genomische Sequenzdatenmengen.}
+
+Zum Teil in enger Kooperation mit der AG Praktische Informatik wurde und wird
+an verschiedenen Methoden zur Indizierung von großen genomischen
+Datenmengen gearbeitet,
+darunter an der in der Bioinformatik mittlerweile sehr populären
+Datenstruktur des Suffixbaums \cite{GIE-KUR-STO-2003}.
+Suffixbäume sind sehr vielseitig einsetzbar \cite{GUS-1997},
+unter anderem zur effizienten und flexiblen
+Detektion von sich wiederholenden Sequenzabschnitten (Repeats)
+\cite{KUR-CHO-OHL-SCH-STO-GIE-2001, STO-GUS-2002, GUS-STO-2004}.
+
+Eine Verallgemeinerung der Suffixbäume für spezielle Anwendungen,
+die über die reine Suche eines gegebenen Musters in einem Text hinausgehen,
+sind Affixbäume \cite{STO-2000}. Affixbäume stellen eine Verknüpfung von
+Suffixbäumen und den dazu komplementären reversen Präfixbäumen dar.
+Jedes Teilwort eines Textes ist somit doppelt repräsentiert
+(von links nach rechts, sowie von rechts nach links gelesen),
+was flexiblere Suchstrategien zulässt.
+Der effiziente, da lineare Platzbedarf von Affixbäumen war seit ihrer
+Entwicklung in Bielefeld 1995 bekannt.
+Ein Algorithmus zur effizienten Konstruktion
+in linearer Zeit konnte später von Maass \cite{MAA-2003} angegeben werden.
+Zur Zeit wird an Anwendungen zur Suche spezieller nicht-homogener
+Muster gearbeitet,
+bei der Affixbäume die Effizienz der Suche enorm verbessern können.
+
+Während Suffixbäume und vor allem Affixbäume zwar in der asymptotischen
+Abschätzung sowohl
+speicher- wie auch zeiteffiziente Anwendungen erlauben, ist der
+in der Praxis benötigte Speicherbedarf keinesfalls vernachlässigbar.
+Eine effiziente Alternative sind hier Suffixarrays, die in fast allen
+Anwendungsszenarien ebenso wie Suffixbäume eingesetzt werden können,
+in der Praxis aber deutlich weniger Speicher benötigen \cite{ABO-KUR-OHL-2004}.
+Zur Konstruktion von Suffixarrays aus Genomdaten wurde in der
+AG Genominformatik ein neuer, sehr vielseitig einsetzbarer
+Algorithmus entwickelt \cite{SCH-STO-2005}, dessen Laufzeitverhalten
+im Vergleich mit den bisher bekannten Verfahren
+diesen gleichwertig und in vielen Fällen sogar überlegen ist.
+
+Eine noch schlankere Form eines Indexes für die Sequendatenbanksuche ist
+der sogenannte $q$-Gram Hash, bei dem die Positionen aller $q$-Grams
+(Teilworte der Länge $q$) in einer Tabelle abgelegt werden.
+Basierend auf diesem Index konnte in Kooperation mit Gene Myers
+(Berkeley) ein Filter-Algorithmus und darauf aufbauend
+das Datenbanksuchprogramm SWIFT entwickelt werden \cite{RAS-STO-MYE-2005}.
+Dieses zeichnet sich nicht nur durch seinen (relativ) geringen
+Speicherplatzbedarf aus, sondern ist im direkten Vergleich
+mit dem vielfach eingesetzen Werkzeug BLAST bei gleicher Sensitivität
+in der DNA-Datenbanksuche mehr als 25-mal so schnell wie dieses.
+
+
+\paragraph{Modellierung von Genomevolution.}
+
+Die Genomforschung hat in den vergangenen Jahren durch technische Fortschritte
+bei der Sequenzierung ganzer Genome einen rapiden Aufschwung erfahren.
+Viele der vorhandenen Genomsequenzen -- speziell von Prokaryonten --
+sind gut annotiert: Die Positionen der Gene sind bekannt und in einigen
+Fällen auch Teile der regulatorischen oder metabolischen Zusammenhänge.
+Ein Ziel der komparativen Genomik, die sich dieses Wissen zunutze macht,
+ist es, in verschiedenen Genomen
+Gruppen oder Cluster von orthologen Genen zu finden
+und daraus zusätzliche Information über die beteiligten Gene 
+bzw.\ Proteine zu erlangen.
+Als Grundlage dient hierbei die einfache, aber biologisch
+verifizierte Annahme, dass interagierende Proteine häufig durch
+Gene kodiert sind, die in den Genomen verschiedener Spezies nahe 
+beieinander liegen.
+
+Vom algorithmisch-kombinatorischen Standpunkt aus lassen sich Genome als
+Permutationen der Elemente einer endlichen Menge (der Gene) repräsentieren,
+und Gencluster sind dann Mengen von Genen, die in verschiedenen, nicht
+zu nah verwandten Genomen immer gemeinsam auftreten.
+In~\cite{HEB-STO-2001, HEB-STO-2001B, SCH-STO-2004}
+wurden verschiedene Algorithmen
+zum effizienten Auffinden von Genclustern in mehreren Genomen entwickelt.
+Momentan werden diese Arbeiten ausgedehnt und auf reale Daten
+angewandt, sowie die Ergebnisse mit anderen Datenquellen wie
+Expressionsstudien kombiniert.
+
+Auch Erkenntnisse über die Evolution von Genomen und Spezies lassen sich
+aus der globalen Struktur von Genanordnungen in Genomen gewinnen.
+Dabei wird gemäß der Maximum-Parsimony-Annahme versucht,
+die minimale Azahl von Umordnungen (Inversionen, Translokationen,
+Transpositionen Fusionen oder Fissionen von Genomabschnitten) zu ermitteln,
+um ein Genom in ein anderes zu überführen.
+Die mathematische Theorie solcher Analysen wurde Mitte der 1990er Jahre
+von Hannenhalli und Pevzner entwickelt
+\cite{HAN-PEV-1995C, HAN-1996, HAN-PEV-1999},
+allerdings sind die Details aufgrund des hohen technischen Anspruchs
+dieser Arbeiten nicht leicht zugänglich.
+Gemeinsam mit Anne Bergeron (Montreal) konnten
+in den vergangenen Jahren entscheidende Schritte erzielt werden in dem
+Bemühen, die Formulierung dieser Theorie zu vereinfachen
+\cite{BER-HEB-STO-2002, BER-STO-2003B, BER-MIX-STO-2004, BER-MIX-STO-2005},
+wobei auch Fehler in den Originalarbeiten zutage getreten
+sind und korrigiert werden konnten \cite{BER-MIX-STO-2005B}.
+
+
+\paragraph{Informatikmethoden in der Massenspektrometrie.}
+
+Mit der Sequenzierung des menschlichen Genoms verschiebt sich der Fokus der
+Biotechnologie  von der Sequenzierung einer Spezies hin zur
+Sequenzierung von Individuen, und von der Analyse des Genoms hin zur Analyse
+des Proteoms und Metaboloms eines Organismus.
+Massenspektrometrie ist die meistverwendete Methode zur Analyse des Proteoms
+und Metaboloms eines Organismus.  Massenspektrometrie wird in der Genomik
+f"ur die Re-Sequenzierung, die Suche nach SNPs (Single Nucleotide
+Polymorphisms) sowie der Forensischen Medizin verwendet.  In der
+Nachwuchsgruppe von Dr.\ Böcker 
+wird an Methoden zur Kalibrierung von Massenspektren
+\cite{boecker05maximum, boecker05recalibrating-submitted}, der Identifikation
+von Proteinen durch statistische Verfahren, der DNA-Massenspektrometrie sowie
+kombinatorischen Fragestellungen der Massenspektrometrie gearbeitet.
+
+Konkret werden Verfahren entwickelt, die den Abgleich (Alignment)
+zweier Massenspektren erlauben, insbesondere Alignments zwischen gemessenen
+und theoretisch vorhergesagten Spektren.  Dies erm"oglicht eine effiziente
+und robuste Identifikation von Proteinen.  Ein hier entwickeltes
+Verfahren erlaubt es, die
+Signifikanz ($p$-value) eines solchen Alignments zu bestimmen.  Des weiteren
+arbeiten wir an statistischen Methoden zur Analyse von
+Massen\-spektro\-metrie-Rohdaten (Detektion von Peaks): Diese Rohdaten sind auf
+mehrere Arten "`verrauscht"', und statistische Methoden k"onnen auch diesen
+Schritt der Analyse robust gestalten \cite{boecker05mass}.
+
+Die Analyse von DNA mit Hilfe von basenspezifischer Spaltung und
+Massenspektrometrie ist ein relativ neues Verfahren, um das Genom eines
+Individuums zu untersuchen.  Die gr"o"ste Anwendbarkeit erlaubt dabei das
+de-novo Sequenzieren von DNA ohne Vorwissen "uber die zu Grunde liegende
+Sequenz.  Zur Zeit wird die Biochemie des Verfahrens optimiert, und erste
+experimentelle Daten sind viel versprechend.  In diesem Bereich stellt sich
+eine Vielzahl von informatischen Fragestellungen, die erfolgreich bearbeitet
+werden konnten
+\cite{boecker04weighted, boecker04sequencing, boecker03sequencing-wabi},
+ebenso in verwandten Gebieten der DNA/MS-Analyse wie der Suche nach SNPs
+\cite{boecker05simulation-submitted, ehrich05simultaneous, boecker04weighted,
+boecker04sequencing, stanssens04high, hartmer03rnase, boecker03snp} oder der
+Pathogen-Identifizierung \cite{lefmann04novel, wintzingerode02base}.
+
+Die informatische Grundlage jeder massenspektrometrischen Untersuchung von
+Biomolek"ulen sind gewichtete Strings: Ein Biomolek"ul ist eine
+Aneinanderreihung von Aminos"auren oder Nukleins"aure-Basen und kann somit
+als String abstrahiert werden.  Jeder dieser Bausteine hat ein bekanntes
+Gewicht, und die Masse eines Biomolek"uls ist die Summe der Gewichte dieser
+Bausteine.  Beobachtet man in einem massenspektrometrischen Experiment das
+Vorkommen eines Molek"uls mit Masse $m$, so ergeben sich auf nat"urliche
+Weise Fragestellungen wie: Gibt es einen String mit Masse~$m$? Welche Strings
+haben Masse~$m$?  Erst die Beantwortung solcher Fragen erlaubt uns die
+statistische Analyse von Massenspektrometrie-Daten.  Wir haben diese und
+verwandte Fragestellungen in unserer Arbeitsgruppe untersucht
+\cite{CIE-ERL-LIP-STO-WEL-2004, boecker05efficient, boecker05money}.
+
+
+
+\paragraph{Algorithmen und Statistik für die Systembiologie.}
+
+Die Systembiologie untersucht die Komponenten eines biologischen
+Systems und ihre Wechselwirkungen mathematisch und algorithmisch.
+Heterogene Daten, z.B.\ DNA-Micro\-array-, Protein-Massen\-spek\-tro\-metrie-,
+Protein\-inter\-aktions- und Transkriptionsfaktorbindungsdaten, ergeben
+debei idealerweise ein konsistentes Gesamtbild, das auf die
+Architektur (z.B.\ die Netzwerktopologie) und n\"otige Parameter des
+Systems schlie{\ss}en l\"asst.
+
+Unser Ziel ist, Methoden zur Verbesserung der Qualität der einzelnen
+Daten, die idealerweise bereits vor oder w\"ahrend der Datenerhebung
+greifen, sowie probabilistische Modelle und effiziente Methoden zur
+Integration verschiedener Datenarten zu entwickeln. In Kooperation mit
+dem Lehrstuhl f\"ur Genetik untersuchen
+wir insbesondere das Regulationsnetzwerk in \emph{Corynebacterium
+  glutamicum}. Erfahrungen haben gezeigt, dass es relativ schwierig
+ist, ein regulatorisches Netzwerk aus in gro{\ss}em Ma{\ss}stab
+vorliegenden Expressionsdaten zu schätzen, was sich zum Teil aus dem
+nicht zu vernachl\"assigenden Rauschfaktor in
+Microarray-Expressionsdaten erkl\"aren l\"asst.
+
+Daher setzen wir an einem möglichst frühen Punkt der
+Datenschöpfungskette an und optimieren das Microarray-Design durch
+geschickte Auswahl und Positionierung von bis zu einer Million
+Oligonukleotid-Sonden für einen Chip
+\cite{RAH:2003,RAH:2003:ECCB,RAH:GRA:2004}.  Hierbei kommen auch die
+oben erw\"ahnten Suffixarrays zum Einsatz.
+
+Bei einigen Anwendungen l\"asst es sich nicht vermeiden, dass manche
+Oligonukleotidsonden mit mehreren Zielgenen hybridisieren, z.B.\ bei
+der Analyse von alternativen Spliceformen oder der Detektion
+bestimmter Mikroorganismen. Beim Design von DNA-Chips dieser Art
+kommen kombinatorische Optimierungsmethoden wie Integer Linear
+Programming zum Einsatz \cite{KLA:RAH:SCH:VIN:REI:2004:ISMB}. Um damit
+durchgef\"uhrte Experimente zu dekodieren, verwenden wir Methoden des
+statistischen Gruppentestens \cite{SCH:TOR:RAH:2003}.  Von der
+Methodik her \"ahnliche Verfahren k\"onnen verwendet werden, um
+Massenspektren im Falle nicht-eindeutiger Massenpeaks zu dekodieren.
+
+Obwohl Expressionsdaten ein wichtiges Hilfsmittel sind, reichen diese
+zur Netzwerkinferenz oft nicht aus, und man verwendet zus\"atzliche
+sequenzbasierte Hinweise, z.B.\ DNA-Binde\-dom\"anen\-signale in Proteinen
+und Transkriptionsfaktorbindestellen in den upstream-Regionen
+regulierter Gene. Bei letzteren handelt es sich oftmals um schwache
+Signale, so dass eine genaue statistische Analyse vonn\"oten ist
+\cite{DIE:RAH:VIN:2004,RAH:MUE:VIN:2003}.
+
+In weiteren Schritten verwenden wir stochastische Suchmethoden, wie
+z.B.\ simulated annealing, um unter vielen konkurrierenden Modellen
+f\"ur ein regulatorisches Netzwerk das unter den gegebenen Daten
+plausibelste auszuw\"ahlen.
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{vorarbeiten-gi}
+
+\end{document}
+

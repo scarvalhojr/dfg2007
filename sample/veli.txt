@@ -1,0 +1,18 @@
+(your letter head, date)
+
+
+To whom it may concern,
+
+this letter is to confirm my willingness and intent to collaborate with
+Prof. Jens Stoye on the project "Engineering of Compressed Text Index
+Structures" proposed to the Priority Program "Algorithm Engineering" of
+the German Research Foundation (DFG) in January 2007. In recent years I
+have performed extensive research on efficient algorithms for succinct
+and compressed text index structures, and I am interested in
+collaborating with Prof. Stoye and his group on the development and
+engineering efficient implementations of such methods. I will also be
+happy to welcome researchers from Prof. Stoye's group for a cooperation
+meeting in Helsinki in fall 2007.
+
+Yours sincerely,
+
