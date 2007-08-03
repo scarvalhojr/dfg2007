@@ -24,11 +24,22 @@
                      \end{picture}}
 \newcommand{\boxtwo}{\setlength{\unitlength}{.8mm}%
                      \begin{picture}(10,2)
-                       \put(0,0){\line(1,0){60}}
+                       \put(0,0.0){\line(1,0){10}}
+                       \put(0,0.5){\line(1,0){10}}
+                       \put(0,1.0){\line(1,0){10}}
+                       \put(0,1.5){\line(1,0){10}}
+                       \put(0,2){\line(1,0){10}}
                        \put(0,0){\line(0,1){2}}
-                       \put(0,2){\line(1,0){60}}
-                       \put(3,0){\line(0,1){2}}
-                       \multiput(0,0)(4,0){15}{\line(2,1){4}}
+                       \put(10,0){\line(0,1){2}}
+                     \end{picture}}
+\newcommand{\boxthree}{\setlength{\unitlength}{.8mm}%
+                     \begin{picture}(10,2)
+                       \put(0,0){\line(1,0){10}}
+                       \put(0,0){\line(0,1){2}}
+                       \put(0,2){\line(1,0){10}}
+                       \put(10,0){\line(0,1){2}}
+                       \multiput(0,0)(1.7,0){4}{\line(5,2){4.8}}
+                       \multiput(4.8,0)(1.7,0){4}{\line(-5,2){4.8}}
                      \end{picture}}
 
 \newcommand{\ignore}[1]{}
@@ -487,16 +498,21 @@ C) Evaluation: use the graph with real data and assess the results
 \hline
 (A) & Design
   & \boxone\boxone\boxone\boxone
-    &
-      & \\[1ex]
+    & \boxtwo\nobox\nobox\nobox
+      & \nobox\nobox\boxthree\boxthree\\[1ex]
 (B) & Implementation
-  & \nobox\nobox\boxone\boxone
+  & \nobox\boxtwo\boxone\boxone
     & \boxone\boxone\boxone\boxone
-      & \\[1ex]
+      & \boxtwo\nobox\boxthree\boxthree \\[1ex]
 (C) & Evaluation
   & 
     & \boxone\boxone\boxone\boxone
-      & \boxone\boxone \\[1ex]
+      & \boxone\boxone\boxthree\boxthree \\[1ex]
+\hline
+\hline
+\multicolumn{2}{|c}{Legend:} & \multicolumn{3}{l|}{\footnotesize \boxone\nobox Time period allocated for a phase} \\
+\multicolumn{2}{|c}{}        & \multicolumn{3}{l|}{\footnotesize \boxtwo\nobox Time period allocated for a phase under exceptional circunstances} \\
+\multicolumn{2}{|c}{}        & \multicolumn{3}{l|}{\footnotesize \boxthree\nobox Time period outside the scope of the project} \\
 \hline
 \end{tabular}
 \end{center}
