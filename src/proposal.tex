@@ -46,7 +46,8 @@
 {\bf Antrag an die Deutsche Forschungsgemeinschaft}\\
 Kennedyallee 40, 53175 Bonn\\[5ex]
 auf Gewährung einer Sachbeihilfe\\[10ex]
-{\bf Dual Sparse De-Bruijn Subgraphs (DSDS)}\\[5ex]
+{\bf Dual Sparse De-Bruijn Subgraphs (DSDS)\\
+for High-throughput Sequencing}\\[5ex]
 Prof.\ Dr.\ Jens Stoye\\
 Arbeitsgruppe Genominformatik\\[2ex]
 Technische Fakultät der Universität Bielefeld\\[2ex]
@@ -464,7 +465,11 @@ e.g. advantages/disadvantages of previous method).
 
 {\bf TODO S\'ergio:}
 
-Milestones: A) understanding the graph; B) Applications.
+Milestones:
+
+A) Design: study and understand the graph
+B) Implementation: implement the necessary data structure and applications
+C) Evaluation: use the graph with real data and assess the results
 
 \subsection{Work schedule (Arbeitsprogramm)}
 
@@ -472,19 +477,26 @@ Milestones: A) understanding the graph; B) Applications.
 
 \begin{center}
 \setlength{\tabcolsep}{0cm}
-\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{4.8cm}|p{4.8cm}|}
+\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{3.2cm}|p{3.2cm}|p{3.2cm}|}
 \hline
-\multicolumn{2}{|c|}{Teilziel}
-  & \multicolumn{1}{|l|}{~1. Jahr}
-    & \multicolumn{1}{|l|}{~2. Jahr}\\
+\multicolumn{2}{|c|}{Phases}
+  & \multicolumn{1}{|c|}{~\nth{1} Year}
+    & \multicolumn{1}{|c|}{~\nth{2} Year}
+      & \multicolumn{1}{|c|}{~\nth{3} Year}\\
 \hline
 \hline
-(A) & Konstruktion
-  & \boxone\boxone\boxone\boxone\boxone\boxone
-    & \boxone\boxone\\[1ex]
-(B) & Anwendungen
+(A) & Design
+  & \boxone\boxone\boxone\boxone
+    &
+      & \\[1ex]
+(B) & Implementation
+  & \nobox\nobox\boxone\boxone
+    & \boxone\boxone\boxone\boxone
+      & \\[1ex]
+(C) & Evaluation
   & 
-    & \nobox\boxone\boxone\boxone\boxone\boxone \\[1ex]
+    & \boxone\boxone\boxone\boxone
+      & \boxone\boxone \\[1ex]
 \hline
 \end{tabular}
 \end{center}
@@ -513,15 +525,16 @@ Not applicable.
 The following are the funds requested for this project for the period of 30
 months.
 
-Im folgenden sind die beantragten Mittel für den Antragszeitraum von 30 Monaten
-aufgeführt.
-
 \subsection{Staff (Personalkosten)}
 
-An Personalmitteln wird jeweils für 2 Jahre beantragt:
+The scientific staff requested for this project includes:
+
 \begin{itemize}
-\item 1 wiss.\ Mitarbeiter BAT Ib (Postdoktorand) bzw.\ TV-L-Äquivalent
-\item 1 stud.\ Hilfskraft, 19 h/Woche
+\item 1 post-doctorand researcher (wiss.\ Mitarbeiter BAT Ib bzw.\ TV-L-Äquivalent)
+        for 18 months
+\item 1 post-doctorand researcher (wiss.\ Mitarbeiter BAT Ib bzw.\ TV-L-Äquivalent)
+        for 21 months
+\item 2 programmers (stud.\ Hilfskraft, 10 h/Woche) for 18 months each
 \end{itemize}
 
 Zur Durchführung des Projekts wird die Stelle für einen wissenschaftlichen
@@ -544,15 +557,23 @@ stehen genügend gut qualifizierte Studierende als
 studentische Hilfskräfte zur Verfügung.
 
 \bigskip
-\setlength{\tabcolsep}{5mm}
-\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lrl}
-\nth{1} Year (1. Jahr) & 12 Months (Monate) & wiss.\ MA BAT Ib \\
-                       & 12 Monate (Monate) & stud.\ HK, 19 h/Woche\\
-\nth{2} Year (2. Jahr) & 12 Monate (Monate) & wiss.\ MA BAT Ib \\
-                       & 12 Monate (Monate) & stud.\ HK, 19 h/Woche
-\end{tabular}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrl}
+\textbf{Summary:}          & \nth{1} Year (1. Jahr) & 15 Months (Monate) & wiss.\ MA BAT Ib \\
+\textbf{(Zusammenfassung)} &                        & 12 Monate (Monate) & stud.\ HK, 10 h/Woche\\
+                           & \nth{2} Year (2. Jahr) & 18 Monate (Monate) & wiss.\ MA BAT Ib \\
+                           &                        & 24 Monate (Monate) & stud.\ HK, 10 h/Woche \\
+                           & \nth{3} Year (3. Jahr) & 09 Monate (Monate) & wiss.\ MA BAT Ib \\
+                           &                        & 18 Monate (Monate) & stud.\ HK, 10 h/Woche
+\end{tabular*}
 
 \subsection{Scientific instrumentation (Wissenschaftliche Geräte)}
+
+Because of the existing computer infrastructure of the Genome Informatics group
+as well as the guarantee of maintenance of this equipment by the Bioinformatics
+Resource Facility of the CeBiTec, no funds for compuer equipment are requested
+for this project.
+
+{\bf TODO Jens: check possibility of memory upgrade}
 
 Durch die vorhandene gute Rechnerausstattung der AG Genominformatik
 sowie die Sicherstellung der Wartung dieser Ausstattung
@@ -572,7 +593,7 @@ Hierfür werden je 2.500,00 Euro, insgesamt also 7.500,00 Euro beantragt.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
-\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
 \nth{1} Year (1. Jahr) & 7.500,00 EUR \\
 \nth{2} Year (2. Jahr) &     0,00 EUR \\[.1ex]
 \hline
@@ -581,13 +602,13 @@ Hierfür werden je 2.500,00 Euro, insgesamt also 7.500,00 Euro beantragt.
 
 \subsection{Consumables (Verbrauchsmaterial)}
 
-Es werden \textbf{keine Mittel} für Verbrauchsmaterialen beantragt.
-Die in diesem Projekt benötigten Materialien (i.W.\ Büroausstattung)
-werden aus dem Etat der AG Genominformatik bezahlt.
+No funds for consumables are requested. The materials needed in this project,
+including office material, will be provided from the budget of the Genome
+Informatics research group.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
-\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
 \nth{1} Year (1. Jahr) & 0,00 EUR \\
 \nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
 \hline
@@ -645,32 +666,30 @@ Erläuterung der Konferenzbezeichnungen:\\
   (2007 in New Orleans/USA)
 
 \bigskip
-%Tabellarische Zusammenstellung:
 \setlength{\tabcolsep}{2mm}
-\textbf{Zusammenfassung:}\hfill\begin{tabular}[t]{lr}
-1. Jahr & 4.250,00 EUR \\
-2. Jahr & 3.550,00 EUR \\[.1ex]
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
+\nth{1} Year (1. Jahr) & 4.250,00 EUR \\
+\nth{2} Year (2. Jahr) & 3.550,00 EUR \\[.1ex]
 \hline
-\multicolumn{1}{l}{\textbf{Summe 4.4}} & \textbf{7.800,00 EUR}
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.4}} & \textbf{7.800,00 EUR}
 \end{tabular}
 
 \subsection{Publication expenses (Publikationskosten)}
 
-Es ist das erklärte Ziel des Antragstellers, sich bei der Auswahl seiner
-Publikationsmedien zunehmend auf \textit{open access} zu konzentrieren,
-was häufig allerdings mit der Erhebung von Publikationskosten einhergeht.
-Dennoch werden für dieses Projekt \textbf{keine Mittel} für Publikationskosten
-beantragt, da die Universitätsbibliothek Bielefeld dieses Vorgehen
-unterstützt, u.a.\ durch korporative Mitgliedschaften bei
-\textit{open-access}-Verlagen wie BioMed Central.
+The applicant declares the goal of concentrating the selection of its
+publication media on \textit{open access}, which frequently incurs in
+publication fees. Nevertheless, no means for publication costs are requested for
+this project since the library of the University of Bielefeld supports this
+procedure through corporate memberships of \textit{open-access} publishers such
+as BioMed Central.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
-\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
 \nth{1} Year (1. Jahr) & 0,00 EUR \\
 \nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
 \hline
-\multicolumn{1}{l}{\textbf{Sum (Summe) 4.3}} & \textbf{0,00 EUR}
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.5}} & \textbf{0,00 EUR}
 \end{tabular}
 
 \subsection{Other costs (Sonstige Kosten)}
@@ -679,11 +698,11 @@ None.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
-\textbf{Zusammenfassung (Summary):}\hfill\begin{tabular}[t]{lr}
+\textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
 \nth{1} Year (1. Jahr) & 0,00 EUR \\
 \nth{2} Year (2. Jahr) & 0,00 EUR \\[.1ex]
 \hline
-\multicolumn{1}{l}{\textbf{Sum (Summe) 4.3}} & \textbf{0,00 EUR}
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.6}} & \textbf{0,00 EUR}
 \end{tabular}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -695,12 +714,8 @@ Durchführung des Vorhabens)}
 
 \subsection{Your team (Zusammensetzung der Arbeitsgruppe)}
 
-{\bf TODO Sergio: translate}
-
-{\bf TODO Jens: update}
-
-The Research Group Genome Informatics was founded in March 2002, with financial
-support from the DFG-Initiative ``Bioinformatics'', being today one of the
+The research group Genome Informatics was founded in March 2002, with financial
+support from the ``Bioinformatics'' DFG-Initiative, being today one of the
 central groups of the Bielefeld Institute for Bioinformatics. Two junior
 research groups are part of the group: \emph{Computation Methods for Emerging
 Technologies} (Dr. Sven Rahmann; granted by the Bielefeld University), and
@@ -712,6 +727,10 @@ granted by the DFG-Action Plan Infor\-matic/Emmy-Noether-Program), was dissolved
 as the group leader was promoted to professor at the University of Jena. The
 students of this group joined the other groups to continue their works.
 
+{\bf TODO Jens: update}
+
+%% Begin ignore block
+\ignore{
 Die C4-Arbeitsgruppe des Antragstellers wurde im März 2002 aus Mitteln der
 DFG-Initiative Bioinformatik an der Technischen Fakultät der Universität
 Bielefeld eingerichtet.
@@ -729,7 +748,6 @@ Nachwuchsgruppe \textit{Combinatorial Search Algorithms in Bioinformatics}
 unter der Leitung von Dr.\ Ferdinando Cicalese 
 mit insgesamt acht weiteren
 wissenschaftlichen Mitarbeitern und Doktoranden.
-
 Bis Juni 2006 war in der Arbeitsgruppe auch die im Rahmen 
 des Aktionsplans Informatik von der DFG geförderte Nachwuchsgruppe
 \textit{Informatikmethoden in der Massenspektrometrie}
@@ -790,34 +808,35 @@ berufen wurde.
 %zz.\ 3 studentische Hilfskräfte\\
 %\hline
 %\end{tabular}
+}
+%% End ignore block
 
 \subsection{Cooperation with other scientists (Zusammenarbeit mit anderen
 Wissenschaftlerinnen und Wissenschaftlern)}
 \enlargethispage{3ex}
 
-{\bf TODO Sergio}
+The applicant has several ongoing cooperations in diverse research areas, with
+the following ones being in direct relation to this application:
 
-Applicant has existing cooperations on index-based sequence analysis with
-StefanKurtz, Giegerich, Myers (CS coops). Bio coops: Weißhar.
-
-It is planned to cooperate with Felipe Rodrigues da Silva (ask to provide
-letter).
-
-\vspace*{-1ex}
-In direktem Zusammenhang mit dem hier beantragten Vorhaben stehen folgende
-existierende Zusammenarbeiten mit anderen Wissenschaftlern:
-
-Prof.\ Stefan Kurtz, Universität Hamburg und
-Prof.\ Robert Giegerich, Universität Bielefeld:
-Gemeinsame Arbeiten zum Engineering von Algorithmen zur effizienten
-Konstruktion von Suffixbäumen
-und (mit Prof.\ Kurtz) gemeinsame Betreuung einer Diplomarbeit mit dem Thema
-\textit{Flexible Mustersuche unter Einsatz der Burrows-Wheeler-Transformation}
-(Andrea Papst; abgeschlossen im Oktober 2005).
+Prof.\ Stefan Kurtz, Universität Hamburg and Prof.\ Robert Giegerich,
+Universität Bielefeld: cooperation on engineering of algorithms for
+efficient construction of suffix arrays.
 
 Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
-Gemeinsame Arbeiten zum Engineering von Algorithmen zur indexbasierten,
-nicht-heuristischen approximativen Textsuche.
+cooperation on engineering of algorithms for index-based, non-heuristic,
+approximate text search.
+
+{\bf TODO Jens/Z'e: describe cooperation with Weisshaar}
+
+Prof.\ Bernd Weisshaar, Chair of Genome Research, Universität Bielefeld.
+
+We also plan to start a cooperation with Dr.~Felipe Rodrigues da~Silva from
+Embrapa, the Brazilian National Agricultural Research Institution. Being
+involved in several genome projects in Brazil at present and in the past,
+Dr.~da~Silva will benefit from new algorithmic methods to be developed in this
+project to deal with the large amounts of data that will be produced in the near
+future. He will also contribute to the project with his expertise in genome
+projects and his extensive experience in genome assembly and annotation.
 
 %% Begin ignore block
 \ignore{
@@ -836,6 +855,18 @@ in Bielefeld beschäftigt war
 und soll im Rahmen dieses Projekts weiter ausgebaut werden.
 Eine Bestätigung der Kooperationsbereitschaft von Dr.\ Mäkinen ist dem
 Antrag in der Anlage beigefügt.
+
+Prof.\ Stefan Kurtz, Universität Hamburg und
+Prof.\ Robert Giegerich, Universität Bielefeld:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur effizienten
+Konstruktion von Suffixbäumen
+und (mit Prof.\ Kurtz) gemeinsame Betreuung einer Diplomarbeit mit dem Thema
+\textit{Flexible Mustersuche unter Einsatz der Burrows-Wheeler-Transformation}
+(Andrea Papst; abgeschlossen im Oktober 2005).
+
+Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
+Gemeinsame Arbeiten zum Engineering von Algorithmen zur indexbasierten,
+nicht-heuristischen approximativen Textsuche.
 
 Über diese durch gemeinsame Publikationen bzw.\ gemeinsam betreute
 Abschlussarbeiten
@@ -864,11 +895,29 @@ und Dr.\ Dekel Tsur (Ben Gurion University, Israel).
 \subsection{Foreign contacts and collaborations (Arbeiten im Ausland und
 Kooperation mit Partnern im Ausland)}
 
-Abgesehen von dem in Abschnitt~4.4 beschriebenen Kooperationstreffen
-in Helsinki sind keine weiteren Arbeiten im Ausland geplant.
+As mentioned in the previous item, we plan to cooperate with Dr.~Felipe
+Rodrigues da~Silva from Embrapa, the Brazilian National Agricultural Research
+Institution, and this cooperation may involve visits from researchers of
+both sides.
 
 \subsection{Scientific equipment available (Apparative Ausstattung)}
 
+{\bf TODO Jens: update}
+
+In early 2003, the Genome Informatics research group aquired server and
+workstations from Sun Microsystems that were integrated in the CeBiTec
+infrastructure provided by the Bioinformatics Resource Facility (BRF), where
+they are available for use by any CeBiTec member. As a result, the members of
+the Genome Informatics group have complete access to the BRF infrastructure,
+including a cluster with 472 CPUs, a 10-Gigabit Ethernet network, a
+44-Terabyte Backup server, an various computer servers with up to 96
+GB of main storage. According to statement of the BRF director, the
+existing infrastructure is sufficient for the requirements of the project
+proposed here. Personal computers for the scientific staff and students are
+available from the Genome Informatics research group resources.
+
+%% Begin ignore block
+\ignore{
 Im Rahmen der Erstausstattung der AG Genominformatik wurden im Frühjahr 2003
 leistungs\-fähige Server und Workstations der Firma SUN angeschafft.
 Diese wurden in die von der "`Bioinformatics Resource Facility"' (BRF)
@@ -885,10 +934,20 @@ Rechenleistungen ausreichen.
 Arbeitsplatzrechner für die wissenschaftlichen Mitarbeiter und studentischen
 Hilfskräfte stehen ebenfalls
 noch aus der Erstausstattung der Arbeitsgruppe zur Verfügung.
+}
+%% End ignore block
 
 \subsection{Your institution's general contribution (Laufende Mittel für
 Sachausgaben)}
 
+The Genome Informatics group has the necessary infrastructure of a scientific
+working group with office rooms, office equipment and a secretary. The project
+requested here will benefit from this infrastructure made available at a value,
+roughly estimated, of 1,000 EUR annually (including office material and travel
+expenses).
+
+%% Begin ignore block
+\ignore{
 Die AG Genominformatik ist 
 mit der notwendigen Infrastruktur einer wissenschaftlichen
 Arbeitsgruppe (Sekretariat, Verbrauchsmaterialien, Reisekosten der Mitarbeiter)
@@ -897,6 +956,8 @@ Dem Projekt werden damit
 Sachmittel (in Form von Verbrauchsmaterialien, Reisekosten des
 Antragstellers, etc.) in Höhe von (grob geschätzt) 1.000 EUR jährlich
 zur Verfügung gestellt.
+}
+%% End ignore block
 
 \subsection{Conflicts of interest with economic activities (Interessenkonflikte
 bei wirtschaftlichen Aktivitäten)}
@@ -938,6 +999,8 @@ was informed about this application.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{List of attachments (Verzeichnis der Anlagen)}
+
+{\bf TODO Sergio: translate to English}
 
 \begin{enumerate}
 \item Lebenslauf des Antragstellers (DFG-Vordruck 10.04)
