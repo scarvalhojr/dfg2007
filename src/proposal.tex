@@ -16,14 +16,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MACROS AND DEFINITIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\nobox}{\setlength{\unitlength}{.8mm}%
+\newcommand{\nobox}{\setlength{\unitlength}{1.1mm}%
                       \begin{picture}(10,2)
                       \end{picture}}
-\newcommand{\boxone}{\setlength{\unitlength}{.8mm}%
+\newcommand{\boxone}{\setlength{\unitlength}{1.1mm}%
                      \begin{picture}(10,2)
-                       \put(0,0){\rule{8mm}{1.6mm}}
+                       \put(0,0){\rule{11mm}{2.2mm}}
                      \end{picture}}
-\newcommand{\boxtwo}{\setlength{\unitlength}{.8mm}%
+\newcommand{\boxtwo}{\setlength{\unitlength}{1.1mm}%
                      \begin{picture}(10,2)
                        \put(0,0.0){\line(1,0){10}}
                        \put(0,0.5){\line(1,0){10}}
@@ -33,7 +33,7 @@
                        \put(0,0){\line(0,1){2}}
                        \put(10,0){\line(0,1){2}}
                      \end{picture}}
-\newcommand{\boxthree}{\setlength{\unitlength}{.8mm}%
+\newcommand{\boxthree}{\setlength{\unitlength}{1.1mm}%
                      \begin{picture}(10,2)
                        \put(0,0){\line(1,0){10}}
                        \put(0,0){\line(0,1){2}}
@@ -171,12 +171,12 @@ Vorarbeiten)}
 
 \subsection{State of the art (Stand der Forschung)}
 
-De Bruijn graphs were first studied in the end of the \nth{19} century,
+De-Bruijn graphs were first studied in the end of the \nth{19} century,
 although in an implicit form, and were formally defined in 1946 by N.~G.~de~
 Bruijn~\cite[Chapter 3]{moreno}. They are directed graphs with a simple and
 clear definition that are easy to build, and that have interesting properties:
 they are regular, have small diameter, and are both Hamiltonian and Eulerian. As
-a result, de Bruijn graphs have been used in diverse applications such as
+a result, De-Bruijn graphs have been used in diverse applications such as
 network models, pseudo-random number generation, and DNA analysis~\cite{moreno}.
 Similar graphs have also been used for the identification of repeat
 families~\cite{raphael04}, but the first use in Bioinformatics was probably the
@@ -185,14 +185,14 @@ Waterman~\cite{idury95} and extended by Pevzner, Tang and
 Waterman~\cite{pevzner01a}.
 
 Despite the success achieved by the sequence assembler developed by Pevzner and
-co-workers for bacterial genomes, de Bruijn graphs have not been further
+co-workers for bacterial genomes, De-Bruijn graphs have not been further
 explored in computational biology. In some works they appear slightly modified,
 and are more often used as a multiple alignment displayer than a basic
 tool~\cite{pevzner04,raphael04}. As Myers~\cite{myers05} points out, the main
-problem with de Bruijn graphs is that, in the original definition, they are
+problem with De-Bruijn graphs is that, in the original definition, they are
 space inefficient.
 
-A $d$-dimensional de Bruijn Graph $G=(V,A)$ on an alphabet $\Sigma$ is a
+A $d$-dimensional De-Bruijn Graph $G=(V,A)$ on an alphabet $\Sigma$ is a
 directed graph defined as follows:
 \begin{eqnarray*}
    V &=& \Sigma^d \\ 
@@ -202,28 +202,28 @@ directed graph defined as follows:
 %%
 where $u_i$ is the $i$-th character of the string represented by $u$. Strings of
 length at least $d$ over the same alphabet describe walks on the $d$-dimensional
-de Bruijn graph. Given a set of strings, we define the associated
-$d$-dimensional \emph{de Bruijn subgraph} as the subgraph of the $d$-dimensional
-de Bruijn graph that contains all the walks described by these strings but no
+De-Bruijn graph. Given a set of strings, we define the associated
+$d$-dimensional \emph{De-Bruijn subgraph} as the subgraph of the $d$-dimensional
+De-Bruijn graph that contains all the walks described by these strings but no
 extra vertex or arc.
 
-Sequence-associated de Bruijn subgraphs have a nice asymptotic behavior: The
+Sequence-associated De-Bruijn subgraphs have a nice asymptotic behavior: The
 maximum number of nodes increases linearly with the size of the input and
 decreases with the dimension $d$ of the graph. The main problem is that,
 although these graphs scale well with the string set size, graphs corresponding
 to even relatively small genomes (such as of bacteria) are already prohibitively
-large for an average computer. This could probably explain why de Bruijn graphs
+large for an average computer. This could probably explain why De-Bruijn graphs
 have not been further used in Bioinformatics.
 
-Another disadvantage of simple de Bruijn graphs for genome assembly is that they
+Another disadvantage of simple De-Bruijn graphs for genome assembly is that they
 require cutting the sequence reads into small pieces to finally build the graph.
 Myers~\cite{myers05} have suggested that this step might not be necessary. In
-fact, we have successfully constructed a hybrid structure based on de Bruijn
+fact, we have successfully constructed a hybrid structure based on De-Bruijn
 subgraphs without explicitly using sequence comparisons, with the added
 advantage of allowing the representation of a whole genome of a higher-order
 organism in the memory of a typical personal computer.
 
-In a typical sequence-associated de Bruijn subgraph, the graph branches are more
+In a typical sequence-associated De-Bruijn subgraph, the graph branches are more
 important than the nodes in non-branching paths, and most of the nodes in such a
 graph are exactly in non-branching paths. Hence, the first step to reduce its
 size is to contract non-branching paths into single nodes containing sequences
@@ -232,12 +232,12 @@ done in their assembly algorithm.
 
 In order to avoid constructing the large non-contracted graph, we define an
 indexed structure, called \emph{sequence graph}, formed by a relaxed definition
-of a de Bruijn graph and a mapping from $d$-tuples to the nodes that represent
-them. In the relaxed de Bruijn graph, the length of a sequence in a node is
-unbounded. This allows us to create a compact representation of sparse de Bruijn
+of a De-Bruijn graph and a mapping from $d$-tuples to the nodes that represent
+them. In the relaxed De-Bruijn graph, the length of a sequence in a node is
+unbounded. This allows us to create a compact representation of sparse De-Bruijn
 subgraphs without non-branching paths, while the access to a particular
 $d$-tuple is still possible via the index. Our initial experiments show that the
-sequence graph is able to store the same information as a de Bruijn subgraph
+sequence graph is able to store the same information as a De-Bruijn subgraph
 using roughly $25\%$ of the memory. We also notice a proportional reduction of
 the time spent in constructing the graph.
 
@@ -249,7 +249,7 @@ namely guanine (G) pairs with cytosine (C), and adenine (A) pairs with thymine
 (T). Current sequencing methods are not able to distinguish from which strand a
 given sequence comes and, as a result, each sequence read is represented twice
 in sequence graph. Our aim is to avoid this duplication by adding the concept of
-complementarity both in the index and in the relaxed de Bruijn graph. The
+complementarity both in the index and in the relaxed De-Bruijn graph. The
 structure we propose is called Dual Sparse De-Bruijn Subgraph. In case such a
 structure can be efficiently built and updated, we will be able to double the
 efficiency of the structure we already have both in terms of memory requirements
@@ -461,9 +461,9 @@ identification of such sequences may be done using suffix trees. A
 software tool called REPuter~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001} was
 developed based on this approach. In a collaboration with Prof.\ Bernd
 Weisshaar (Chair of Genome Research, Universität Bielefeld), we are
-developing a De Bruijn subgraph based method for doing the same with
+developing a De-Bruijn subgraph based method for doing the same with
 collections of reads of an incompletely sequenced genome. Also here
-the size of de Bruijn subgraphs is a considerable barrier to the
+the size of De-Bruijn subgraphs is a considerable barrier to the
 development of software tools for personal computers.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -478,7 +478,7 @@ development of software tools for personal computers.
   \epsfxsize=0.6\textwidth
   \begin{center}\epsfbox{graphics}
   \end{center}
-  \caption{Memory usage (in gigabytes) for de Bruijn subgraphs and their correponding sequence graphs. The number of sequences corresponds to the number of 700 bases length randomly taken subsequences of an {\em Arabidopsis thaliana} chromosome.}
+  \caption{Memory usage (in gigabytes) for De-Bruijn subgraphs and their correponding sequence graphs. The number of sequences corresponds to the number of 700 bases length randomly taken subsequences of an {\em Arabidopsis thaliana} chromosome.}
   \label{fig.graph}
 \end{figure}
 
@@ -493,13 +493,13 @@ development of software tools for personal computers.
 
 {\bf TODO Z\'e: highlight goals (A, B, C, D) -- see work schedule}
 
-While working with a de Bruijn based approach to repeat finding, we
+While working with a De-Bruijn based approach to repeat finding, we
 were able to develop an algorithm for building the sequence graph, the
-compact version of a de Bruijn subgraph, directly from the given set
+compact version of a De-Bruijn subgraph, directly from the given set
 of sequences. The graph on Figure~\ref{fig.graph} presents the amount
-of memory used by de Bruijn graphs and by the corresponding sequence
+of memory used by De-Bruijn graphs and by the corresponding sequence
 graphs. Figure~\ref{fig.advantages} exemplifies how memory can be
-saved: The de Bruijn subgraph containing both the sequences {\tt
+saved: The De-Bruijn subgraph containing both the sequences {\tt
   AAACCC} and {\tt TTGTGGG}, with the respective complements
 (Fig.~\ref{fig.advantages}.2), contains non-branching paths. Since the
 information we are interested in are exactly in the graph branches,
@@ -515,7 +515,7 @@ input set is considered, one may conclude that the given sequences
 belong to independent DNA sequences, whereas
 Figure~\ref{fig.advantages}.2 shows that both sequence are part of
 different strands of the same DNA molecule. The direct consequence of
-this is that in a de Bruijn graph for the DNA alphabet, the
+this is that in a De-Bruijn graph for the DNA alphabet, the
 information is usually represented twice.
 
 The main goal of this project is to take advantage of the DNA sequence
@@ -534,10 +534,10 @@ applications, which consists of our second goal.
 We choose the genome assembly problem for mainly two reasons:
 
 \begin{itemize}
-\item The de Bruijn graph approach do genome assembly is well studied
+\item The De-Bruijn graph approach do genome assembly is well studied
   and documented. Not only the assembly, but also a sequencing error
   correction method are described in the literature.
-\item From the known applications for de Bruijn graphs, the genome
+\item From the known applications for De-Bruijn graphs, the genome
   assembly is the only one with which the group has no previous
   experience. Since the application is well documented, it is a good
   chance to expand our group's knowledge without risking delaying the
@@ -556,96 +556,121 @@ validated applications using them.
 
 \subsection{Work schedule (Arbeitsprogramm)}
 
-The project's work schedule consists of four phases, as follows.
+The project's work schedule consists of four phases, oriented towards the
+four goals described in the previous section.
 
 \subsubsection*{(A) Design}
 
-The first phase of the project consists of understanding the properties of the
-Dual Sparse De-Bruijn Subgraphs (DSDS) and designing the necessary data
-structures for implementing the genome assembler (phase B) and integrating it
-with our existing repeat detection functions (phase D).
+The first phase of the project consists of studying the properties of the Dual
+Sparse De-Bruijn Subgraphs (DSDS) and designing the data structures for
+implementing the genome assembler (phase B) and integrating it with our existing
+repeat detection functions (phase C). In this phase, the storage requirements
+for the data structure will be studied in detail, so that the memory
+requirements for the genome assembler and repeat detection functions can be
+predicted based on the size of the input (sequencing data).
 
 {\bf TODO Z\'e: List functions that the DSDS should support}
 
-In this phase, the storage requirements for the data structure will be studied
-in detail, so that the memory requirements for the genome assembler
-and repeat detection functions can be predicted based on the size of the input
-(sequencing data).
-
-The implementation phase (phase B) begins three months after the beginning of
-the design phase. Both phases will continue in parallel as the implementation is
-likely to require changes in the data structue design. The design of basic data
-structures are expected to reach a stable state by October 2008 and a final
-version should be ready by the end of the year, although the first quarter of
-the second year may be also used in case any serious design problems arise
-during the implementation phase.
+In this phase a post-doctorand researcher will lead the design of the necessary
+data structures, with a team of two students starting the work on the basic DSDS
+implementation three months after the beginning of the design phase. Both the
+design and the DSDS implementation phases will continue in parallel as the
+implementation is likely to require changes in the design of the data structue.
+The design of basic data structures is expected to reach a stable state by
+October 2008 and a final version of the DSDS should be ready by the end of the
+year, although the first quarter of the second year may be also used in case any
+serious design problems arise during the implementation phase.
 
 \subsubsection*{(B) Implementation}
 
-In this phase, the necessary data structures will be implemented in Java by a
-team of two student programmers lead by a post-doctorand researcher. An initial
-working implementation providing the basic functions should be ready by October
-2008 so that the DSDS design can be exhaustively evaluated and validated until
-the end of the first year together with a final implementation of the DSDS.
+This phase consists of the implementation of the DSDS data structure as desribed
+above, and the implementation of a fully-functional genome assembler as a
+stand-alone software package.
 
-The implementation of a genome assembler as a stand-alone software package then
-starts in early 2009. The final version of the genome assembler should be ready
-by the end of 2009.
+The DSDS implementation will be carried out by a team of two student programmers
+lead by a post-doctorand researcher. An initial working implementation providing
+the basic functions should be ready by mid-2008 so that the DSDS design can be
+exhaustively evaluated and validated until the end of the first year using real
+sequencing data. A final implementation of the DSDS is expected to be ready by
+the end of 2008, or by the end of the first quarter of 2009 at the latest.
+
+The implementation of the genome assembler using the DSDS data structure starts
+in 2009 with a single programmer working under the supervision of both
+post-doctorand researchers (with the other programmer working independently on
+phase C). The final version of the genome assembler should be ready by the end
+of 2009.
 
 \subsubsection*{(C) Integration of existing repeat detection algorithm with DSDS}
 
-Once the implementation of the DSDS becomes stable, it will be integrated with
-the existing repeat detection algorithms already implemented at the Genome
-Informatics research group.
+Once the implementation of the basic DSDS data structure becomes stable, it will
+be integrated with the existing repeat detection algorithms already developed at
+the Genome Informatics research group. This phase will be carried out by a
+single programmer under the supervision of both post-doctorand researchers, and
+it may be concluded in about six months, or at most nine months. This phase
+might start as early as January 2009. However, depending on the amount of work
+involved in the development of the genome assembler, it might be necessary to
+delay the integration phase by up to three months so that, in the beginning,
+both programmers can work on the genome assembler. As soon as the integration
+phase in concluded, both students will be free to concentrate in the
+implementation of the genome assembler, and also help with the evaluation (phase
+D).
 
-\subsubsection*{(D) Evaluation of genome assembler}
+\subsubsection*{(D) Evaluation}
 
-The genome assembler built in phase B will be used with real data to assess
-the results and the success of the DSDS approach. This evaluation will consist
-of assembly sequencing data generated by the Center for Biotechnology (CeBiTec)
-in Bielefeld and our partners in Brazil. The validation of the results will
-involve biologists from the Genome Research group of Prof.\ Bernd Weisshaar and
-from the group of Dr. Felipe Rodrigues da Silva at Embrapa, in Brazil. Running
-times and memory requirements will also be measured in order to compare the
-results with those obtained with similar software packages.
+The DSDS implementation will be evaluated using the genome assembler built in
+phase B and the repeat detection algorithms integrated in phase C. This
+evaluation will use real sequencing data generated by the Center for
+Biotechnology (CeBiTec) in Bielefeld and our partners in Brazil. The validation
+of the results will the responsability of both post-doctorand researchers, with
+the help of both students and biologists from the Genome Research group of Prof.
+\ Bernd Weisshaar and from the group of Dr. Felipe Rodrigues da Silva at
+Embrapa, in Brazil. Running times and memory requirements will also be measured
+in order to compare the results with those obtained with similar software
+packages.
 
-The evaluation phase will start as soon as the first implementation of the
-basic DSDS functions is ready, and it will last until the end of the project,
-in parallel with the implementation (phase B) and integration (phase D) phases.
+The evaluation phase will start as soon as the initial implementation of the
+basic DSDS data structure is ready (mid-2008), and it will last until the end of
+the project, in parallel with the implementation and integration phases. The
+evaluation phase will also consist of publishing the results in journals and
+presenting them at international conferences.
 
 \subsubsection*{Summary of work schedule}
 
 \begin{center}
 \setlength{\tabcolsep}{0cm}
-\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{3.2cm}|p{3.2cm}|p{3.2cm}|}
+\begin{tabular}{|@{~~}c@{~~}l@{~~}|p{4.4cm}|p{4.4cm}|p{2.2cm}|}
 \hline
 \multicolumn{2}{|c|}{Phases}
-  & \multicolumn{1}{|c|}{~\nth{1} Year (2008)}
-    & \multicolumn{1}{|c|}{~\nth{2} Year (2009)}
-      & \multicolumn{1}{|c|}{~\nth{3} Year (2010)}\\
+  & \multicolumn{1}{|c|}{2008}
+    & \multicolumn{1}{|c|}{2009}
+      & \multicolumn{1}{|c|}{2010 (\nth{1} half)}\\
 \hline
 \hline
 (A) & Design
   & \boxone\boxone\boxone\boxone
-    & \boxtwo\nobox\nobox\nobox
-      & \nobox\nobox\boxthree\boxthree\\[1ex]
-(B) & Implementation
-  & \nobox\boxone\boxone\boxone
-    & \boxone\boxone\boxone\boxone
-      & \boxtwo\nobox\boxthree\boxthree \\[1ex]
+    & \boxtwo
+      & \\[1ex]
+(B) & Implementation & & & \\[1ex]
+    & -- DSDS
+      & \nobox\boxone\boxone\boxone
+        & \boxtwo
+          & \\[1ex]
+    & -- Assembler
+      & \nobox\nobox\nobox\nobox
+        & \boxone\boxone\boxone\boxone
+          & \boxtwo \\[1ex]
 (C) & Integration
   & 
-    & \nobox\boxtwo\boxone\boxone
-      & \boxone\boxtwo\boxthree\boxthree \\[1ex]
+    & \boxtwo\boxone\boxone\boxtwo
+      & \\[1ex]
 (D) & Evaluation
-  & \nobox\nobox\nobox\boxone
+  & \nobox\nobox\boxone\boxone
     & \boxone\boxone\boxone\boxone
-      & \boxone\boxone\boxthree\boxthree \\[1ex]
+      & \boxone\boxone \\[1ex]
 \hline
 \hline
 \multicolumn{2}{|c}{Legend:} & \multicolumn{3}{l|}{\footnotesize \boxone\nobox Allocated time period} \\
-\multicolumn{2}{|c}{}        & \multicolumn{3}{l|}{\footnotesize \boxtwo\nobox Time period to be allocated in special circunstances} \\
-\multicolumn{2}{|c}{}        & \multicolumn{3}{l|}{\footnotesize \boxthree\nobox Time period outside the scope of the project} \\
+\multicolumn{2}{|c}{}        & \multicolumn{3}{l|}{\footnotesize \boxtwo\nobox Time period to be allocated in special circumstances} \\
 \hline
 \end{tabular}
 \end{center}
@@ -1061,11 +1086,17 @@ was informed about this application.
 
 \section{List of attachments (Verzeichnis der Anlagen)}
 
+{\bf TODO S\'ergio/Z'e: get letter from Felipe}
+
+{\bf TODO Jens: get letter from Weisshaar}
+
 \begin{enumerate}
 \item Curriculum vitae of the applicant (DFG-Vordruck 10.04)
 \item Complete publication list of the applicant
 \item Letter of co-operation agreement from Dr.\ Felipe Rodrigues da Silva,
       Embrapa, Brazil
+\item Letter of co-operation agreement from Prof.\ Bernd Weisshaar,
+      Universit\"at Bielefeld
 \item CD-ROM with electronic versions of all request documents
 \end{enumerate}
 
