@@ -491,6 +491,8 @@ development of software tools for personal computers.
   \label{fig.advantages}
 \end{figure}
 
+{\bf TODO Z\'e: highlight goals (A, B, C, D) -- see work schedule}
+
 While working with a de Bruijn based approach to repeat finding, we
 were able to develop an algorithm for building the sequence graph, the
 compact version of a de Bruijn subgraph, directly from the given set
@@ -556,40 +558,39 @@ validated applications using them.
 
 The project's work schedule consists of four phases, as follows.
 
-\subsubsection*{(A) DSDS Data structure design}
+\subsubsection*{(A) Design}
 
 The first phase of the project consists of understanding the properties of the
 Dual Sparse De-Bruijn Subgraphs (DSDS) and designing the necessary data
 structures for implementing the genome assembler (phase B) and integrating it
 with our existing repeat detection functions (phase D).
 
-Which functions should the DSDS support?
+{\bf TODO Z\'e: List functions that the DSDS should support}
 
 In this phase, the storage requirements for the data structure will be studied
-in detail, in such a way that the memory requirements for the genome assembler
+in detail, so that the memory requirements for the genome assembler
 and repeat detection functions can be predicted based on the size of the input
 (sequencing data).
 
-No later than three months after the beginning of the design phase, the
-implementation phase (phase B) will begin. Both phases will continue in parallel
-as the implementation is likely to require changes in the data structue design.
-The design of basic data structures are expected to reach a stable state by
-October 2008 and a final version should be ready by the end of the year,
-although the first quarter of the second year may be also used in case any
-serious design problems arise during the implementation phase.
+The implementation phase (phase B) begins three months after the beginning of
+the design phase. Both phases will continue in parallel as the implementation is
+likely to require changes in the data structue design. The design of basic data
+structures are expected to reach a stable state by October 2008 and a final
+version should be ready by the end of the year, although the first quarter of
+the second year may be also used in case any serious design problems arise
+during the implementation phase.
 
-\subsubsection*{(B) Implementation of genome assembler using DSDS}
+\subsubsection*{(B) Implementation}
 
 In this phase, the necessary data structures will be implemented in Java by a
-team of two programmers (students) lead by a post-doctorand researcher. An
-initial working implementation providing the basic functions should be ready by
-the end of the first year so that the DSDS design can be exhaustively evaluated
-and validated.
+team of two student programmers lead by a post-doctorand researcher. An initial
+working implementation providing the basic functions should be ready by October
+2008 so that the DSDS design can be exhaustively evaluated and validated until
+the end of the first year together with a final implementation of the DSDS.
 
-A stable version of the final DSDS implementation is planed to be ready by the
-end of the first year (2008), so that the implementation of a genome assembler
-as a stand-alone software package can start in early 2009. The final version of
-the genome assembler should be ready by the end of 2009.
+The implementation of a genome assembler as a stand-alone software package then
+starts in early 2009. The final version of the genome assembler should be ready
+by the end of 2009.
 
 \subsubsection*{(C) Integration of existing repeat detection algorithm with DSDS}
 
