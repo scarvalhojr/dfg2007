@@ -262,18 +262,6 @@ The proposed data structure has several applications in genome
 analysis, which is the main subject of most of our group activities,
 as can be seen below.
 
-%% Begin ignore block
-\ignore{
-\begin{enumerate}
-\item Sequence searching
-\item Genome evolution
-\item Primer design / microarray design
-\item Repeat analysis, other than primer design (write 1 paragraph, cite
-      Reputer paper)
-\end{enumerate}
-}
-%% End ignore block
-
 \paragraph{Sequence Searching.}
 The group worked in close collaboration with the Research Group for
 Practical Computer Sciences on indexing methods for large amounts of
@@ -342,72 +330,10 @@ in several genomes. At the moment, this work is being extended and
 applied to real data. The results are also being combined to data from
 other sources, like gene expression studies.
 
-
-%% Begin ignore block
-\ignore{
-\paragraph{Computer science methods for mass-spectrometry.} 
-
-After the human genome sequencing project, the biotechnology focus
-moves from sequencing a species to sequencing of single exemplars, and
-from the genome analysis to the analysis of the metabolome and
-proteome of organisms. Mass-spectrometry, the most used analysis in
-these cases, may be applied in the re-sequencing, SNP identification,
-and forensic medicine. Methods for the mass spectrometer calibration,
-statistical based methods for protein identification,
-DNA-mass-spectrometry, as well as mass-spectrometry related
-combinatorial problems were developed at Mr. B{\" o}cker's junior
-research group.
-
-To be more precise, in the group we develop methods, which allow the
-comparison between two mass-spectra. Specially alignments between real
-and theorethi\-cally-predicted ones. This makes an efficient and
-robust protein identification possible. One of the methods developed
-by the group allows the calculation of one of these alignments
-significance ($p$-value). In addition, the group works in methods for
-the analyses of mass-spectrometry rough-data (peak detection): these
-data contain many kinds of noise, and statistic methods may improve
-also this step of the analysis.
-
-The analysis of DNA with the help of base-specific cleavage and
-mass-spectro\-metry is a new method for the study of individual
-genomes.  The biochemistry behind the method is being optimized at the
-moment, and the first results are promising. This area contains lots
-of computer science problems, which can be investigate with
-success~\cite{BOE-2003,BOE-2004}, also in common subjects of the
-DNA/MS-analysis, like the search for SNPs~\cite{BOE-2003B,
-  HAR-STO-BOE-ROD-HIL-JUR-BOO-2003,
-  STA-ZAB-MEE-REM-GAN-STO-HAR-RON-ROD-BOE-BOO-2004, EHR-BOE-BOO-2005,
-  BOE-2006} or pathogen
-identification~\cite{LEF-HON-BOE-STO-WIN-SCH-MOT-BOO-2004}.
-
-The computer science basis of every mass-spectrometric biomolecular
-experiment are weighted strings: a biomolecule is a sequence of amino
-acids or nucleotides, and can therefore be represented as strings.
-Each of these building-blocks has a known weight, and the weight of
-the entire molecule is the sum of the weights of each single
-building-block. If a molecule of mass $m$ is observed in
-mass-spectrometry experiment, many related questions arise
-automatically, like: Is there any string with mass $m$? Which strings
-have mass $m$? A statistical analysis of mass-spectrometry data is
-only possible after these questions are answered. And we approached
-these and related questions in our
-group~\cite{CIE-ERL-LIP-STO-WEL-2001, BOE-ZSU-2005, BOE-ZSU-2005B}.
-}
-%% End ignore block
-
-\paragraph{Primer design / microarray design.} 
+\paragraph{Microarray design / Primer design.} 
 Systems biology explores biological systems and their interactions
 both mathematically and algorithmically. 
-%% Begin ignore block
-\ignore{
-Heterogeneous data from
-different sources, like DNA-microarrays, protein mass-spectrometry,
-protein interaction, and transcription factor biding ideally give a
-consistent overview, from which it is possible to determine the
-architecture (e.g. the network topology) and other necessary system
-parameters.
-}
-%% End ignore block
+
 We aim at the development of methods for the improvement of data
 quality, which ideally could be applied just after or even during the
 data collection, as well as methods for the integration of data from
@@ -421,32 +347,6 @@ microarray design through a careful choice and positioning of the
 millions of probes in the chip~\cite{RAH-2003,RAH-2003B,RAH-GRA-2004}.
 The suffix arrays mentioned at the beginning of this text find also
 here an application.
-
-%% Begin ignore block
-\ignore{
-In some of the applications, it is impossible to avoid that several
-different target genes hybridise with the same olignucleotide probe.
-Alternative splicing analysis and microorganism detection are examples
-of such experiments. During the design of these DNA-chips we may need
-the help of combinatorial optimization methods, like integer linear
-programming~\cite{KLA-RAH-SCH-2004}. In order to decode the performed
-experiments, we use methods from the statistical group
-testing~\cite{SCH-TOR-RAH-2003}.
-
-Although expression data provide valuable information, this data alone
-is not enough to infer the complete network. However, it is always
-possible to use hints provided by other sources of data, like DNA
-binding domain signals in proteins and transcription factor binding
-sites at the gene regulated upstream region. Because upstream
-regulatory regions provide only weak signals, the analysis of these
-regions require a precise statistical
-analysis~\cite{DIE-RAH-VIN-2004,RAH-MUE-VIN-2003}.
-
-In later steps we use stochastic methods, like simulated annealing, in
-order to choose the most plausible between many concurrent models for
-a regulatory network.
-}
-%%End ignore block
 
 \paragraph{Repeat analysis.}
 
@@ -491,8 +391,6 @@ development of software tools for personal computers.
   \label{fig.advantages}
 \end{figure}
 
-{\bf TODO Z\'e: highlight goals (A, B, C, D) -- see work schedule}
-
 While working with a De-Bruijn based approach to repeat finding, we
 were able to develop an algorithm for building the sequence graph, the
 compact version of a De-Bruijn subgraph, directly from the given set
@@ -512,47 +410,60 @@ input set and its reverse-complement. Without considering the
 reverse-complement, important information can be lost, as
 Figure~\ref{fig.advantages}.1 shows. In this case, because only the
 input set is considered, one may conclude that the given sequences
-belong to independent DNA sequences, whereas
+belong to independent DNA molecules, whereas
 Figure~\ref{fig.advantages}.2 shows that both sequence are part of
 different strands of the same DNA molecule. The direct consequence of
 this is that in a De-Bruijn graph for the DNA alphabet, the
-information is usually represented twice.
+information usually need to be represented twice.
 
-The main goal of this project is to take advantage of the DNA sequence
+The goal of this project is to take advantage of the DNA sequence
 complementarity to reduce even more the graph size. In the example
 shown in Figure~\ref{fig.advantages}.4, the reduction achieved is of
 50\%. Of course this is a very special case. In the real life, we will
 be facing many problems not shown in the example, like
 self-complementary sequences.
 
-The first goal of this project is therefore dedicated to the
-investigation of the proposed graph. After understanding the its
-characteristics, we will implement a genome assembler so that we can
-compare the performance of the new graph with previously existing
-applications, which consists of our second goal.
+More specifically, the goals of the project are:
+\begin{description}
+  
+\item[(A)] Investigation of the proposed Dual Sparse De-Bruijn Subgraphs
+  (DSDS).
+  
+\item[(B)] Implement of a genome assembler, so that we can compare the
+  performance of an application using the new graph to the performance
+  of similar applications.
+  
+  We choose the genome assembly problem for mainly three reasons:
+  
+  \begin{itemize}
+  \item The De-Bruijn graph approach do genome assembly is well
+    studied and documented. Not only the assembly, but also a
+    sequencing error correction method are described in the
+    literature.
+  \item From the known applications for De-Bruijn graphs, the genome
+    assembly is the only one with which the group has no previous
+    experience. Since the application is well documented, it is a good
+    chance to expand our group's knowledge without risking delaying
+    the project.
+  \item Although genome assembling may look like an old fashion
+    subject, the appearance of complete new sequencing methods in the
+    last years suggests that, in the near future, sequencing projects
+    may involve lots of different kinds of sequences, with the most
+    variable lengths. In this scenario, the De-Bruijn graph approach
+    flexibility in respect of the input sequence lengths will be an
+    advantage.
+  \end{itemize}
+  
+\item[(C)] Adaptation the repeat detection method being developed in our
+  group to use DSDS.
+  
+\item[(D)] The applications validation is a natural final step.  For
+  attaining this goal, we count with the collaborations both in
+  Bielefeld and in Brazil. At the end, the project must produce, and
+  publish, an implementation of DSDSs and two validated applications
+  using them.
 
-We choose the genome assembly problem for mainly two reasons:
-
-\begin{itemize}
-\item The De-Bruijn graph approach do genome assembly is well studied
-  and documented. Not only the assembly, but also a sequencing error
-  correction method are described in the literature.
-\item From the known applications for De-Bruijn graphs, the genome
-  assembly is the only one with which the group has no previous
-  experience. Since the application is well documented, it is a good
-  chance to expand our group's knowledge without risking delaying the
-  project.
-\end{itemize}
-
-The third goal of the project is the validation of the assembler. For
-attaining this goal, we count with the collaborations both in
-Bielefeld and in Brazil.
-
-The above mentioned goals form the project's main stream.  In parallel
-to this main stream we have a fourth goal, which is the adaptation of
-the repeat detection method being developed in our group to use DSDSs.
-At the end, the project must produce an implementation of DSDSs and two
-validated applications using them.
+\end{description}
 
 \subsection{Work schedule (Arbeitsprogramm)}
 
@@ -569,7 +480,18 @@ for the data structure will be studied in detail, so that the memory
 requirements for the genome assembler and repeat detection functions can be
 predicted based on the size of the input (sequencing data).
 
-{\bf TODO Z\'e: List functions that the DSDS should support}
+Among the functions the DSDS data structure may offer, we point out:
+
+\begin{description}
+\item[\sc insertSequence] - Makes the necessary transformations in the
+  graph, so that the walk corresponding to a given sequence may be
+  found in it.
+\item[\sc deleteSequence] - Removes the walk corresponding to a given
+  sequence from the graph.
+\item[\sc traceSequence] - Returns the nodes corresponding to a
+  sequence walk in the order they appear in the sequence.
+\item[\sc getNode] - Returns the node representing a given $q$-gram.
+\end{description}
 
 In this phase a post-doctorand researcher will lead the design of the necessary
 data structures, with a team of two students starting the work on the basic DSDS
