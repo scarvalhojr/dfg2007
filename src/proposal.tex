@@ -257,32 +257,23 @@ and construction time.
 \subsection{Preliminary work, progress report (Eigene Vorarbeiten,
 Arbeitsbericht)}
 
-Our research group activities focus on the development of algorithms
-and data structures for the analysis and functional interpretation of
-genome data. At the moment, the group works on the following areas:
+The proposed data structure has several applications in genome
+analysis, which is the main subject of most of our group activities,
+as can be seen below.
 
+%% Begin ignore block
+\ignore{
 \begin{enumerate}
-\item Index structures for large amounts of genomic sequence data.
-\item Genome evolution modeling.
-\item Computer science methods for mass-spectrometry.
-\item Algorithms and statistics for systems biology. 
-\end{enumerate}
-
-{\bf TODO Z\'e:}
-
-Data structure (as described) has several applications in Bioinformatics:
-\begin{enumerate}
-\item Sequence searching (as below)
-\item Genome evolution (shorten to 1 paragraph; say we have expertise and we
-      need data)
-\item Primer design / microarray design (shorten to 1 paragraph; highlight
-      analysis of regulatory network of Corynebacterium)
+\item Sequence searching
+\item Genome evolution
+\item Primer design / microarray design
 \item Repeat analysis, other than primer design (write 1 paragraph, cite
       Reputer paper)
-\item Genome assembly (cite other people's work)
 \end{enumerate}
+}
+%% End ignore block
 
-\paragraph{Indexed structures for large amount of genomic sequence data.}
+\paragraph{Sequence Searching.}
 The group worked in close collaboration with the Research Group for
 Practical Computer Sciences on indexing methods for large amounts of
 genomic data. Among them are the \emph{suffix
@@ -328,43 +319,28 @@ collaboration. SWIFT not only requires much less memory than similar
 software tools, but is also 25 times faster than the most popular of
 them, BLAST, without any lost of sensibility.
 
-\paragraph{Genome evolution modeling.} The genome research has experienced a
-rapid progress in the last years, thanks to the discovery of many
-entire genome sequences. Many of them -- specially the prokaryote ones
--- are already well annotated: the gene positions are already known,
-as well as parts of the regulatory and metabolic networks in some
-cases.  Comparative genomics is an area that makes use of these kinds
-of information.  One of its goals is to identify groups of ortholog
-genes hoping for the discovery of more information about the involved
-genes and their correlated proteins.  Studies like this are based on
-the simple, but biological verified, assumption that integrated
-proteins are oft codified by genes that are located near each other in
-the genome of different species.
-
-From a combinatoric-algorithmic point of view, genomes may be
-represented by permutation of a finite set (of genes). Gene clusters
-are then sets of genes that appear close to each other in different,
-not so closely related, genomes.
-In~\cite{HEB-STO-2001,HEB-STO-2001B,SCH-STO-2004} we find many
-different algorithms able to efficiently identify gene clusters in
-several genomes. At the moment, this work is being extended and
-applied to real data. The results are also being combined to data from
-other sources, like gene expression studies.
-
-Information about the evolution of genomes may also be obtained from
-the global structure of the gene arragements in the genome. In this
-case, the corresponding maximum parsimony assumption, namely the
-minimum number of transformations (inversions, translocations,
-transpositions, fusions, and fissions of genome pieces), is used to
-transform a genome into another one. The related mathematical theory
-was studied by Hannenhalli and
+\paragraph{Genome evolution modeling.} Information about the evolution 
+of genomes may be obtained from the global structure of the gene
+arragements in them. In this case, the corresponding maximum parsimony
+assumption, namely the minimum number of transformations (inversions,
+translocations, transpositions, fusions, and fissions of genome
+pieces), is used to transform a genome into another one. The related
+mathematical theory was studied by Hannenhalli and
 Pevzner~\cite{HAN-PEV-1995B,HAN-PEV-1995C,HAN-1996} during the 1990's.
 The highly technical content of their work was at that time a big
 barrier to the area. Together with Anne Bergeron (Montreal), we could
 make important steps to the simplification of this
 theory~\cite{BER-HEB-STO-2002,BER-MIX-STO-2004,BER-MIX-STO-2005,BER-STO-2003B}.
 Errors in the original works could also be identified and corrected
-during the simplification process~\cite{BER-MIX-STO-2005B}.
+during the simplification process~\cite{BER-MIX-STO-2005B}. Another
+object studied by our group are gene clusters, which are sets of genes
+that appear close to each other in different, not so closely related,
+genomes.  In~\cite{HEB-STO-2001,HEB-STO-2001B,SCH-STO-2004} we find
+many different algorithms able to efficiently identify gene clusters
+in several genomes. At the moment, this work is being extended and
+applied to real data. The results are also being combined to data from
+other sources, like gene expression studies.
+
 
 %% Begin ignore block
 \ignore{
@@ -420,13 +396,17 @@ group~\cite{CIE-ERL-LIP-STO-WEL-2001, BOE-ZSU-2005, BOE-ZSU-2005B}.
 
 \paragraph{Primer design / microarray design.} 
 Systems biology explores biological systems and their interactions
-both mathematically and algorithmically. Heterogeneous data from
+both mathematically and algorithmically. 
+%% Begin ignore block
+\ignore{
+Heterogeneous data from
 different sources, like DNA-microarrays, protein mass-spectrometry,
 protein interaction, and transcription factor biding ideally give a
 consistent overview, from which it is possible to determine the
 architecture (e.g. the network topology) and other necessary system
 parameters.
-
+}
+%% End ignore block
 We aim at the development of methods for the improvement of data
 quality, which ideally could be applied just after or even during the
 data collection, as well as methods for the integration of data from
@@ -441,6 +421,8 @@ millions of probes in the chip~\cite{RAH-2003,RAH-2003B,RAH-GRA-2004}.
 The suffix arrays mentioned at the beginning of this text find also
 here an application.
 
+%% Begin ignore block
+\ignore{
 In some of the applications, it is impossible to avoid that several
 different target genes hybridise with the same olignucleotide probe.
 Alternative splicing analysis and microorganism detection are examples
@@ -462,10 +444,26 @@ analysis~\cite{DIE-RAH-VIN-2004,RAH-MUE-VIN-2003}.
 In later steps we use stochastic methods, like simulated annealing, in
 order to choose the most plausible between many concurrent models for
 a regulatory network.
+}
+%%End ignore block
 
-\paragraph{Repeat analysis, other than primer design.}
+\paragraph{Repeat analysis.}
 
-\paragraph{Genome assembly.} 
+Identifying repetitive elements in the genome of eukaryotes is an
+important task both if one is interested in study them and if one
+needs to avoid them. Although the sequence of some repetitive elements
+may be characterized, which allows repeat identification by
+traditional sequence comparison methods, the experience shows that
+most of the eukaryotes have very specific families of repetitive
+elements. For completely sequenced genomes, the {\em de novo}
+identification of such sequences may be done using suffix trees. A
+software tool called REPuter~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001} was
+developed based on this approach. In a collaboration with Prof.\ Bernd
+Weisshaar (Chair of Genome Research, Universität Bielefeld), we are
+developing a De Bruijn subgraph based method for doing the same with
+collections of reads of an incompletely sequenced genome. Also here
+the size of de Bruijn subgraphs is a considerable barrier to the
+development of software tools for personal computers.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ZIELE UND ARBEITSPROGRAMM
@@ -473,12 +471,83 @@ a regulatory network.
 
 \section{Goals and work schedule (Ziele und Arbeitsprogramm)}
 
-\subsection{Goals (Ziele)}
+\begin{figure}
+  \epsfxsize=0.6\textwidth
+  \begin{center}\epsfbox{graphics}
+  \end{center}
+  \caption{Memory usage (in gigabytes) for de Bruijn subgraphs and their correponding sequence graphs. The number of sequences corresponds to the number of 700 bases length randomly taken subsequences of an {\em Arabidopsis thaliana} chromosome.}
+  \label{fig.graph}
+\end{figure}
 
-{\bf TODO Z\'e:}
+\begin{figure}
+  \epsfxsize=\textwidth
+  \begin{center}\epsfbox{advantages}
+  \end{center}
+  \caption{Four graphs for assembling the sequences {\tt AAACCC} and {\tt
+      TTGTGGG}. }
+  \label{fig.advantages}
+\end{figure}
 
-Among applications listed, we don't have asembly yet.... (add figures,
-e.g. advantages/disadvantages of previous method).
+While working with a de Bruijn based approach to repeat finding, we
+were able to develop an algorithm for building the sequence graph, the
+compact version of a de Bruijn subgraph, directly from the given set
+of sequences. The graph on Figure~\ref{fig.graph} presents the amount
+of memory used by de Bruijn graphs and by the corresponding sequence
+graphs. Figure~\ref{fig.advantages} exemplifies how memory can be
+saved: The de Bruijn subgraph containing both the sequences {\tt
+  AAACCC} and {\tt TTGTGGG}, with the respective complements
+(Fig.~\ref{fig.advantages}.2), contains non-branching paths. Since the
+information we are interested in are exactly in the graph branches,
+the same information represented by the 16 nodes, 48 characters, and
+14 edges (Fig.~\ref{fig.advantages}.2) can be represented by 2
+nodes, 20 characters and no edge at all (Fig.~\ref{fig.advantages}.3).
+
+Most of the Bioinformatics applications need to deal both with the
+input set and its reverse-complement. Without considering the
+reverse-complement, important information can be lost, as
+Figure~\ref{fig.advantages}.1 shows. In this case, because only the
+input set is considered, one may conclude that the given sequences
+belong to independent DNA sequences, whereas
+Figure~\ref{fig.advantages}.2 shows that both sequence are part of
+different strands of the same DNA molecule. The direct consequence of
+this is that in a de Bruijn graph for the DNA alphabet, the
+information is usually represented twice.
+
+The main goal of this project is to take advantage of the DNA sequence
+complementarity to reduce even more the graph size. In the example
+shown in Figure~\ref{fig.advantages}.4, the reduction achieved is of
+50\%. Of course this is a very special case. In the real life, we will
+be facing many problems not shown in the example, like
+self-complementary sequences.
+
+The first goal of this project is therefore dedicated to the
+investigation of the proposed graph. After understanding the its
+characteristics, we will implement a genome assembler so that we can
+compare the performance of the new graph with previously existing
+applications, which consists of our second goal.
+
+We choose the genome assembly problem for mainly two reasons:
+
+\begin{itemize}
+\item The de Bruijn graph approach do genome assembly is well studied
+  and documented. Not only the assembly, but also a sequencing error
+  correction method are described in the literature.
+\item From the known applications for de Bruijn graphs, the genome
+  assembly is the only one with which the group has no previous
+  experience. Since the application is well documented, it is a good
+  chance to expand our group's knowledge without risking delaying the
+  project.
+\end{itemize}
+
+The third goal of the project is the validation of the assembler. For
+attaining this goal, we count with the collaborations both in
+Bielefeld and in Brazil.
+
+The above mentioned goals form the project's main stream.  In parallel
+to this main stream we have a fourth goal, which is the adaptation of
+the repeat detection method being developed in our group to use DSDSs.
+At the end, the project must produce an implementation of DSDSs and two
+validated applications using them.
 
 \subsection{Work schedule (Arbeitsprogramm)}
 
