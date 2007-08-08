@@ -107,24 +107,22 @@ See attached documents for a tabular CV.
 
 \subsection{Topic (Thema)}
 
-{\bf TODO Jens: reduce length by a few characters}
-
 Watson-Crick complement invariant version of sparse De-Bruijn subgraphs for
-analysis and assembly of high-throughput sequencing data.
+analysis of high-throughput sequencing data.
 
 %% 106 characters
 %% Max allowed: 104 characters
 
 Watson-Crick-Komplement-unabhängige Version von sparse De-Bruijn-Teilgraphen
-für die Analyse und Assemblierung von Hochdurchsatz-Sequenzierdaten.
+für die Analyse von Hochdurchsatz-Sequenzierdaten.
 
-%% 126 characters
+%% 110 characters
 %% Max allowed: 104 characters
 
 \subsection{Scientific discipline and field of work (Fachgebiet und
 Arbeitsrichtung)}
 
-Scientific discipline: Computer Science, algorithms engineering\\
+Scientific discipline: Computer Science, algorithm engineering\\
 Field of work: Sequence analysis
 
 \subsection{Scheduled total duration (Voraussichtliche Gesamtdauer)}
@@ -146,7 +144,7 @@ Biotechnology (CeBiTec) at Bielefeld University will soon have its own
 high-throughput sequencing machine, a patented technology developed by 454 Life
 Sciences, which is capable of producing millions of raw DNA bases per hour.
 However, what makes sequencing a challenge today is the subsequent computational
-problem of correctly assembling the reads into the original sequence is .
+problem of correctly assembling the reads into the original sequence.
 
 This project aims to develop a novel approach to genome assembly based on Dual
 Sparse De-Bruijn Subgraphs (DSDS). De-Brujin subgraphs are already being studied
@@ -155,7 +153,7 @@ current model that exploits the Watson-Crick complementarity nature of the DNA.
 The project consists of two parts. First, we will study and develop the new
 graph, and design the necessary data structures for efficient implementation. In
 the second part of the project, will apply our new approach in practice to
-genomic assembly of DNA data sequenced at the CeBiTec institute in Bielefeld.
+genomic assembly of DNA data sequenced at the CeBiTec and other institutions.
 
 {\bf TODO Jens: German version}
 
@@ -192,11 +190,11 @@ tool~\cite{pevzner04,raphael04}. As Myers~\cite{myers05} points out, the main
 problem with De-Bruijn graphs is that, in the original definition, they are
 space inefficient.
 
-A $d$-dimensional De-Bruijn Graph $G=(V,A)$ on an alphabet $\Sigma$ is a
+A $d$-dimensional De-Bruijn Graph $G=(V,E)$ on an alphabet $\Sigma$ is a
 directed graph defined as follows:
 \begin{eqnarray*}
    V &=& \Sigma^d \\ 
-   A &=& \lbrace (u,v)\ |\ u,v \in V \mbox{ and }
+   E &=& \lbrace (u,v)\ |\ u,v \in V \mbox{ and }
    u_{i+1} = v_i, \mbox{ for all } 1 \leq i < d \rbrace,
 \end{eqnarray*}
 %%
@@ -217,7 +215,7 @@ have not been further used in Bioinformatics.
 
 Another disadvantage of simple De-Bruijn graphs for genome assembly is that they
 require cutting the sequence reads into small pieces to finally build the graph.
-Myers~\cite{myers05} have suggested that this step might not be necessary. In
+Myers~\cite{myers05} suggested that this step might not be necessary. In
 fact, we have successfully constructed a hybrid structure based on De-Bruijn
 subgraphs without explicitly using sequence comparisons, with the added
 advantage of allowing the representation of a whole genome of a higher-order
@@ -248,7 +246,8 @@ pairing rules in the double-helix structure discovered by Watson and Crick,
 namely guanine (G) pairs with cytosine (C), and adenine (A) pairs with thymine
 (T). Current sequencing methods are not able to distinguish from which strand a
 given sequence comes and, as a result, each sequence read is represented twice
-in sequence graph. Our aim is to avoid this duplication by adding the concept of
+in the sequence graph.
+Our aim is to avoid this duplication by adding the concept of
 complementarity both in the index and in the relaxed De-Bruijn graph. The
 structure we propose is called Dual Sparse De-Bruijn Subgraph. In case such a
 structure can be efficiently built and updated, we will be able to double the
@@ -259,20 +258,22 @@ and construction time.
 Arbeitsbericht)}
 
 The proposed data structure has several applications in genome
-analysis, which is the main subject of most of our group activities,
+analysis, which is the main subject of most of the activities
+in our Genome Informatics research group,
 as can be seen below.
 
 \paragraph{Sequence Searching.}
-The group worked in close collaboration with the Research Group for
-Practical Computer Sciences on indexing methods for large amounts of
+The group worked in close collaboration with the research group for
+Practical Computer Science in Bielefeld, headed by Prof.\ Robert Giegerich,
+on indexing methods for large amounts of
 genomic data. Among them are the \emph{suffix
-  trees}~\cite{GIE-KUR-STO-2003}, which are at moment very popular in
+  trees}~\cite{GIE-KUR-STO-2003}, which are at the moment very popular in
 the field of Bioinformatics.  Suffix trees can be used in many
 different applications~\cite{GUS-1997}. The identification of repeated
-sequences~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001,STO-GUS-2002,GUS-STO-2004}
+sequences~\cite{GUS-STO-2004,KUR-CHO-OHL-SCH-STO-GIE-2001,STO-GUS-2002}
 is one of them.
 
-An \emph{affix tree}~\cite{STO-2000} is a generalization of suffix
+\emph{Affix trees}~\cite{STO-2000} are a generalization of suffix
 trees for applications related to the search for a given pattern in a
 text. They represent a connection between suffix trees and their
 coresponding complementary reverse \emph{prefix trees}.  Each
@@ -287,18 +288,18 @@ affix trees can improve considerably the search efficiency.
 
 While suffix trees, and specially affix trees, theoretically allow the
 implementation of both time and space efficient algorithms, the amount
-of memory required by such structures in praxis are not negligible. An
+of memory required by such structures in practice are not negligible. An
 efficient alternative is the use of \emph{suffix arrays}.  They can be
 used in almost all scenarios where suffix trees can be applied, and
 their representation requires much less memory in
-praxis~\cite{ABO-KUR-OHL-2004}. An algorithm for the construction of
-suffix arrays from genomic data was developed in the Research Group
-Genome Informatics~\cite{SCH-STO-2005}. The algorithm may be used in
+practice~\cite{ABO-KUR-OHL-2004}. An algorithm for the construction of
+suffix arrays from genomic data was developed in the Genome Informatics
+research group~\cite{SCH-STO-2007}. The algorithm may be used in
 many different applications, and has a running-time comparable to the
-existent algorithms, being even faster in many cases.
+best existing algorithms, being even faster in many cases.
 
 An even less memory consuming index for database searches is the so
-called {\em $q$-gram hash}, where the positions of every $q$-grams
+called {\em $q$-gram hash}, where the positions of all $q$-grams
 (substrings of length $q$) are stored in a table. Based on this index,
 we were able to design a filter algorithm in collaboration with Gene
 Myers (Janelia Farms Research Campus of the Howard Hughes Medical
@@ -306,12 +307,12 @@ Institute). Besides the filter algorithm, the database search software
 tool SWIFT~\cite{RAS-STO-MYE-2006} was also a result of this
 collaboration. SWIFT not only requires much less memory than similar
 software tools, but is also 25 times faster than the most popular of
-them, BLAST, without any lost of sensibility.
+them, BLAST, without any lost of sensitivity.
 
 \paragraph{Genome evolution modeling.} Information about the evolution 
 of genomes may be obtained from the global structure of the gene
 arragements in them. In this case, the corresponding maximum parsimony
-assumption, namely the minimum number of transformations (inversions,
+assumption, namely the minimum number of rearrangements (inversions,
 translocations, transpositions, fusions, and fissions of genome
 pieces), is used to transform a genome into another one. The related
 mathematical theory was studied by Hannenhalli and
@@ -324,7 +325,7 @@ Errors in the original works could also be identified and corrected
 during the simplification process~\cite{BER-MIX-STO-2005B}. Another
 object studied by our group are gene clusters, which are sets of genes
 that appear close to each other in different, not so closely related,
-genomes.  In~\cite{HEB-STO-2001,HEB-STO-2001B,SCH-STO-2004} we find
+genomes.  In~\cite{HEB-STO-2001B,HEB-STO-2001,SCH-STO-2004} we developed
 many different algorithms able to efficiently identify gene clusters
 in several genomes. At the moment, this work is being extended and
 applied to real data. The results are also being combined to data from
@@ -337,7 +338,7 @@ both mathematically and algorithmically.
 We aim at the development of methods for the improvement of data
 quality, which ideally could be applied just after or even during the
 data collection, as well as methods for the integration of data from
-different experiments. In collaboration with the chair of Genetics, we
+different experiments. In collaboration with the chair of Genetics in Bielefeld, we
 analyze the regulatory network of {\it Corynebacterium glutamicum}.
 The experience shows that it is difficult to infer a regulatory
 network from large scale expression data. This is partially due to the
@@ -345,8 +346,7 @@ not negligible noise factor in microarray results.  Therefore we focus
 on an early step of the data production pipeline, and optimize the
 microarray design through a careful choice and positioning of the
 millions of probes in the chip~\cite{RAH-2003,RAH-2003B,RAH-GRA-2004}.
-The suffix arrays mentioned at the beginning of this text find also
-here an application.
+The suffix arrays mentioned above find also here an application.
 
 \paragraph{Repeat analysis.}
 
@@ -360,7 +360,7 @@ elements. For completely sequenced genomes, the {\em de novo}
 identification of such sequences may be done using suffix trees. A
 software tool called REPuter~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001} was
 developed based on this approach. In a collaboration with Prof.\ Bernd
-Weisshaar (Chair of Genome Research, Universität Bielefeld), we are
+Weisshaar (Chair of Genome Research, Bielefeld University), we are
 developing a De-Bruijn subgraph based method for doing the same with
 collections of reads of an incompletely sequenced genome. Also here
 the size of De-Bruijn subgraphs is a considerable barrier to the
@@ -405,16 +405,16 @@ the same information represented by the 16 nodes, 48 characters, and
 14 edges (Fig.~\ref{fig.advantages}.2) can be represented by 2
 nodes, 20 characters and no edge at all (Fig.~\ref{fig.advantages}.3).
 
-Most of the Bioinformatics applications need to deal both with the
+Most bioinformatics applications need to deal with both the
 input set and its reverse-complement. Without considering the
 reverse-complement, important information can be lost, as
 Figure~\ref{fig.advantages}.1 shows. In this case, because only the
 input set is considered, one may conclude that the given sequences
 belong to independent DNA molecules, whereas
-Figure~\ref{fig.advantages}.2 shows that both sequence are part of
+Figure~\ref{fig.advantages}.2 shows that both sequence are indeed part of
 different strands of the same DNA molecule. The direct consequence of
 this is that in a De-Bruijn graph for the DNA alphabet, the
-information usually need to be represented twice.
+information usually needs to be represented twice.
 
 The goal of this project is to take advantage of the DNA sequence
 complementarity to reduce even more the graph size. In the example
@@ -426,10 +426,10 @@ self-complementary sequences.
 More specifically, the goals of the project are:
 \begin{description}
   
-\item[(A)] Investigation of the proposed Dual Sparse De-Bruijn Subgraphs
+\item[(A)] Investigation of the proposed Dual Sparse De-Bruijn Subgraph
   (DSDS).
   
-\item[(B)] Implement of a genome assembler, so that we can compare the
+\item[(B)] Implementation of a genome assembler, so that we can compare the
   performance of an application using the new graph to the performance
   of similar applications.
   
@@ -446,7 +446,7 @@ More specifically, the goals of the project are:
     chance to expand our group's knowledge without risking delaying
     the project.
   \item Although genome assembling may look like an old fashion
-    subject, the appearance of complete new sequencing methods in the
+    subject, the appearance of completely new sequencing methods in the
     last years suggests that, in the near future, sequencing projects
     may involve lots of different kinds of sequences, with the most
     variable lengths. In this scenario, the De-Bruijn graph approach
@@ -454,11 +454,11 @@ More specifically, the goals of the project are:
     advantage.
   \end{itemize}
   
-\item[(C)] Adaptation the repeat detection method being developed in our
+\item[(C)] Adaptation of the repeat detection method being developed in our
   group to use DSDS.
   
-\item[(D)] The applications validation is a natural final step.  For
-  attaining this goal, we count with the collaborations both in
+\item[(D)] Validation of the applications developed. For
+  attaining this natural final goal, we count with the collaborations both in
   Bielefeld and in Brazil. At the end, the project must produce, and
   publish, an implementation of DSDSs and two validated applications
   using them.
@@ -469,18 +469,20 @@ More specifically, the goals of the project are:
 
 The project's work schedule consists of four phases, oriented towards the
 four goals described in the previous section.
+For a graphical overview, see the end of this section.
 
 \subsubsection*{(A) Design}
 
 The first phase of the project consists of studying the properties of the Dual
-Sparse De-Bruijn Subgraphs (DSDS) and designing the data structures for
-implementing the genome assembler (phase B) and integrating it with our existing
+Sparse De-Bruijn Subgraph (DSDS) and designing the data structures on which
+will be built
+the genome assembler (phase B) and the integration with our existing
 repeat detection functions (phase C). In this phase, the storage requirements
 for the data structure will be studied in detail, so that the memory
 requirements for the genome assembler and repeat detection functions can be
 predicted based on the size of the input (sequencing data).
 
-Among the functions the DSDS data structure may offer, we point out:
+Among the functions the DSDS data structure shall offer, we point out:
 
 \begin{description}
 \item[\sc insertSequence] - Makes the necessary transformations in the
@@ -493,11 +495,11 @@ Among the functions the DSDS data structure may offer, we point out:
 \item[\sc getNode] - Returns the node representing a given $q$-gram.
 \end{description}
 
-In this phase a post-doctorand researcher will lead the design of the necessary
+In this phase a post-doctoral researcher will lead the design of the necessary
 data structures, with a team of two students starting the work on the basic DSDS
 implementation three months after the beginning of the design phase. Both the
 design and the DSDS implementation phases will continue in parallel as the
-implementation is likely to require changes in the design of the data structue.
+implementation is likely to require changes in the design of the data structure.
 The design of basic data structures is expected to reach a stable state by
 October 2008 and a final version of the DSDS should be ready by the end of the
 year, although the first quarter of the second year may be also used in case any
@@ -510,7 +512,7 @@ above, and the implementation of a fully-functional genome assembler as a
 stand-alone software package.
 
 The DSDS implementation will be carried out by a team of two student programmers
-lead by a post-doctorand researcher. An initial working implementation providing
+lead by a post-doctoral researcher. An initial working implementation providing
 the basic functions should be ready by mid-2008 so that the DSDS design can be
 exhaustively evaluated and validated until the end of the first year using real
 sequencing data. A final implementation of the DSDS is expected to be ready by
@@ -518,7 +520,7 @@ the end of 2008, or by the end of the first quarter of 2009 at the latest.
 
 The implementation of the genome assembler using the DSDS data structure starts
 in 2009 with a single programmer working under the supervision of both
-post-doctorand researchers (with the other programmer working independently on
+post-doctoral researchers (with the other programmer working independently on
 phase C). The final version of the genome assembler should be ready by the end
 of 2009.
 
@@ -527,25 +529,25 @@ of 2009.
 Once the implementation of the basic DSDS data structure becomes stable, it will
 be integrated with the existing repeat detection algorithms already developed at
 the Genome Informatics research group. This phase will be carried out by a
-single programmer under the supervision of both post-doctorand researchers, and
+single programmer under the supervision of both post-doctoral researchers, and
 it may be concluded in about six months, or at most nine months. This phase
 might start as early as January 2009. However, depending on the amount of work
 involved in the development of the genome assembler, it might be necessary to
 delay the integration phase by up to three months so that, in the beginning,
 both programmers can work on the genome assembler. As soon as the integration
-phase in concluded, both students will be free to concentrate in the
+phase in concluded, both students will be free to concentrate on the
 implementation of the genome assembler, and also help with the evaluation (phase
 D).
 
 \subsubsection*{(D) Evaluation}
 
 The DSDS implementation will be evaluated using the genome assembler built in
-phase B and the repeat detection algorithms integrated in phase C. This
+phase B and the repeat detection algorithms integrated in phase C\@. This
 evaluation will use real sequencing data generated by the Center for
 Biotechnology (CeBiTec) in Bielefeld and our partners in Brazil. The validation
-of the results will the responsability of both post-doctorand researchers, with
-the help of both students and biologists from the Genome Research group of Prof.
-\ Bernd Weisshaar and from the group of Dr. Felipe Rodrigues da Silva at
+of the results will be under the responsibility of both post-doctoral researchers, with
+the help of both students and biologists from the Genome Research group of
+Prof.\ Bernd Weisshaar and from the group of Dr.\ Felipe Rodrigues da Silva at
 Embrapa, in Brazil. Running times and memory requirements will also be measured
 in order to compare the results with those obtained with similar software
 packages.
@@ -626,34 +628,36 @@ months.
 The scientific staff requested for this project includes:
 
 \begin{itemize}
-\item 1 post-doctorand researcher (wiss.\ Mitarbeiter E14 TV-L-Äquivalent)
+\item 1 post-doctoral researcher (wiss.\ Mitarbeiter E14)
         for 18 months (Jan 2008 -- June 2009)
-\item 1 post-doctorand researcher (wiss.\ Mitarbeiter E14 TV-L-Äquivalent)
+\item 1 post-doctoral researcher (wiss.\ Mitarbeiter E14)
         for 21 months (Oct 2008 -- June 2010)
 \item 2 programmers (stud.\ Hilfskraft, 10 h/Woche) for 27 months each
         (Apr 2008 -- June 2010)
 \end{itemize}
 
-{\bf TODO Jens: update}
+The main research work of the project will be performed by two
+postdoctoral researchers, supported by two student programmers.
+The first postdoc will perform the initial Design of the DSDS
+data structure (phase A), its implementation (phase B.1)
+and evaluation (phase D).
+The second postdoc will concentrate on the implementation
+of the assembler (phase B.2) and the integration of the repeat
+detection algorithm (phase C) as well as their evaluation (phase D).
+The student programmers will support the postdoctoral researchers,
+mainly in the implementation and evaluation phases.
 
-Zur Durchführung des Projekts wird die Stelle für einen wissenschaftlichen
-Mitarbeiter (Postdoktorand) beantragt.
-Hierbei handelt es sich im Idealfall um einen promovierten Informatiker
-mit einschlägigen Vorarbeiten
-im Bereich des Algorithm Engineering und der Sequenzanalyse.
-Unterstützt werden soll er durch eine studentische Hilfskraft,
-insbesondere bei Routineaufgaben im Bereich der Implementierung und Evaluation.
-
-Für die Postdoktoranden-Stelle steht mit Klaus-Bernd Schürmann
-ein hochqualifizierter Kandidat zur Verfügung,
-der voraussichtlich im Sommer 2007 seine Dissertation
-mit dem Thema ``Suffix Arrays in Theory and Practice''
-an der Technischen Fakultät der Universität Bielefeld abschließen wird.
-Aus den Bielefelder Studiengängen
-\textit{Naturwissenschaftliche Informatik} (Bachelor/Master, Diplom)
-und \textit{Bioinformatik und Genomforschung} (Bachelor/Master)
-stehen genügend gut qualifizierte Studierende als
-studentische Hilfskräfte zur Verfügung.
+A number of Ph.D.\ students will in the next years graduate
+from the International Graduate School in Bioinformatics
+and Genome Research and the GK Bioinformatik in Bielefeld,
+so we do not expect a shortage of highly qualified applicants
+for the postdoctoral positions.
+From the Bachelor and Master programs in 
+\textit{Naturwissenschaftliche Informatik}
+and \textit{Bioinformatik und Genomforschung}
+at the Faculty of Technology of Bielefeld University
+there will be more than enough well qualified candidates
+for the student programmer positions.
 
 \bigskip
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrl}
@@ -669,26 +673,10 @@ studentische Hilfskräfte zur Verfügung.
 
 Because of the existing computer infrastructure of the Genome Informatics group
 as well as the guarantee of maintenance of this equipment by the Bioinformatics
-Resource Facility of the CeBiTec, no funds for compuer equipment are requested
+Resource Facility of the CeBiTec, no funds for computer equipment are requested
 for this project.
 
 {\bf TODO Jens: check possibility of memory upgrade}
-
-Durch die vorhandene gute Rechnerausstattung der AG Genominformatik
-sowie die Sicherstellung der Wartung dieser Ausstattung
-durch die Bioinformatics Resource Facility des Centrums für Biotechnologie
-(CeBiTec)
-werden keine Mittel für die Ausstattung von Computerarbeitsplätzen beantragt.
-Da die vorhandene Rechnerarchitektur allerdings sehr homogen auf Basis
-von Produkten der Firma SUN aufgebaut ist,
-die entwickelten Methoden aber auch auf alternativen
-Plattformen, insbesondere handelsüblichen PCs,
-getestet und optimiert werden sollen,
-sollen im Laufe des ersten Projektjahres
-drei solche Rechner mit aktueller Ausstattung
-angeschafft werden, vermutlich je ein Produkt der Hersteller
-AMD, Intel, Apple/Macintosh.
-Hierfür werden je 2.500,00 Euro, insgesamt also 7.500,00 Euro beantragt.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
@@ -808,15 +796,15 @@ Durchführung des Vorhabens)}
 \subsection{Your team (Zusammensetzung der Arbeitsgruppe)}
 
 The research group Genome Informatics was founded in March 2002, with financial
-support from the ``Bioinformatics'' DFG Initiative, being today one of the
-central groups of the Bielefeld Institute for Bioinformatics. Two junior
-research groups are part of the group: \emph{Computation Methods for Emerging
-Technologies} (Dr. Sven Rahmann; granted by the Bielefeld University), and
+support from the DFG Initiative ``Bioinformatics''. As of now, it forms one of
+the central groups of the Bielefeld Institute for Bioinformatics. Two junior
+research groups are part of the group: \emph{Computational Methods for Emerging
+Technologies} (Dr. Sven Rahmann; granted by Bielefeld University), and
 \emph{Combinatorial Search Algorithms in Bioinformatics} (Dr. Ferdinando
 Cicalese; granted by the Sofja-Kovalevskaja-Prize from the
 Alexander-von-Humboldt Foundation). A former junior research group, \emph{
 Computer-Science Methods for Mass Spectrometry} (Prof. Dr. Sebastian B\"{o}cker;
-granted by the DFG-Action Plan Infor\-matic/Emmy-Noether-Program), was dissolved
+granted by the DFG-Action Plan Infor\-matics/Emmy-Noether-Program), was dissolved
 as the group leader was promoted to professor at the University of Jena. The
 students of this group joined the other groups to continue their works.
 
@@ -827,15 +815,15 @@ Wissenschaftlerinnen und Wissenschaftlern)}
 The applicant has several ongoing cooperations in diverse research areas, with
 the following ones being in direct relation to this application:
 
-Prof.\ Stefan Kurtz, Universität Hamburg and Prof.\ Robert Giegerich,
-Universität Bielefeld: cooperation on engineering of algorithms for
+Prof.\ Stefan Kurtz, University of Hamburg and Prof.\ Robert Giegerich,
+Bielefeld University: cooperation on engineering of algorithms for
 efficient construction of suffix arrays.
 
 Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
 cooperation on engineering of algorithms for index-based, non-heuristic,
 approximate text search.
 
-Prof.\ Bernd Weisshaar, Chair of Genome Research, Universität Bielefeld:
+Prof.\ Bernd Weisshaar, Chair of Genome Research, Bielefeld University:
 cooperation on large-scale repeat analysis with the goal of better primer
 design for EST detection in the genome of the sugar beet
 \textit{Beta vulgaris}.
@@ -850,7 +838,7 @@ projects and his extensive experience in genome assembly and annotation.
 
 %% Begin ignore block
 \ignore{
-Dr.\ Veli Mäkinen, Universität Helsinki:
+Dr.\ Veli Mäkinen, University of Helsinki:
 Gemeinsame Betreuung zweier
 Diplomarbeiten mit den Themen
 \textit{Kompressionsverstärkung für Textdaten unter Benutzung der
@@ -866,8 +854,8 @@ und soll im Rahmen dieses Projekts weiter ausgebaut werden.
 Eine Bestätigung der Kooperationsbereitschaft von Dr.\ Mäkinen ist dem
 Antrag in der Anlage beigefügt.
 
-Prof.\ Stefan Kurtz, Universität Hamburg und
-Prof.\ Robert Giegerich, Universität Bielefeld:
+Prof.\ Stefan Kurtz, University of Hamburg und
+Prof.\ Robert Giegerich, Bielefeld University:
 Gemeinsame Arbeiten zum Engineering von Algorithmen zur effizienten
 Konstruktion von Suffixbäumen
 und (mit Prof.\ Kurtz) gemeinsame Betreuung einer Diplomarbeit mit dem Thema
@@ -912,13 +900,13 @@ both sides.
 
 \subsection{Scientific equipment available (Apparative Ausstattung)}
 
-In early 2003, the Genome Informatics research group aquired server and
-workstations from Sun Microsystems that were integrated in the CeBiTec
+In early 2003, the Genome Informatics research group aquired workstations and
+servers from Sun Microsystems that were integrated in the CeBiTec
 infrastructure provided by the Bioinformatics Resource Facility (BRF), where
 they are available for use by any CeBiTec member. As a result, the members of
 the Genome Informatics group have complete access to the BRF infrastructure,
 including a cluster with 472 CPUs, a 10-Gigabit Ethernet network, a
-44-Terabyte Backup server, and various computer servers with up to 96
+44-Terabyte Backup server, and various compute servers with up to 96
 GB of main storage. According to statement of the BRF director, the
 existing infrastructure is sufficient for the requirements of the project
 proposed here. Personal computers for the scientific staff and students are
@@ -988,7 +976,7 @@ A request for funding this project has not been submitted to any other
 addressee. In the event that I submit such request, I will inform the Deutsche
 Forschungsgemeinschaft immediately.
 
-The DFG liaison officer of the Bielefeld University, Herr Prof.\ Egelhaaf,
+The DFG liaison officer of Bielefeld University, Herr Prof.\ Egelhaaf,
 was informed about this application.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
