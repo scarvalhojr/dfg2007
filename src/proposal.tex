@@ -1,14 +1,10 @@
-\documentclass[10pt]{article}
+\documentclass[a4paper,11pt]{scrartcl}
 \usepackage{a4wide}
 \usepackage[german,english]{babel}
 \usepackage[latin1]{inputenc}
-\usepackage{url}
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage{epsfig}
 \usepackage[super]{nth}
-
-%\usepackage{times} % okay (KURZ)
-%\usepackage{charter} % okay (MITTEL)
-\usepackage{palatino} % okay (LANG)
 
 \parindent0em
 \parskip1ex
@@ -76,6 +72,8 @@ Centrum für Biotechnologie der Universität Bielefeld
 %% ALLGEMEINE ANGABEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\enlargethispage{2ex}
+
 \section{General information (Allgemeine Angaben)}
 
 Proposal for a research grant (new application).
@@ -122,7 +120,7 @@ für die Analyse von Hochdurchsatz-Sequenzierdaten.
 \subsection{Scientific discipline and field of work (Fachgebiet und
 Arbeitsrichtung)}
 
-Scientific discipline: Computer Science, algorithm engineering\\
+Scientific discipline: Computer Science, algorithm design and engineering\\
 Field of work: Sequence analysis
 
 \subsection{Scheduled total duration (Voraussichtliche Gesamtdauer)}
@@ -136,8 +134,6 @@ Time period: \nth{1} January 2008 -- \nth{30} June 2010\\
 Funding commence: \nth{1} January 2008
 
 \subsection{Summary (Zusammenfassung)}
-
-{\bf TODO: join two paragraphs? (max. 15 lines)}
 
 High-throughput DNA sequencing methods in use today are able to produce
 staggering amounts of data on a daily basis that demand extensive computing
@@ -158,44 +154,34 @@ the second part of the project, we will apply our new approach in practice to
 genomic assembly of DNA data sequenced at the CeBiTec and other institutions
 and, extending ongoing research, to detect repeats in these data.
 
-%% 15 lines, 1285 characters
-%% Max allowed: 15 lines, 1600 characters
 
 \subsection*{Zusammenfassung}
-
-{\bf TODO: reduce to 1600 characters (currently 1650) and 15 lines
-(currently 19)}
 
 Hochdurchsatztechniken, wie sie mittlerweise immer mehr Verbreitung in
 der DNA-Sequenzierung finden, erlauben die Produktion atemberaubend
 großer genomischer Sequenzdatenmengen in kurzer Zeit, was hohe
-Anforderungen auch für die bioinformatische Auswertung mit sich bringt,
-sei es bei der Assemblierung, dem \textit{Finishing} oder der
-Weiterverarbeitung der genomischen Information. Das Zentrum für
+Anforderungen auch für die bioinformatische Auswertung mit sich bringt.
+Das Zentrum für
 Biotechnologie (CeBiTec) der Universität Bielefeld wird in Kürze eine
 eigene Hochdurchsatz-Sequenziermaschine der Firma Roche/454 in Betrieb
-nehmen, mit einer theoretischen Kapazität von stündlich mehreren
-Millionen DNA-Basenpaaren. Die große Herausforderung beim Einsatz
+nehmen. Die große Herausforderung beim Einsatz
 dieser Technologie ist allerdings die nachfolgende bioinformatische
 Analyse, insbesondere die Assemblierung der gelesenen Teilsequenzen in
 das ursprüngliche Genom.
 
 Ziel des hier beantragten Projekts ist die Entwicklung einer neuen
-Methode zur Genomassemblierung auf der Basis dualer
-speicherplatzsparender De-Bruijn-Subgraphen (DSDS). De-Bruijn-Subgraphen
+Methode zur Genomassemblierung auf der Basis von
+\textit{Dual Sparse De-Bruijn Subgraphs} (DSDS). De-Bruijn-Teilgraphen
 werden bereits in unserer Arbeitsgruppe untersucht. Neuartig an dem hier
 vorgeschlagenen Ansatz ist eine Erweiterung des Modells, das die
 Watson-Crick-Komplementarität von DNA-Sequenzen berücksichtigt. Das
 Projekt besteht aus zwei Teilen. Im ersten Teil soll die neue
 Graph-Datenstruktur definiert und theoretisch untersucht sowie effizient
 implementiert werden. Im zweiten Teil soll der neue Ansatz in der Praxis
-erprobt werden, zum einen bei der Assemblierung genomischer DNA, die am
-CeBiTec und an anderen Institutionen sequenziert wird, und zum anderen
-zur \textit{Repeat}-Analyse dieser Daten, als Erweiterung bereits
-bestehender Forschungen.
+erprobt werden, zum einen bei der Assemblierung genomischer DNA
+und zum anderen in Ergänzung bestehender Forschungen
+bei der \textit{Repeat}-Analyse dieser Daten.
 
-%% 14 lines, 1650 characters
-%% Max allowed: 15 lines, 1600 characters
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% STAND DER FORSCHUNG, EIGENE VORARBEITEN
@@ -319,9 +305,10 @@ from both left to right and right to left). This gives support to
 flexible search strategies. The linear memory requirement of affix
 trees is known since its development in Bielefeld in 1995.  An
 efficient algorithm for constructing them was presented later by
-Maa\ss~\cite{MAS-2003}. At the moment we are exploring an application
-to the search of special non-homogeneous patterns, where the use of
-affix trees can improve considerably the search efficiency.
+Maa\ss~\cite{MAS-2003}.
+%At the moment we are exploring an application
+%to the search of special non-homogeneous patterns, where the use of
+%affix trees can improve considerably the search efficiency.
 
 While suffix trees, and specially affix trees, theoretically allow the
 implementation of both time and space efficient algorithms, the amount
@@ -339,7 +326,7 @@ An even less memory consuming index for database searches is the so
 called {\em $q$-gram hash}, where the positions of all $q$-grams
 (substrings of length $q$) are stored in a table. Based on this index,
 we were able to design a filter algorithm in collaboration with Gene
-Myers (Janelia Farms Research Campus of the Howard Hughes Medical
+Myers (Janelia Farm Research Campus of the Howard Hughes Medical
 Institute). Besides the filter algorithm, the database search software
 tool SWIFT~\cite{RAS-STO-MYE-2006} was also a result of this
 collaboration. SWIFT not only requires much less memory than similar
@@ -348,7 +335,7 @@ them, BLAST, without any loss of sensitivity.
 
 \paragraph{Genome evolution modeling.} Information about the evolution 
 of genomes may be obtained from the global structure of the gene
-arragements in them. In this case, the corresponding maximum parsimony
+arrangements in them. In this case, the corresponding maximum parsimony
 assumption, namely the minimum number of rearrangements (inversions,
 translocations, transpositions, fusions, and fissions of genome
 pieces), is used to transform a genome into another one. The related
@@ -361,12 +348,13 @@ theory~\cite{BER-HEB-STO-2002,BER-MIX-STO-2004,BER-MIX-STO-2005,BER-STO-2003B}.
 Errors in the original works could also be identified and corrected
 during the simplification process~\cite{BER-MIX-STO-2005B}. Another
 object studied by our group are gene clusters, which are sets of genes
-that appear close to each other in different, not so closely related,
+that appear close to each other in different, not so closely related
 genomes.  In~\cite{HEB-STO-2001B,HEB-STO-2001,SCH-STO-2004} we developed
 many different algorithms able to efficiently identify gene clusters
-in several genomes. At the moment, this work is being extended and
-applied to real data. The results are also being combined to data from
-other sources, like gene expression studies.
+in several genomes.
+%At the moment, this work is being extended and
+%applied to real data. The results are also being combined to data from
+%other sources, like gene expression studies.
 
 \paragraph{Systems biology and microarray design.} 
 Systems biology explores biological systems and their interactions both
@@ -374,9 +362,10 @@ mathematically and algorithmically. One of our aims is the development of
 methods for the improvement of data quality, which ideally could be applied just
 after or even during the data collection, as well as methods for the integration
 of data from different experiments. In collaboration with the chair of Genetics
-in Bielefeld, we analyze the regulatory network of {\it Corynebacterium
+in Bielefeld,
+members of our group analyzed the regulatory network of {\it Corynebacterium
 glutamicum}. Another topic of our research is the design of microarrays, which
-consists of optimizing the selection of probes
+consists of optimizing the selection of probe
 sequences~\cite{RAH-2003,RAH-GRA-2004}, reducing the length of the synthesis
 schedule~\cite{RAH-2003B}, and designing the layout of the array (the
 arrangement of the probes on the chip) in order to improve the quality of the
@@ -385,7 +374,7 @@ manufacturing process~\cite{CAR-RAH-2006,CAR-RAH-2007}.
 \paragraph{Repeat analysis.}
 
 Identifying repetitive elements in the genome of eukaryotes is an
-important task both if one is interested in study them and if one
+important task both if one is interested in studying them and if one
 needs to avoid them. Although the sequence of some repetitive elements
 may be characterized, which allows repeat identification by
 traditional sequence comparison methods, the experience shows that
@@ -394,7 +383,7 @@ elements. For completely sequenced genomes, the {\em de novo}
 identification of such sequences may be done using suffix trees. A
 software tool called REPuter~\cite{KUR-CHO-OHL-SCH-STO-GIE-2001} was
 developed based on this approach. In a collaboration with Prof.\ Bernd
-Weisshaar (Chair of Genome Research, Bielefeld University), we are
+Weisshaar (chair of Genome Research, Bielefeld University), we are
 developing a De-Bruijn subgraph based method for doing the same with
 collections of reads of an incompletely sequenced genome. Also here
 the size of De-Bruijn subgraphs is a considerable barrier to the
@@ -422,7 +411,7 @@ development of software tools for personal computers.
 While working with a De-Bruijn based approach to repeat finding, we
 were able to develop an algorithm for building the sequence graph, the
 compact version of a De-Bruijn subgraph, directly from the given set
-of sequences. The graph on Figure~\ref{fig.graph} presents the amount
+of sequences. The graph in Figure~\ref{fig.graph} presents the amount
 of memory used by De-Bruijn graphs and by the corresponding sequence
 graphs. Figure~\ref{fig.advantages} exemplifies how memory can be
 saved: The De-Bruijn subgraph containing both the sequences {\tt
@@ -434,12 +423,12 @@ the same information represented by the 16 nodes, 48 characters, and
 nodes, 20 characters and no edge at all (Fig.~\ref{fig.advantages}.3).
 
 Most bioinformatics applications need to deal with both the
-input set and its reverse-complement. Without considering the
-reverse-complement, important information can be lost, as
+input set and its reverse complement. Without considering the
+reverse complement, important information can be lost, as
 Figure~\ref{fig.advantages}.1 shows. In this case, because only the
 input set is considered, one may conclude that the given sequences
 belong to independent DNA molecules, whereas
-Figure~\ref{fig.advantages}.2 shows that both sequence are indeed part of
+Figure~\ref{fig.advantages}.2 shows that both sequences are indeed part of
 different strands of the same DNA molecule. The direct consequence of
 this is that in a De-Bruijn graph for the DNA alphabet, the
 information usually needs to be represented twice.
@@ -452,19 +441,19 @@ be facing many problems not shown in the example, like
 self-complementary sequences.
 
 More specifically, the goals of the project are:
-\begin{description}
+\begin{itemize}
   
-\item[(A)] Investigation of the proposed Dual Sparse De-Bruijn Subgraph
-  (DSDS).
+\item[\textbf{(A)}] Investigation of the proposed Dual Sparse De-Bruijn Subgraph
+  (DSDS) data structure.
   
-\item[(B)] Implementation of a genome assembler, so that we can compare the
+\item[\textbf{(B)}] Implementation of a genome assembler, so that we can compare the
   performance of an application using the new graph to the performance
   of similar applications.
   
   We choose the genome assembly problem for mainly three reasons:
   
   \begin{itemize}
-  \item The De-Bruijn graph approach do genome assembly is well
+  \item The De-Bruijn graph approach to genome assembly is well
     studied and documented. Not only the assembly, but also a
     sequencing error correction method are described in the
     literature.
@@ -482,16 +471,16 @@ More specifically, the goals of the project are:
     advantage.
   \end{itemize}
   
-\item[(C)] Adaptation of the repeat detection method being developed in our
+\item[\textbf{(C)}] Adaptation of the repeat detection method being developed in our
   group to use DSDS.
   
-\item[(D)] Validation of the applications developed. For
-  attaining this natural final goal, we count with the collaborations both in
+\item[\textbf{(D)}] Validation of the applications developed. For
+  attaining this natural final goal, we count with collaborations both in
   Bielefeld and in Brazil. At the end, the project must produce, and
   publish, an implementation of DSDSs and two validated applications
   using them.
 
-\end{description}
+\end{itemize}
 
 \begin{figure}[t]
   \epsfxsize=\textwidth
@@ -544,9 +533,9 @@ serious design problems arise during the implementation phase.
 
 \subsubsection*{(B) Implementation}
 
-This phase consists of the implementation of the DSDS data structure as desribed
-above, and the implementation of a fully-functional genome assembler as a
-stand-alone software package.
+This phase consists of the implementation of the DSDS data structure as
+described above, and the implementation of a fully-functional genome
+assembler as a stand-alone software package.
 
 The DSDS implementation will be carried out by a team of two student programmers
 lead by a postdoctoral researcher. An initial working implementation providing
@@ -572,7 +561,7 @@ might start as early as January 2009. However, depending on the amount of work
 involved in the development of the genome assembler, it might be necessary to
 delay the integration phase by up to three months so that, in the beginning,
 both programmers can work on the genome assembler. As soon as the integration
-phase in concluded, both students will be free to concentrate on the
+phase is concluded, both students will be free to concentrate on the
 implementation of the genome assembler, and also help with the evaluation (phase
 D).
 
@@ -693,7 +682,7 @@ From the Bachelor and Master programs in
 \textit{Naturwissenschaftliche Informatik}
 and \textit{Bioinformatik und Genomforschung}
 at the Faculty of Technology of Bielefeld University
-there will be more than enough well qualified candidates
+there are more than enough well qualified candidates
 for the student programmer positions.
 
 \bigskip
@@ -706,37 +695,36 @@ for the student programmer positions.
                            &                        & 12 Months (Monate) & stud.\ HK, 10 h/Woche
 \end{tabular*}
 
+
 \subsection{Scientific instrumentation (Wissenschaftliche Geräte)}
 
-Because of the existing computer infrastructure of the Genome Informatics group
-as well as the guarantee of maintenance of this equipment by the Bioinformatics
-Resource Facility of the CeBiTec, no funds for computer equipment are requested
-for this project.
-
-{\bf TODO Jens: check possibility of memory upgrade}
-
-Using our current implementation of Sparse De-Bruijn Subgraphs, 32 GB of memory
+Using our current implementation of Sparse De-Bruijn Subgraphs, 96 GB of memory
 are sufficient for keeping any large genome entirely in memory. With the dual
 version, the memory requirements are expected to drop to about half of the
-current requirements and, hence, a machine with 16 GB of memory should suffice.
+current requirements and, hence, 48 GB of memory should suffice.
 
-The Genome Informatics research group has aquired in early 2003 a computer
-server with 96 GB of memory, which is now part of the infrastructure provided by
-the Bioinformatics Resource Facility of the CeBiTec. Although this machine has
-enough memory for running applications based on DSDS, it will be five years old
-by the time the project proposed here starts. Therefore, we request funds for
-acquiring a new computer server.
+The Genome Informatics research group has acquired in early 2003 a
+compute server with 96 GB of memory, which is now part of the
+infrastructure provided by the Bioinformatics Resource Facility (BRF) of
+the CeBiTec. Although this machine has enough memory for running
+applications based on DSDS, it will be five years old by the time the
+project proposed here starts. Therefore, we request funds for acquiring
+a new compute server.
 
-{\bf TODO: describe machine requested, update costs below}
+This Sun Fire X4600 M2 is equipped with eight 2.8 GHz AMD Opteron
+processors and has 64 GB of main memory. As argued above, this
+should suffice for the tasks planned in this project.
+The SUN architecture fits optimally in the existing infrastructure
+of the BRF, such that efficient set-up and maintenance are guaranteed.
 
 \bigskip
 \setlength{\tabcolsep}{2mm}
 \textbf{Summary (Zusammenfassung):}\hfill\begin{tabular}[t]{lr}
-\nth{1} Year (1. Jahr) &     0,00 EUR \\
+\nth{1} Year (1. Jahr) &35.560,77 EUR \\
 \nth{2} Year (2. Jahr) &     0,00 EUR \\
 \nth{3} Year (3. Jahr) &     0,00 EUR \\[.1ex]
 \hline
-\multicolumn{1}{l}{\textbf{Sum (Summe) 4.2}} & \textbf{0,00 EUR}
+\multicolumn{1}{l}{\textbf{Sum (Summe) 4.2}} & \textbf{35.560,77 EUR}
 \end{tabular}
 
 \subsection{Consumables (Verbrauchsmaterial)}
@@ -806,10 +794,10 @@ Example of national and European conferences:\\
 
 \subsection{Publication expenses (Publikationskosten)}
 
-The applicant declares the goal of concentrating the selection of its
+The applicant declares the goal of concentrating the selection of his
 publication media on \textit{open access}, which frequently incurs in
 publication fees. Nevertheless, no means for publication costs are requested for
-this project since the library of the University of Bielefeld supports this
+this project since the library of Bielefeld University supports this
 procedure through corporate memberships of \textit{open-access} publishers such
 as BioMed Central.
 
@@ -852,9 +840,9 @@ the central groups of the Bielefeld Institute for Bioinformatics. Two junior
 research groups are part of the group: \emph{Computational Methods for Emerging
 Technologies} (Dr. Sven Rahmann; granted by Bielefeld University), and
 \emph{Combinatorial Search Algorithms in Bioinformatics} (Dr. Ferdinando
-Cicalese; granted by the Sofja-Kovalevskaja-Prize from the
+Cicalese; granted by the Sofja-Kovalevskaja-Prize of the
 Alexander-von-Humboldt Foundation). A former junior research group, \emph{
-Computer-Science Methods for Mass Spectrometry} (Prof. Dr. Sebastian B\"{o}cker;
+Computer Science Methods for Mass Spectrometry} (Prof. Dr. Sebastian B\"{o}cker;
 granted by the DFG-Action Plan Infor\-matics/Emmy-Noether-Program), was dissolved
 as the group leader was promoted to professor at the University of Jena. The
 students of this group joined the other groups to continue their works.
@@ -874,7 +862,7 @@ Dr.\ Gene Myers, Howard Hughes Medical Institute/Janelia Farm:
 cooperation on engineering of algorithms for index-based, non-heuristic,
 approximate text search.
 
-Prof.\ Bernd Weisshaar, Chair of Genome Research, Bielefeld University:
+Prof.\ Bernd Weisshaar, chair of Genome Research, Bielefeld University:
 cooperation on large-scale repeat analysis with the goal of better primer
 design for EST detection in the genome of the sugar beet
 \textit{Beta vulgaris}.
@@ -897,19 +885,26 @@ both sides.
 
 \subsection{Scientific equipment available (Apparative Ausstattung)}
 
-In early 2003, the Genome Informatics research group aquired workstations and
+In early 2003, the Genome Informatics research group acquired workstations and
 servers from Sun Microsystems that were integrated in the CeBiTec
 infrastructure provided by the Bioinformatics Resource Facility (BRF), where
 they are available for use by any CeBiTec member. As a result, the members of
 the Genome Informatics group have complete access to the BRF infrastructure,
-including a cluster with 472 CPUs, a 10-Gigabit Ethernet network, a
-44-Terabyte Backup server, and various compute servers with up to 96
-GB of main storage. According to statement of the BRF director, the
+including a cluster with more than 500 CPUs, a 10-Gigabit Ethernet network, a
+backup server with 54 Terabyte disc and 280 Terabytes of tape space,
+and various compute servers with up to 96 GB of main storage. 
+This equipment is regularly being updated, most recently by an application
+of the CeBiTec in the HBFG program in summer 2007.
+Nevertheless, the need for computation with main memory demands above 32 GB
+as in the present application is rather unique in the CeBiTec environment.
+The only such computer presently available was bought by the applicant in 2003
+and will soon run out of warranty.
+That is why we are applying here for the compute server mentioned in
+Section~4.2.  Apart from that, according to statement of the BRF director, the
 existing infrastructure is sufficient for the requirements of the project
 proposed here. Personal computers for the scientific staff and students are
 available from the Genome Informatics research group resources.
 
-{\bf TODO: mention that a new server will be bought?}
 
 \subsection{Your institution's general contribution (Laufende Mittel für
 Sachausgaben)}
@@ -938,7 +933,7 @@ None.
 \section{Declaration (Erklärungen)}
 
 A request for funding this project has not been submitted to any other
-addressee. In the event that I submit such request, I will inform the Deutsche
+addressee. In the event that I submit such a request, I will inform the Deutsche
 Forschungsgemeinschaft immediately.
 
 The DFG liaison officer of Bielefeld University, Herr Prof.\ Egelhaaf,
@@ -960,10 +955,6 @@ was informed about this application.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{List of attachments (Verzeichnis der Anlagen)}
-
-{\bf TODO S\'ergio/Z\'e: get letter from Felipe}
-
-{\bf TODO Jens: get letter from Weisshaar}
 
 \begin{enumerate}
 \item Curriculum vitae of the applicant (DFG-Vordruck 10.04)
