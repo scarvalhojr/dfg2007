@@ -1,0 +1,33 @@
+High-throughput DNA sequencing methods in use today are able to produce staggering amounts of data
+on a daily basis that demand extensive computing resources to assemble, finish, and process genomic
+information. The Center for Biotechnology (CeBiTec) at Bielefeld University will soon have its own
+high-throughput sequencing machine, a patented technology developed by 454 Life Sciences, which is
+capable of producing millions of raw DNA bases per hour. However, what still makes sequencing a
+challenge today is the subsequent computational problem of correctly assembling the reads (small
+fragments of DNA data) in the correct order to build the original sequence.
+
+This project aims to develop a novel approach to genome assembly based on a new data structure
+called Dual Sparse De-Bruijn Subgraphs (DSDS). De-Bruijn subgraphs have already been employed in
+several applications, including sequence assembly, and are being currently used by members of our
+research group to detect repeats in incompletely sequenced genomes. The new approach consists of a
+variation of our current model with a compact representation of sparse De-Bruijn subgraphs, which
+exploits the redundancy due to the Watson-Crick complementarity nature of the DNA. Identifying and
+avoiding duplication will double the efficiency of our current data structure, both in terms of
+memory requirements and construction time, and will represent a major advantage to current assembly
+methods that cannot distinguish from which strand a given sequence originates.
+
+The project consists of two main parts. First, we will concentrate on studying the new graph in
+detail, designing the necessary data structures, and building stable and efficient implementations.
+These implementations will constitute the core of two genomic applications implemented in the second
+part of the project as stand-alone software packages: a fully-functional genome assembler and a
+repeat detection tool for incompletely sequenced genomes. The genome assembler will be used to
+assemble genomic DNA data sequenced at the CeBiTec and a partner institution in Brazil, serving as a
+perfect way to validate and compare our approach with other assembly methods. The repeat detection
+software will be built on top of our existing implementation, which is currently based on an earlier
+version of our proposed DSDS data structure. Both applications will be evaluated with the help of
+biologists from the Genome Research group led by Prof. Bernd Weisshaar, in Bielefeld, and from the
+group of Dr. Felipe Rodrigues da Silva at Embara, in Brazil.
+
+
+
+
